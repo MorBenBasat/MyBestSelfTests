@@ -1,5 +1,5 @@
 import time
-from pages.LoginPage import LoginPage, NegativeLogin
+from pages.LoginPage import  NegativeLogin
 from ui_testing.pages.pages_url import MbsUrl
 
 
