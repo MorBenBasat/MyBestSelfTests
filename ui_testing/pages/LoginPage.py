@@ -46,11 +46,9 @@ class NegativeLogin:
 
     def __init__(self, driver):
         self.driver = driver
-        self.driver = LoginPage
+        self.login_system = LoginPage(self.driver)
 
     def invalid_username_valid_password(self, invalid_username, valid_password):
-        login_system = LoginPage(self.driver)
-        login_system.navigate_to_login_page()
         invalid_user_input = wait_for_element_visibility(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
         invalid_user_input.send_keys(invalid_username)
 
@@ -59,7 +57,7 @@ class NegativeLogin:
 
         button_click = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
         button_click.click()
-        LoginPage.alerts(login_system)
+        self.login_system.alerts()
 
     def valid_username_invalid_password (self):
         pass
