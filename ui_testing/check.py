@@ -11,7 +11,7 @@ base_url = MbsUrl(driver)
 base_url.main_url()
 
 login_system = NegativeLogin(driver)
-login_system.invalid_username_valid_password('AAAA','258963')
+login_system.invalid_username_valid_password('test','478855')
 
 
 
