@@ -1,6 +1,6 @@
 import time
-from ui_testing.locators.LoginPageLocators import LoginPageLocators
-from ui_testing.waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
+from locators.LoginPageLocators import LoginPageLocators
+from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 
 
 class LoginPage:

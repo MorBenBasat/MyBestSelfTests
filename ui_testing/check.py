@@ -1,6 +1,6 @@
 import time
 from pages.LoginPage import  NegativeLogin
-from ui_testing.pages.pages_url import MbsUrl
+from pages.pages_url import MbsUrl
 
 
 from initialize_driver import initialize_driver

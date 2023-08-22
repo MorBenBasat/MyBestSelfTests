@@ -1,6 +1,6 @@
 import time
 
-from ui_testing.pages.LoginPage import LoginPage
+from pages.LoginPage import LoginPage
 
 
 class MbsUrl:
