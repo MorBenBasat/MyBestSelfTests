@@ -1,3 +1,8 @@
 /.idea
 /ui_testing/.pytest_cache
 /api-tests/.pytest_cache
+/ui_testing/__pycache__
+/api-tests/__pycache__
+/ui_testing/locators/__pycache__
+/ui_testing/pages/__pycache__
+/ui_testing/waits/__pycache__
