@@ -8,5 +8,4 @@ class LoginPageLocators:
     LOGINPAGE_BTN = By.XPATH, "//button[contains(span/text(),'כניסה')]"
     FORGOT_PASSWORD_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/a[1]'
     CREATE_USER_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/a[2]'
-    ERROR_MSG = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
-    GREEN_MSG = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
+   
