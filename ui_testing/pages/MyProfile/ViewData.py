@@ -12,13 +12,6 @@ class ViewData:
         self.login_page = LoginPage(driver)
         self.base_url = HelpersMbs(driver)
 
-    def login_the_system(self, username, password):
-        self.login_page.navigate_to_login_page()
-        self.login_page.login_username(username)
-        self.login_page.login_password(password)
-        self.login_page.login_button()
-        time.sleep(5)
-
     def open_view_data_page(self):
         self.base_url.navigation_to_base_url(PagesUrlMbs.login)
 
