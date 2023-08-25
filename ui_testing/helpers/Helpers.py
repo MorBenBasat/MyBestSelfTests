@@ -2,7 +2,6 @@ import time
 from waits import wait
 from selenium.webdriver.common.by import By
 
-
 class HelpersMbs:
     def __init__(self, driver):
         self.driver = driver
