@@ -1,7 +1,8 @@
-from ui_testing.pages.LoginPage import LoginPage
-from ui_testing.waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
+from helpers.Helpers import HelpersMbs
+from pages.LoginPage import LoginPage
+from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 import time
-from ui_testing.pages.pages_url import MbsUrl
+from pages.pages_url import PagesUrl, PagesUrlMbs
 
 
 class ViewData:
@@ -9,7 +10,7 @@ class ViewData:
     def __init__(self, driver):
         self.driver = driver
         self.login_page = LoginPage(driver)
-        self.page_url = MbsUrl(driver)
+        self.base_url = HelpersMbs(driver)
 
     def login_the_system(self, username, password):
         self.login_page.navigate_to_login_page()
@@ -19,8 +20,11 @@ class ViewData:
         time.sleep(5)
 
     def open_view_data_page(self):
-        view_data = self.page_url.my_profile_page_url()
-        if self.driver.current_url != view_data:
+        self.base_url.navigation_to_base_url(PagesUrlMbs.login)
+
+        if self.driver.current_url != self.base_url:
             print("My profile page is open")
         else:
             print("My profile page is not open")
+
+

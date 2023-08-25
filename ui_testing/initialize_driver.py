@@ -7,3 +7,6 @@ def initialize_driver():
 
     driver = webdriver.Chrome(options=options)
     return driver
+
+
+
