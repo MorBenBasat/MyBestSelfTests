@@ -14,8 +14,9 @@ base_url = HelpersMbs(driver)
 base_url.navigation_to_base_url(PagesUrlMbs.login)
 create_user = LoginPage(driver)
 create_user.login('test', '258963')
+time.sleep(2)
 
-time.sleep(5)
+base_url.alerts()
 base_url.navigation_to_base_url(PagesUrlMbs.agenda)
 time.sleep(5)
 
