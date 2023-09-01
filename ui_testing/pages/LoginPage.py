@@ -8,10 +8,10 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def navigate_to_login_page(self, page):
+    def navigate_to_login_page(self):
         base_url = "http://localhost:4200/login"
         self.driver.get(base_url)
-        time.sleep(3)
+        time.sleep(2)
 
     def login(self, username, password):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)

@@ -1,3 +1,5 @@
+import time
+
 from locators.SignUpLocators import SignUpLocators
 from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 
@@ -7,9 +9,12 @@ class SignUpPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def create_register(self, firstname, lastname, email, username, gender, password, confirm_password):
-        click_to_sign_up = wait_for_element_visibility(self.driver,*SignUpLocators.CREATE_NEW_USER)
+    def navigation_to_signup_page(self):
+        click_to_sign_up = wait_for_element_clickable(self.driver, *SignUpLocators.CREATE_NEW_USER)
         click_to_sign_up.click()
+        time.sleep(3)
+
+    def create_register(self, firstname, lastname, email, username, gender, password, confirm_password):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
         name.send_keys(firstname)
 
@@ -41,7 +46,5 @@ class SignUpPage:
         confirm_password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_CONFIRM_PASSWORD)
         confirm_password_input.send_keys(confirm_password)
 
-        click_to_create = wait_for_element_clickable(self.driver,*SignUpLocators.REGISTER_CREATE_BTN)
+        click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
-
-

@@ -14,3 +14,4 @@ PagesUrlMbs = PagesUrl("http://localhost:4200/login", "http://localhost:4200/reg
                        "http://localhost:4200/my-profile", "http://localhost:4200/agenda",
                        "http://localhost:4200/activities-details/0", "http://localhost:4200/activities",
                        "http://localhost:4200/logout")
+
