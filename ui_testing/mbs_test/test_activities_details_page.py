@@ -37,7 +37,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         time.sleep(2)
         self.helpers.alerts_activities_details()
 
-        self.activities_page.navigation_to_activities_page()
+        self.activities_page.navigate_to_activities_page()
         url = self.driver.current_url()
         self.assertEqual('http://localhost:4200/activities', url, 'activities page shown')
 

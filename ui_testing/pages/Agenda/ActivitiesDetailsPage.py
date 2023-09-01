@@ -33,6 +33,7 @@ class ActivitiesDetailsPage:
 
         random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
         random_click.click()
+        time.sleep(2)
 
         days_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
         days_field_open.click()
