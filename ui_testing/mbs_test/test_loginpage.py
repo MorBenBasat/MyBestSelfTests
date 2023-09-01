@@ -6,6 +6,7 @@ from selenium import webdriver
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
+from pages.pages_url import PagesUrlMbs
 
 
 class TestLoginPage(unittest.TestCase):
@@ -14,6 +15,8 @@ class TestLoginPage(unittest.TestCase):
         self.driver = initialize_driver()  # Initialize the WebDriver
         self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage clas
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
+        self.pageUrl = PagesUrlMbs.activities_details
+
 
     @pytest.mark.smoke
     def test_successful_login(self):

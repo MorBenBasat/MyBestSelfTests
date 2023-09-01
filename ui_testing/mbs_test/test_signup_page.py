@@ -18,7 +18,7 @@ class TestSignUp(unittest.TestCase):
 
     def test_success_navigation_sign_up_page(self):
         self.loginpage.navigate_to_login_page()
-        self.signup_page.navigation_to_signup_page()
+        self.signup_page.navigate_to_signup_page()
         time.sleep(2)
         url = self.driver.current_url
         self.assertEqual('http://localhost:4200/register', url, "Sign Up Page Open")
