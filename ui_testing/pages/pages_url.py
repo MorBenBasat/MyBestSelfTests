@@ -1,7 +1,7 @@
 class PagesUrl:
-    def __init__(self, login, register, my_profile, agenda, activities_details, activities, logout):
+    def __init__(self, login, signup, my_profile, agenda, activities_details, activities, logout):
         self.login = login
-        self.register = register
+        self.register = signup
         self.my_profile = my_profile
         self.agenda = agenda
         self.activities_details = activities_details

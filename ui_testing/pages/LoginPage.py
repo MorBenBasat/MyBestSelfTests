@@ -1,17 +1,19 @@
 import time
 from locators.LoginPageLocators import LoginPageLocators
+from pages.pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
+from helpers.Helpers import HelpersMbs
 
 
 class LoginPage:
 
     def __init__(self, driver):
         self.driver = driver
+        self.pageUrl = PagesUrlMbs.login
+        self.helpers = HelpersMbs(self.driver)
 
     def navigate_to_login_page(self):
-        base_url = "http://localhost:4200/login"
-        self.driver.get(base_url)
-        time.sleep(2)
+        self.helpers.navigation_to_url(self.pageUrl)
 
     def login(self, username, password):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
@@ -21,6 +23,5 @@ class LoginPage:
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
         time.sleep(1)
         login_btn.click()
-
 
 # -----------------------------------------------------------------------------------------------------
