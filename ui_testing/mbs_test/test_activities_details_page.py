@@ -28,8 +28,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual("http://localhost:4200/activities-details/0", url, 'Activities Details Page Open!')
         self.driver.quit()
 
-
-    def test_create_mission(self):
+    def test_create_activity(self):
         self.helpers.navigation_to_url(self.login_page)
         self.login_page.login('test', '258963')
 
@@ -43,8 +42,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual('http://localhost:4200/activities', url, 'activities page shown')
         self.driver.quit()
 
-
-    def test_no_fill_my_mission(self):
+    def test_no_fill_my_activity(self):
         self.login_page.navigate_to_login_page()
         self.login_page.login('test', '258963')
 
@@ -52,9 +50,12 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('', ' test')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        alert.text()
+        self.assertEqual(alert, 'Http failure response for https://localhost:7216/api/Activity: 400 OK', 'Cant create '
+                                                                                                         'without the '
+                                                                                                         'activity '
+                                                                                                         'name)')
         self.driver.quit()
-
 
     def test_no_fill_why_i_do_this(self):
         self.login_page.navigate_to_login_page()
@@ -67,7 +68,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
         self.driver.quit()
 
-
     def test_no_fill(self):
         self.login_page.navigate_to_login_page()
         self.login_page.login('test', '258963')
@@ -78,4 +78,3 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         alert = self.helpers.alerts_activities_details()
         assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
         self.driver.quit()
-
