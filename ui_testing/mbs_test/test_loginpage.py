@@ -36,6 +36,8 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("invalid", "invalid")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
+
 
     def test_valid_username_invalid_password(self):
         self.login_page.navigate_to_login_page()
@@ -43,6 +45,8 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("test", "1111111")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
+
 
     def test_invalid_username_valid_password(self):
         self.login_page.navigate_to_login_page()
@@ -50,6 +54,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("invalidInput", "258963")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
 
     def test_only_password(self):
         self.login_page.navigate_to_login_page()
@@ -58,6 +63,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("", "258963")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
 
     def test_only_username(self):
         self.login_page.navigate_to_login_page()
@@ -65,6 +71,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("test", "")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
 
     def test_no_inputs(self):
         self.login_page.navigate_to_login_page()
@@ -72,3 +79,4 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.login("test", "")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
+        self.driver.quit()
