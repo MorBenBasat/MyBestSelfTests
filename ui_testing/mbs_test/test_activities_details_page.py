@@ -26,6 +26,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         url = self.driver.current_url
         self.assertEqual("http://localhost:4200/activities-details/0", url, 'Activities Details Page Open!')
+        self.driver.quit()
 
 
     def test_create_mission(self):
@@ -40,6 +41,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_page.navigate_to_activities_page()
         url = self.driver.current_url()
         self.assertEqual('http://localhost:4200/activities', url, 'activities page shown')
+        self.driver.quit()
+
 
     def test_no_fill_my_mission(self):
         self.login_page.navigate_to_login_page()
@@ -50,6 +53,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
         assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        self.driver.quit()
+
 
     def test_no_fill_why_i_do_this(self):
         self.login_page.navigate_to_login_page()
@@ -60,6 +65,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
         assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        self.driver.quit()
+
 
     def test_no_fill(self):
         self.login_page.navigate_to_login_page()
@@ -70,3 +77,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
         assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        self.driver.quit()
+
