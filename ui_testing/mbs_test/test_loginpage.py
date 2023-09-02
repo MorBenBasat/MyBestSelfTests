@@ -17,7 +17,6 @@ class TestLoginPage(unittest.TestCase):
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
         self.pageUrl = PagesUrlMbs.activities_details
 
-
     @pytest.mark.smoke
     def test_successful_login(self):
         self.login_page.navigate_to_login_page()
@@ -38,7 +37,6 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
-
     def test_valid_username_invalid_password(self):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
@@ -46,7 +44,6 @@ class TestLoginPage(unittest.TestCase):
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()
-
 
     def test_invalid_username_valid_password(self):
         self.login_page.navigate_to_login_page()
