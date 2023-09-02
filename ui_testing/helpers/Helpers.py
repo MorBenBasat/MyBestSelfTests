@@ -19,9 +19,8 @@ class HelpersMbs:
             print(verify_msg)
 
     def alerts_activities_details(self):
-
-        alert = wait.wait_for_element_visibility(self.driver, By.XPATH, '/html/body/app-root/div/p-toast/div/p'
-                                                                        '-toastitem/div/div')
+        alert = wait.wait_for_element_visibility(self.driver, By.XPATH,
+                                                 '/html/body/app-root/div/p-toast/div/p-toastitem/div/div')
         if alert.is_displayed():
             verify_msg = alert.text
             print(verify_msg)

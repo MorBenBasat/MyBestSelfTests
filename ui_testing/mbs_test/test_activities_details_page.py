@@ -29,7 +29,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_create_activity(self):
-        self.helpers.navigation_to_url(self.login_page)
+        self.login_page.navigate_to_login_page()
         self.login_page.login('test', '258963')
 
         self.helpers.navigation_to_url(self.activities_details_page)
@@ -50,11 +50,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('', ' test')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        alert.text()
-        self.assertEqual(alert, 'Http failure response for https://localhost:7216/api/Activity: 400 OK', 'Cant create '
-                                                                                                         'without the '
-                                                                                                         'activity '
-                                                                                                         'name)')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
@@ -62,10 +59,10 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.login('test', '258963')
 
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details('test', '')
+        self.activities_details_page.fill_all_activities_details('test', ' ')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
     def test_no_fill(self):
@@ -76,5 +73,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('', '')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        assert alert == 'Http failure response for https://localhost:7216/api/Activity: 400 OK'
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()

@@ -2,6 +2,7 @@ import time
 
 from helpers.Helpers import HelpersMbs
 from locators.SignUpLocators import SignUpLocators
+from pages.LoginPage import LoginPage
 from pages.pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 
@@ -11,11 +12,12 @@ class SignUpPage:
     def __init__(self, driver):
         self.driver = driver
         self.pageUrl = PagesUrlMbs.register
+        self.loginpage = LoginPage(self.driver)
         self.helpers = HelpersMbs(self.driver)
 
     def navigate_to_signup_page(self):
-        self.helpers.navigation_to_url(self.pageUrl)
-        
+        create_user = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
+        create_user.click()
 
     def create_register(self, firstname, lastname, email, username, gender, password, confirm_password):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
@@ -35,10 +37,8 @@ class SignUpPage:
 
         if gender == 'זכר':
             gender_selection_male.click()
-            print("זכר נבחר")
         elif gender == 'נקבה':
             gender_selection_female.click()
-            print("נקבה נבחרה")
 
         else:
             raise Exception("no gender as been selected")
