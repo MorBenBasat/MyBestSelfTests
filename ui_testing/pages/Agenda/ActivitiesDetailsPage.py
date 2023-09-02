@@ -17,6 +17,7 @@ class ActivitiesDetailsPage:
 
     def navigate_to_activities_details_page(self):
         self.helpers.navigation_to_url(self.pageUrl)
+        time.sleep(2)
 
     def fill_all_activities_details(self, my_mission, why_i_do_this):
         my_mission_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_MISSION)

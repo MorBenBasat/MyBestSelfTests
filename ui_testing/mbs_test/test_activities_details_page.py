@@ -29,10 +29,10 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
 
     def test_create_mission(self):
-        self.login_page.navigate_to_login_page()
+        self.helpers.navigation_to_url(self.login_page)
         self.login_page.login('test', '258963')
 
-        self.activities_details_page.navigate_to_activities_details_page()
+        self.helpers.navigation_to_url(self.activities_details_page)
         self.activities_details_page.fill_all_activities_details('sanitytest', 'sanity test')
         time.sleep(2)
         self.helpers.alerts_activities_details()

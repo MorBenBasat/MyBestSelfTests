@@ -15,6 +15,7 @@ class SignUpPage:
 
     def navigate_to_signup_page(self):
         self.helpers.navigation_to_url(self.pageUrl)
+        
 
     def create_register(self, firstname, lastname, email, username, gender, password, confirm_password):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
