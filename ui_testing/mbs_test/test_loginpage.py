@@ -6,7 +6,7 @@ from selenium import webdriver
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
-from pages.pages_url import PagesUrlMbs
+from pages.Pages_url import PagesUrlMbs
 
 
 class TestLoginPage(unittest.TestCase):
@@ -19,16 +19,19 @@ class TestLoginPage(unittest.TestCase):
 
     @pytest.mark.smoke
     def test_successful_login(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
         self.login_page.login("test", "258963")
-        time.sleep(4)
+        time.sleep(2)
 
         self.assertNotEqual(self.driver.current_url, url, "כניסה בוצעה בהצלחה")
         self.helpers.alerts_login()
+        self.driver.quit()
 
     @pytest.mark.invalid
     def test_invalid_login(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         time.sleep(2)
         url = self.driver.current_url
