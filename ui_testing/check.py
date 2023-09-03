@@ -2,7 +2,7 @@ import time
 
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
-from pages.pages_url import PagesUrlMbs
+from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
 
 from initialize_driver import initialize_driver

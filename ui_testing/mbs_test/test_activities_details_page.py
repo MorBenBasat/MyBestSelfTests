@@ -50,7 +50,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('', ' test')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
 
         self.driver.quit()
 
@@ -62,10 +62,10 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('test', ' ')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
         self.driver.quit()
 
-    def test_no_fill(self):
+    def test_no_fill_activities_details_fields(self):
         self.login_page.navigate_to_login_page()
         self.login_page.login('test', '258963')
 
@@ -73,5 +73,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_all_activities_details('', '')
         time.sleep(2)
         alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים','לא נוצרה משימה')
         self.driver.quit()

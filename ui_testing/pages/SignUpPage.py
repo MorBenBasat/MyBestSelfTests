@@ -3,7 +3,7 @@ import time
 from helpers.Helpers import HelpersMbs
 from locators.SignUpLocators import SignUpLocators
 from pages.LoginPage import LoginPage
-from pages.pages_url import PagesUrlMbs
+from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 
 
@@ -40,9 +40,6 @@ class SignUpPage:
         elif gender == 'נקבה':
             gender_selection_female.click()
 
-        else:
-            raise Exception("no gender as been selected")
-
         password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_PASSWORD)
         password_input.send_keys(password)
 
@@ -51,3 +48,4 @@ class SignUpPage:
 
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
+        time.sleep(3)

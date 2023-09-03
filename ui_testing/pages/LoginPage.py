@@ -1,6 +1,6 @@
 import time
 from locators.LoginPageLocators import LoginPageLocators
-from pages.pages_url import PagesUrlMbs
+from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
 from helpers.Helpers import HelpersMbs
 
