@@ -17,7 +17,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
         self.pageUrl = PagesUrlMbs.activities_details
 
-    @pytest.mark.smoke
+    @pytest.mark.test29
     def test_successful_login(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
@@ -29,7 +29,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
-    @pytest.mark.invalid
+    @pytest.mark.test30
     def test_invalid_login(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
@@ -40,6 +40,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
+    @pytest.mark.test31
     def test_valid_username_invalid_password(self):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
@@ -48,6 +49,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
+    @pytest.mark.test32
     def test_invalid_username_valid_password(self):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
@@ -56,6 +58,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
+    @pytest.mark.test33
     def test_only_password(self):
         self.login_page.navigate_to_login_page()
         time.sleep(2)
@@ -65,6 +68,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
+    @pytest.mark.test34
     def test_only_username(self):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
@@ -73,6 +77,7 @@ class TestLoginPage(unittest.TestCase):
         self.helpers.alerts_login()
         self.driver.quit()
 
+    @pytest.mark.test35
     def test_no_inputs(self):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url

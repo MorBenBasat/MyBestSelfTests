@@ -11,9 +11,6 @@ class SignUpPage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.pageUrl = PagesUrlMbs.register
-        self.loginpage = LoginPage(self.driver)
-        self.helpers = HelpersMbs(self.driver)
 
     def navigate_to_signup_page(self):
         create_user = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
