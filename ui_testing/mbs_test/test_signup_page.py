@@ -71,8 +71,9 @@ class TestSignUp(unittest.TestCase):
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'הסיסמאות לא תואמות', 'ססמאות לא תואמות')
         self.driver.quit()
-    @pytest.mark.test41
-    def fil_without_first_name_field(self):
+
+    @pytest.mark.test46
+    def fill_without_first_name_field(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
@@ -81,8 +82,8 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
-
-    def fil_without_last_name_field(self):
+    @pytest.mark.test47
+    def fill_without_last_name_field(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
@@ -91,6 +92,7 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
+    @pytest.mark.test48
     def invalid_email_input(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
