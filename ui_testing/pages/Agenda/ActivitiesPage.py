@@ -15,5 +15,16 @@ class ActivitiesPage:
         self.helpers = HelpersMbs(driver)
         self.pageUrl = PagesUrlMbs.activities_details
 
-    def navigate_to_activities_page(self):
+    def open_activity_details_page_by_icon_by_drop_list(self):
         self.helpers.navigation_to_url(self.pageUrl)
+
+    def open_activity_details_page_by_icon(self):
+        click_on_create_activity = wait_for_element_clickable(self.driver, *ActivitiesLocators.CLICK_TO_CREATE_ACTIVITY_BY_IC0N_BTN)
+        click_on_create_activity.click()
+
+
+
+
+
+
+
