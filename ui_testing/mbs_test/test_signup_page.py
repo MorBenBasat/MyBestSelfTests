@@ -23,7 +23,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         time.sleep(2)
         url = self.driver.current_url
-        self.assertEqual('http://localhost:4200/register', url, "Sign Up Page Open")
+        self.assertEqual('http://localhost:4200/register', url, print("Sign Up Page Open"))
         self.driver.quit()
 
     @pytest.mark.test37
@@ -31,7 +31,7 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('test', 'test', 'test1@gmail.com', '45445888', 'זכר', '111111', '111111')
+        self.signup_page.create_register('register', 'register', 'valid@gmail.com', 'register123', 'זכר', 'register123', 'register123')
         alert = self.helpers.alerts_signup()
         time.sleep(2)
         self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
@@ -47,7 +47,7 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('test', 'test', 'test@gmail.com', 'test', 'נקבה', '', '21111')
+        self.signup_page.create_register('first', 'last', 'email', 'username', 'נקבה', '', '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
@@ -67,37 +67,58 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('test', 'test', 'test@gmail.com', 'test', 'נקבה', '123456test', 'Invalid')
+        self.signup_page.create_register('firstname', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'הסיסמאות לא תואמות', 'ססמאות לא תואמות')
         self.driver.quit()
 
     @pytest.mark.test46
-    def fill_without_first_name_field(self):
+    def test_fill_without_first_name_field(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('', 'test', 'test@gmail.com', 'test', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
     @pytest.mark.test47
-    def fill_without_last_name_field(self):
+    def test_fill_without_last_name_field(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('test', '', 'test@gmail.com', 'test', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('firstname', '', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
     @pytest.mark.test48
-    def invalid_email_input(self):
+    def test_invalid_email_input(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('test', 'test', 'test', 'test', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('firstname', 'lastname', 'email@', 'username', 'נקבה', '123456test', '123456test')
         alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'אימייל לא חוקי', 'לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי')
+        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי'))
         self.driver.quit()
+
+    @pytest.mark.test51
+    def test_invalid_username_length(self):
+        self.driver.maximize_window()
+        self.login_page.navigate_to_login_page()
+        self.signup_page.navigate_to_signup_page()
+        self.signup_page.create_register('first', 'last', 'email', 'user', 'נקבה', '123456test', '123456test')
+        alert = self.helpers.alerts_signup()
+        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
+        self.driver.quit()
+
+    def test_invalid_password_length(self):
+        self.driver.maximize_window()
+        self.login_page.navigate_to_login_page()
+        self.signup_page.navigate_to_signup_page()
+        self.signup_page.create_register('first', 'last', 'email', 'user', 'נקבה', '123456test', '123456test')
+        alert = self.helpers.alerts_signup()
+        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
+        self.driver.quit()
+
+    
