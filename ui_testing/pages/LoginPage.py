@@ -21,7 +21,7 @@ class LoginPage:
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(password)  # סיסמא : 258963
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
-        time.sleep(1)
+        HelpersMbs.delay(1)
         login_btn.click()
 
 # -----------------------------------------------------------------------------------------------------

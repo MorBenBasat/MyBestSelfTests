@@ -45,4 +45,4 @@ class SignUpPage:
 
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
-        time.sleep(3)
+        HelpersMbs.delay(2)

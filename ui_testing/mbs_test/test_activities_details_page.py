@@ -34,7 +34,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.helpers.navigation_to_url(self.activities_details_page)
         self.activities_details_page.fill_all_activities_details('sanitytest', 'sanity test')
-        time.sleep(2)
+        HelpersMbs.delay(2)
         self.helpers.alerts_activities_details()
 
         self.activities_page.navigate_to_activities_page()
@@ -48,7 +48,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', ' test')
-        time.sleep(2)
+        HelpersMbs.delay(2)
         alert = self.helpers.alerts_activities_details()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
 
@@ -60,7 +60,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('test', ' ')
-        time.sleep(2)
+        HelpersMbs.delay(2)
         alert = self.helpers.alerts_activities_details()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
         self.driver.quit()
@@ -71,7 +71,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', '')
-        time.sleep(2)
+        HelpersMbs.delay(2)
         alert = self.helpers.alerts_activities_details()
         self.assertEqual(alert, 'לא מולאו כל הפרטים','לא נוצרה משימה')
         self.driver.quit()

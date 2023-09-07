@@ -16,7 +16,7 @@ class ActivitiesDetailsPage:
         self.pageUrl = PagesUrlMbs.activities_details
 
     def navigate_to_activities_details_page(self):
-        time.sleep(2)
+        HelpersMbs.delay(2)
         self.helpers.navigation_to_url(self.pageUrl)
 
     def fill_all_activities_details(self, my_activity, why_i_do_this):
@@ -28,17 +28,17 @@ class ActivitiesDetailsPage:
 
         hour_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         hour_field_open.click()
-        time.sleep(2)
+        HelpersMbs.delay(2)
         hour_up_arrow = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.HOUR_ARROW_UP)
         hour_up_arrow.click()
 
         random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
         random_click.click()
-        time.sleep(2)
+        HelpersMbs.delay(2)
 
         days_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
         days_field_open.click()
-        time.sleep(2)
+        HelpersMbs.delay(2)
 
         days_field_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.MONDAY_BTN)
         days_field_selection.click()
