@@ -28,7 +28,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         url = self.driver.current_url
         self.login_page.login("test", "258963")
-        time.sleep(2)
+        HelpersMbs.delay(2)
 
         self.assertNotEqual(self.driver.current_url, url, "כניסה בוצעה בהצלחה")
         self.helpers.alerts_login()
@@ -38,7 +38,7 @@ class TestLoginPage(unittest.TestCase):
     def test_invalid_login(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        time.sleep(2)
+        HelpersMbs.delay(2)
         url = self.driver.current_url
         self.login_page.login("invalid", "invalid")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
@@ -66,7 +66,7 @@ class TestLoginPage(unittest.TestCase):
     @pytest.mark.test33
     def test_only_password(self):
         self.login_page.navigate_to_login_page()
-        time.sleep(2)
+        HelpersMbs.delay(2)
         url = self.driver.current_url
         self.login_page.login("", "258963")
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")

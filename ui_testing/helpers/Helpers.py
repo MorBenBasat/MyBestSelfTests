@@ -9,7 +9,7 @@ class HelpersMbs:
 
     def navigation_to_url(self, url):
         self.driver.get(url)
-        time.sleep(3)
+        HelpersMbs.delay(3)
 
     def alerts_login(self):
         alert = wait.wait_for_element_visibility(self.driver, By.XPATH,
@@ -46,3 +46,14 @@ class HelpersMbs:
             return verify_msg
         else:
             return None
+
+    @staticmethod
+    def delay(seconds):
+        try:
+            seconds = float(seconds)
+            if seconds >= 0:
+                time.sleep(seconds)
+            else:
+                print("Input should be a non-negative number of seconds.")
+        except ValueError:
+            print("Invalid input. Please provide a valid number of seconds.")

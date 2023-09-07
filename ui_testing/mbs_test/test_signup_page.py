@@ -21,7 +21,7 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        time.sleep(2)
+        HelpersMbs.delay(2)
         url = self.driver.current_url
         self.assertEqual('http://localhost:4200/register', url, print("Sign Up Page Open"))
         self.driver.quit()
@@ -33,7 +33,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register('register', 'register', 'valid@gmail.com', 'register123', 'זכר', 'register123', 'register123')
         alert = self.helpers.alerts_signup()
-        time.sleep(2)
+        HelpersMbs.delay(2)
         self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
         url = 'http://localhost:4200/login'
         self.assertEqual(url, self.driver.current_url, 'נפתח דף כניסה')
