@@ -1,12 +1,11 @@
 import time
-
 from selenium.webdriver.common.by import By
-
 from helpers.Helpers import HelpersMbs
+from locators.MyAgendaPageLocators import MyAgendaPageLocators
+from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
-from pages.Pages_url import PagesUrl
 
 
 class ActivitiesDetailsPage:
@@ -14,10 +13,26 @@ class ActivitiesDetailsPage:
         self.driver = driver
         self.helpers = HelpersMbs(self.driver)
         self.pageUrl = PagesUrlMbs.activities_details
+        self.my_agenda = MyAgendaPage(self.driver)
 
     def navigate_to_activities_details_page(self):
         HelpersMbs.delay(2)
         self.helpers.navigation_to_url(self.pageUrl)
+
+    def navigate_to_activities_details_page_by_drop_list(self):
+        HelpersMbs.delay(1)
+        click_on_activities_page_drop_list = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
+                                                                        DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK)
+
+        click_on_activities_page_drop_list.click()
+
+    def navigate_to_activities_details_page_by_plus_btn(self):
+        HelpersMbs.delay(2)
+        self.my_agenda.navigate_to_agenda_page()
+
+        click_on_plus_btn = wait_for_element_clickable(self.driver,
+                                                       *MyAgendaPageLocators.PLUS_BTN_OPEN_ACTIVITY_DETAILS)
+        click_on_plus_btn.click()
 
     def fill_all_activities_details(self, my_activity, why_i_do_this):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)

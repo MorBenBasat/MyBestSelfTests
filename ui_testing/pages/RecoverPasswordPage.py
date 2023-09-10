@@ -1,4 +1,3 @@
-import time
 from locators.RecoverPasswordPageLocators import PasswordRecoverPageLocators
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable
 
@@ -8,7 +7,7 @@ class RecoverPasswordPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def test_navigation_to_recover_page(self):
+    def navigation_to_recover_page(self):
         click_forgot_password = wait_for_element_clickable(self.driver,
                                                            *PasswordRecoverPageLocators.FORGOT_PASSWORD_BTN)
         click_forgot_password.click()

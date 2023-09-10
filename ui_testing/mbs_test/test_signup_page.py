@@ -102,7 +102,7 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי'))
         self.driver.quit()
 
-    @pytest.mark.test51
+    @pytest.mark.test54
     def test_invalid_username_length(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
@@ -121,4 +121,3 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
         self.driver.quit()
 
-    
