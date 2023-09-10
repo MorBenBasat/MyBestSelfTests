@@ -6,6 +6,8 @@ from helpers.Helpers import HelpersMbs
 from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
+from pages.Pages_url import PagesUrlMbs
+from test_users.test_users import TestUser
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -24,7 +26,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.login('test', '258963')
         self.activities_details_page.navigate_to_activities_details_page()
         url = self.driver.current_url
-        self.assertEqual("http://localhost:4200/activities-details/0", url, 'Activities Details Page Open!')
+        self.assertEqual(PagesUrlMbs.activities_details, url, 'Activities Details Page Open!')
         self.driver.quit()
 
     @pytest.mark.smokeee
@@ -46,7 +48,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_my_activity(self):
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(TestUser.login, TestUser.password)
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', ' test')
@@ -85,7 +87,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.agenda_page.open_agenda_drop_list()
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
-        self.assertNotEqual("http://localhost:4200/activities-details/0", url, print('Activities Details Page Open By '
+        self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
                                                                                      'Drop List!'))
 
     def test_open_activities_details_by_plus_btn(self):
@@ -94,7 +96,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         HelpersMbs.delay(2)
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
-        self.assertNotEqual("http://localhost:4200/activities-details/0", url, print('Activities Details Page Open By '
+        self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
                                                                                      'Folder Icon'))
 
 

@@ -1,17 +1,9 @@
 import time
 import unittest
-
 import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
-from locators.LoginPageLocators import LoginPageLocators
 from pages.LoginPage import LoginPage
-from pages.Pages_url import PagesUrlMbs
-from waits import wait
-from waits.wait import wait_for_element_presence
 
 
 class TestLoginPage(unittest.TestCase):
@@ -20,7 +12,6 @@ class TestLoginPage(unittest.TestCase):
         self.driver = initialize_driver()  # Initialize the WebDriver
         self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage clas
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
-        self.pageUrl = PagesUrlMbs.activities_details
 
     @pytest.mark.test29
     def test_successful_login(self):
@@ -81,5 +72,3 @@ class TestLoginPage(unittest.TestCase):
         self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()
-
-
