@@ -6,6 +6,7 @@ from helpers.Helpers import HelpersMbs
 from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
+from pages.Pages_url import PagesUrlMbs
 
 
 class TestActivitiesPage(unittest.TestCase):
@@ -23,7 +24,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.login('test', '258963')
         url = self.driver.current_url
         self.activities_page.navigate_to_activities_page()
-        self.assertNotEqual("http://localhost:4200/activities", url, print('Activities page opens propelry'))
+        self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities page opens propelry'))
 
     def test_open_activities_by_drop_list(self):
         self.login_page.navigate_to_login_page()
@@ -31,4 +32,4 @@ class TestActivitiesPage(unittest.TestCase):
         HelpersMbs.delay(2)
         url = self.driver.current_url
         self.activities_page.navigate_to_activities_page_by_drop_list()
-        self.assertNotEqual("http://localhost:4200/activities-details/0", url, print('Activities Details Page Open By Drop List'))
+        self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities Details Page Open By Drop List'))
