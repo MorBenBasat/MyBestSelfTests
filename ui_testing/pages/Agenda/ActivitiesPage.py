@@ -15,7 +15,7 @@ class ActivitiesPage:
         self.my_agenda = MyAgendaPage(self.driver)
 
     def navigate_to_activities_page(self):
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.helpers.navigation_to_url(self.pageUrl)
 
     def navigate_to_activities_page_by_drop_list(self):
