@@ -5,7 +5,8 @@ import pytest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
-from test_users.register_users import InvalidRegistrationUser, ValidRegistrationUser
+from test_users.register_users import InvalidRegistrationUser, ValidRegistrationUser, NoPasswordRegistration, \
+    DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoEmailRegistration
 
 
 class TestSignUp(unittest.TestCase):
@@ -50,7 +51,10 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('first', 'last', 'email', 'username', 'נקבה', '', '123456test')
+        self.signup_page.create_register(NoPasswordRegistration.firstname, NoPasswordRegistration.lastname,
+                                         NoPasswordRegistration.email, NoPasswordRegistration.username,
+                                         NoPasswordRegistration.username, NoPasswordRegistration.password,
+                                         NoPasswordRegistration.confirm_password)
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
@@ -70,8 +74,10 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test',
-                                         '123456')
+        self.signup_page.create_register(DifferentPasswordAndConfirm.firstname, DifferentPasswordAndConfirm.lastname,
+                                         DifferentPasswordAndConfirm.email, DifferentPasswordAndConfirm.username,
+                                         DifferentPasswordAndConfirm.username, DifferentPasswordAndConfirm.password,
+                                         DifferentPasswordAndConfirm.confirm_password)
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'הסיסמאות לא תואמות', 'ססמאות לא תואמות')
         self.driver.quit()
@@ -81,10 +87,12 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test',
-                                         '123456test')
+        self.signup_page.create_register(NoFirstNameRegistration.firstname, NoFirstNameRegistration.lastname,
+                                         NoFirstNameRegistration.email, NoFirstNameRegistration.username,
+                                         NoFirstNameRegistration.username, NoFirstNameRegistration.password,
+                                         NoFirstNameRegistration.confirm_password)
         alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', print('לא נוצר משתמש עקב חוסר שם פרטי'))
         self.driver.quit()
 
     @pytest.mark.test47
@@ -92,10 +100,12 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', '', 'email@gmail.com', 'username', 'נקבה', '123456test',
-                                         '123456test')
+        self.signup_page.create_register(NoLastNameRegistration.firstname, NoLastNameRegistration.lastname,
+                                         NoLastNameRegistration.email, NoLastNameRegistration.username,
+                                         NoLastNameRegistration.username, NoLastNameRegistration.password,
+                                         NoLastNameRegistration.confirm_password)
         alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(alert, 'לא מולאו כל הפרטים', print('לא נוצר עקב חוסר שם משפחה'))
         self.driver.quit()
 
     @pytest.mark.test48
@@ -103,8 +113,10 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', 'lastname', 'email@', 'username', 'נקבה', '123456test',
-                                         '123456test')
+        self.signup_page.create_register(NoEmailRegistration.firstname, NoEmailRegistration.lastname,
+                                         NoEmailRegistration.email, NoEmailRegistration.username,
+                                         NoEmailRegistration.username, NoEmailRegistration.password,
+                                         NoEmailRegistration.confirm_password)
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי'))
         self.driver.quit()
