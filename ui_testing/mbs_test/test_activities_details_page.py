@@ -7,6 +7,7 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
+from test_users.login_users import SuccessLoginUser,InvalidLogin
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -21,8 +22,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     @pytest.mark.smoke
     def test_success_navigation_activities_details_page(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
         self.activities_details_page.navigate_to_activities_details_page()
         url = self.driver.current_url
         self.assertEqual(PagesUrlMbs.activities_details, url, 'Activities Details Page Open!')
@@ -32,7 +34,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_create_activity(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
         HelpersMbs.delay(2)
 
         self.activities_details_page.navigate_to_activities_details_page()
@@ -46,8 +48,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login(TestUser.login, TestUser.password)
+        self.login_page.login(InvalidLogin.login, InvalidLogin.password)
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', ' test')
@@ -58,8 +61,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('test', ' ')
@@ -69,8 +73,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_activities_details_fields(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', '')
@@ -80,23 +85,22 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_open_activities_details_by_drop_list(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
         HelpersMbs.delay(2)
         self.agenda_page.open_agenda_drop_list()
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
         self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
-                                                                                     'Drop List!'))
+                                                                       'Drop List!'))
 
     def test_open_activities_details_by_plus_btn(self):
+        self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        self.login_page.login('test', '258963')
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
         HelpersMbs.delay(2)
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
         self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
-                                                                                     'Folder Icon'))
-
-
-
+                                                                       'Folder Icon'))

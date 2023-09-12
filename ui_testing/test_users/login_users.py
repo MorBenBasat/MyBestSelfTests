@@ -4,10 +4,12 @@ class TestLoginUsers:
         self.password = password
 
 
-SuccessLoginUser = TestLoginUsers("test", "258963")
+SuccessLoginUser = TestLoginUsers("ValidUser123", "258963test")
 InvalidLogin = TestLoginUsers("Invalid", "Invalid")
 UserNameInvalidLength = TestLoginUsers("hi", "123456test")
 PasswordInvalidLength = TestLoginUsers("TestUserName123", "123")
 NoFillDetails = TestLoginUsers("", "")
-NoFillUserName = TestLoginUsers("", "123456test")
+NoFillUserName = TestLoginUsers("", "Password123")
 NoFillPassword = TestLoginUsers("ValidUser", "")
+ValidNameInvalidPassword = TestLoginUsers("test123","123456")
+InValidNameValidPassword = TestLoginUsers("asd","258963test")
