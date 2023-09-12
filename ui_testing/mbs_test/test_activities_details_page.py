@@ -7,7 +7,6 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.test_users import TestUser
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):

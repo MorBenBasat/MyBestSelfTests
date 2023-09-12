@@ -2,10 +2,10 @@ import time
 import unittest
 from pages.SignUpPage import SignUpPage
 import pytest
-from selenium import webdriver
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
+from test_users.register_users import InvalidRegistrationUser, ValidRegistrationUser
 
 
 class TestSignUp(unittest.TestCase):
@@ -31,7 +31,10 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('register', 'register', 'valid@gmail.com', 'register123', 'זכר', 'register123', 'register123')
+        self.signup_page.create_register(InvalidRegistrationUser.firstname, ValidRegistrationUser.lastname,
+                                         ValidRegistrationUser.email, ValidRegistrationUser.username,
+                                         ValidRegistrationUser.username, ValidRegistrationUser.password,
+                                         ValidRegistrationUser.confirm_password)
         alert = self.helpers.alerts_signup()
         HelpersMbs.delay(2)
         self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
@@ -67,7 +70,8 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456')
+        self.signup_page.create_register('firstname', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test',
+                                         '123456')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'הסיסמאות לא תואמות', 'ססמאות לא תואמות')
         self.driver.quit()
@@ -77,7 +81,8 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('', 'lastname', 'email@gmail.com', 'username', 'נקבה', '123456test',
+                                         '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
@@ -87,7 +92,8 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', '', 'email@gmail.com', 'username', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('firstname', '', 'email@gmail.com', 'username', 'נקבה', '123456test',
+                                         '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
@@ -97,7 +103,8 @@ class TestSignUp(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register('firstname', 'lastname', 'email@', 'username', 'נקבה', '123456test', '123456test')
+        self.signup_page.create_register('firstname', 'lastname', 'email@', 'username', 'נקבה', '123456test',
+                                         '123456test')
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי'))
         self.driver.quit()
@@ -120,4 +127,3 @@ class TestSignUp(unittest.TestCase):
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
         self.driver.quit()
-
