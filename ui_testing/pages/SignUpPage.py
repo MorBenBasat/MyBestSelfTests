@@ -1,10 +1,6 @@
-import time
-
 from helpers.Helpers import HelpersMbs
 from locators.SignUpLocators import SignUpLocators
-from pages.LoginPage import LoginPage
-from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
+from waits.wait import wait_for_element_visibility, wait_for_element_clickable
 
 
 class SignUpPage:
