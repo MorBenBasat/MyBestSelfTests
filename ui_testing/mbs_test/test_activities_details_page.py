@@ -7,7 +7,7 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.login_users import SuccessLoginUser,InvalidLogin
+from test_users.login_users import SuccessLoginUser, InvalidLogin
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -94,6 +94,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
         self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
                                                                        'Drop List!'))
+        self.driver.quit()
 
     def test_open_activities_details_by_plus_btn(self):
         self.driver.maximize_window()
@@ -104,3 +105,13 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
         self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
                                                                        'Folder Icon'))
+        self.driver.quit()
+
+    def verify_match_creating_activity_details(self):
+        self.driver.maximize_window()
+        self.login_page.navigate_to_login_page()
+        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
+        HelpersMbs.delay(2)
+        self.activities_details_page.navigate_to_activities_details_page()
+        HelpersMbs.delay(2)
+
