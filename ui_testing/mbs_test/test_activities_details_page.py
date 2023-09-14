@@ -44,7 +44,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.activities_page.navigate_to_activities_page()
         url = self.driver.current_url()
-        self.assertEqual('http://localhost:4200/activities', url, 'activities page shown')
+        self.assertEqual(PagesUrlMbs.activities, url, 'activities page shown')
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
