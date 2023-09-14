@@ -6,6 +6,7 @@
 /api-tests/__pycache__
 /ui_testing/locators/__pycache__
 /ui_testing/pages/__pycache__
+/ui_testing/test_users/__pycache__
 /ui_testing/waits/__pycache__
 /ui_testing/helpers/__pycache__
 /ui_testing/mbs_test/__pycache__
