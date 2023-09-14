@@ -1,5 +1,7 @@
 import time
 import unittest
+
+from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
 import pytest
 from initialize_driver import initialize_driver
@@ -24,7 +26,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         HelpersMbs.delay(2)
         url = self.driver.current_url
-        self.assertEqual('http://localhost:4200/register', url, print("Sign Up Page Open"))
+        self.assertEqual(PagesUrlMbs.register, url, print("Sign Up Page Open"))
         self.driver.quit()
 
     @pytest.mark.test37
@@ -39,7 +41,7 @@ class TestSignUp(unittest.TestCase):
         alert = self.helpers.alerts_signup()
         HelpersMbs.delay(2)
         self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
-        url = 'http://localhost:4200/login'
+        url = PagesUrlMbs.login
         self.assertEqual(url, self.driver.current_url, 'נפתח דף כניסה')
         self.login_page.login('45445888', '111111')
         self.assertEqual(self.driver.current_url, url, "כניסה בוצעה בהצלחה")
