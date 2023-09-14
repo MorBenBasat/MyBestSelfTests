@@ -22,7 +22,7 @@ class LoginPage:
         login_password_input.send_keys(password)  # סיסמא : 258963
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
         HelpersMbs.delay(1)
-        login_btn.click()
+        login_btn.click
 
     def success_login(self):
         self.driver.maximize_window()
