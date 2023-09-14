@@ -4,6 +4,7 @@ import pytest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
+from pages.Pages_url import PagesUrlMbs
 from test_users.login_users import SuccessLoginUser, InvalidLogin, NoFillUserName, ValidNameInvalidPassword, \
     InValidNameValidPassword, NoFillPassword
 
@@ -16,13 +17,8 @@ class TestLoginPage(unittest.TestCase):
 
     @pytest.mark.test29
     def test_successful_login(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        url = self.driver.current_url
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
-
-        self.assertNotEqual(self.driver.current_url, url, "כניסה בוצעה בהצלחה")
+        self.login_page.success_login()
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
         self.helpers.alerts_login()
         self.driver.quit()
 

@@ -1,7 +1,7 @@
-import time
 from locators.LoginPageLocators import LoginPageLocators
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_presence, wait_for_element_visibility, wait_for_element_clickable
+from test_users.login_users import SuccessLoginUser
+from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from helpers.Helpers import HelpersMbs
 
 
@@ -24,4 +24,9 @@ class LoginPage:
         HelpersMbs.delay(1)
         login_btn.click()
 
+    def success_login(self):
+        self.driver.maximize_window()
+        self.navigate_to_login_page()
+        self.login(SuccessLoginUser.login, SuccessLoginUser.password)
+        HelpersMbs.delay(2)
 # -----------------------------------------------------------------------------------------------------
