@@ -21,17 +21,13 @@ class TestActivitiesPage(unittest.TestCase):
         self.agenda_page = MyAgendaPage(self.driver)
 
     def test_success_navigation_activities_page(self):
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
+        self.login_page.success_login()
         url = self.driver.current_url
         self.activities_page.navigate_to_activities_page()
         self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities page opens propelry'))
 
     def test_open_activities_by_drop_list(self):
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
+        self.login_page.success_login()
         url = self.driver.current_url
         self.activities_page.navigate_to_activities_page_by_drop_list()
         self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities Details Page Open By Drop List'))

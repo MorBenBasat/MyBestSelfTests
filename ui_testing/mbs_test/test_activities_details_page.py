@@ -22,9 +22,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     @pytest.mark.smoke
     def test_success_navigation_activities_details_page(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         url = self.driver.current_url
         self.assertEqual(PagesUrlMbs.activities_details, url, 'Activities Details Page Open!')
@@ -32,11 +30,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     @pytest.mark.smokeee
     def test_create_activity(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
-
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('sanitytest', 'sanity test')
         HelpersMbs.delay(2)
@@ -48,23 +42,16 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(InvalidLogin.login, InvalidLogin.password)
-
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', ' test')
         HelpersMbs.delay(2)
         alert = self.helpers.alerts_activities_details()
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
-
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('test', ' ')
         HelpersMbs.delay(2)
@@ -73,9 +60,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_activities_details_fields(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
+        self.login_page.success_login()
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details('', '')
@@ -85,10 +70,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_open_activities_details_by_drop_list(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
+        self.login_page.success_login()
         self.agenda_page.open_agenda_drop_list()
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
@@ -97,10 +79,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_open_activities_details_by_plus_btn(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
+        self.login_page.success_login()
         url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
         self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
@@ -108,10 +87,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def verify_match_creating_activity_details(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
-        self.login_page.login(SuccessLoginUser.login, SuccessLoginUser.password)
-        HelpersMbs.delay(2)
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(2)
 

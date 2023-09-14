@@ -1,5 +1,6 @@
 from helpers.Helpers import HelpersMbs
 from locators.SignUpLocators import SignUpLocators
+from pages.LoginPage import LoginPage
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable
 
 
@@ -7,8 +8,11 @@ class SignUpPage:
 
     def __init__(self, driver):
         self.driver = driver
+        self.login_page = LoginPage(self.driver)
 
     def navigate_to_signup_page(self):
+        self.driver.maximize_window()
+        self.login_page.navigate_to_login_page()
         create_user = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
         create_user.click()
 
@@ -42,3 +46,4 @@ class SignUpPage:
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
         HelpersMbs.delay(2)
+

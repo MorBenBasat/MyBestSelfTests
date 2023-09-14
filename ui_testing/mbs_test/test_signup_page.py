@@ -21,8 +21,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test36
     def test_success_navigation_sign_up_page(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         HelpersMbs.delay(2)
         url = self.driver.current_url
@@ -31,9 +29,8 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test37
     def test_success_registration(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
+        HelpersMbs.delay(2)
         self.signup_page.create_register(InvalidRegistrationUser.firstname, ValidRegistrationUser.lastname,
                                          ValidRegistrationUser.email, ValidRegistrationUser.username,
                                          ValidRegistrationUser.username, ValidRegistrationUser.password,
@@ -50,8 +47,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test38
     def test_create_user_without_password(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(NoPasswordRegistration.firstname, NoPasswordRegistration.lastname,
                                          NoPasswordRegistration.email, NoPasswordRegistration.username,
@@ -63,8 +58,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test39
     def test_no_fll_signup_fields(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register('', '', '', '', '', '', '')
         alert = self.helpers.alerts_signup()
@@ -73,8 +66,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test40
     def test_different_confirm_and_password(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(DifferentPasswordAndConfirm.firstname, DifferentPasswordAndConfirm.lastname,
                                          DifferentPasswordAndConfirm.email, DifferentPasswordAndConfirm.username,
@@ -86,8 +77,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test46
     def test_fill_without_first_name_field(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(NoFirstNameRegistration.firstname, NoFirstNameRegistration.lastname,
                                          NoFirstNameRegistration.email, NoFirstNameRegistration.username,
@@ -99,8 +88,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test47
     def test_fill_without_last_name_field(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(NoLastNameRegistration.firstname, NoLastNameRegistration.lastname,
                                          NoLastNameRegistration.email, NoLastNameRegistration.username,
@@ -112,8 +99,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test48
     def test_invalid_email_input(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(NoEmailRegistration.firstname, NoEmailRegistration.lastname,
                                          NoEmailRegistration.email, NoEmailRegistration.username,
@@ -125,8 +110,6 @@ class TestSignUp(unittest.TestCase):
 
     @pytest.mark.test54
     def test_invalid_username_length(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register('first', 'last', 'email', 'user', 'נקבה', '123456test', '123456test')
         alert = self.helpers.alerts_signup()
@@ -134,8 +117,6 @@ class TestSignUp(unittest.TestCase):
         self.driver.quit()
 
     def test_invalid_password_length(self):
-        self.driver.maximize_window()
-        self.login_page.navigate_to_login_page()
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register('first', 'last', 'email', 'user', 'נקבה', '123456test', '123456test')
         alert = self.helpers.alerts_signup()
