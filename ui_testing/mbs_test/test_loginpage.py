@@ -5,14 +5,14 @@ from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.login_users import SuccessLoginUser, InvalidLogin, NoFillUserName, ValidNameInvalidPassword, \
-    InValidNameValidPassword, NoFillPassword
+from test_users.login_users import TestLoginUsers, ValidNameInvalidPassword, InvalidLogin, InValidNameValidPassword, \
+    NoFillUserName, NoFillPassword
 
 
 class TestLoginPage(unittest.TestCase):
     def setUp(self):
         self.driver = initialize_driver()  # Initialize the WebDriver
-        self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage clas
+        self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage class
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
 
     @pytest.mark.test29
@@ -27,9 +27,9 @@ class TestLoginPage(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         HelpersMbs.delay(2)
-        url = self.driver.current_url
-        self.login_page.login(InvalidLogin.login, InvalidLogin.password)
-        self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
+
+        self.login_page.login(InvalidLogin)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, print("שם משתמש או הסיסמא לא נכונים "))
         self.helpers.alerts_login()
         self.driver.quit()
 
@@ -37,9 +37,8 @@ class TestLoginPage(unittest.TestCase):
     def test_valid_username_invalid_password(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        url = self.driver.current_url
-        self.login_page.login(ValidNameInvalidPassword.login, ValidNameInvalidPassword.password)
-        self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
+        self.login_page.login(ValidNameInvalidPassword)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()
 
@@ -47,9 +46,8 @@ class TestLoginPage(unittest.TestCase):
     def test_invalid_username_valid_password(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        url = self.driver.current_url
-        self.login_page.login(InValidNameValidPassword.login, InValidNameValidPassword.password)
-        self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
+        self.login_page.login(InValidNameValidPassword)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()
 
@@ -58,9 +56,8 @@ class TestLoginPage(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         HelpersMbs.delay(2)
-        url = self.driver.current_url
-        self.login_page.login(NoFillUserName.login, NoFillUserName.password)
-        self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
+        self.login_page.login(NoFillUserName)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()
 
@@ -68,8 +65,7 @@ class TestLoginPage(unittest.TestCase):
     def test_only_username(self):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
-        url = self.driver.current_url
-        self.login_page.login(NoFillPassword.login, NoFillPassword.password)
-        self.assertEqual(self.driver.current_url, url, "שם משתמש או הסיסמא לא נכונים ")
+        self.login_page.login(NoFillPassword)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, "שם משתמש או הסיסמא לא נכונים ")
         self.helpers.alerts_login()
         self.driver.quit()

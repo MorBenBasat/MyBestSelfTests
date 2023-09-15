@@ -22,12 +22,11 @@ class TestActivitiesPage(unittest.TestCase):
 
     def test_success_navigation_activities_page(self):
         self.login_page.success_login()
-        url = self.driver.current_url
         self.activities_page.navigate_to_activities_page()
-        self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities page opens propelry'))
+        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.activities, print('Activities page opens propelry'))
 
     def test_open_activities_by_drop_list(self):
         self.login_page.success_login()
-        url = self.driver.current_url
         self.activities_page.navigate_to_activities_page_by_drop_list()
-        self.assertNotEqual(PagesUrlMbs.activities, url, print('Activities Details Page Open By Drop List'))
+        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By Drop '
+                                                                              'List'))

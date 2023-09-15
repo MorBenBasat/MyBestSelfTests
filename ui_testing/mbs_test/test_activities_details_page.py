@@ -24,11 +24,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_success_navigation_activities_details_page(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        url = self.driver.current_url
-        self.assertEqual(PagesUrlMbs.activities_details, url, 'Activities Details Page Open!')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details, 'Activities Details Page Open!')
         self.driver.quit()
 
-    @pytest.mark.smokeee
     def test_create_activity(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
@@ -37,8 +35,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.helpers.alerts_activities_details()
 
         self.activities_page.navigate_to_activities_page()
-        url = self.driver.current_url()
-        self.assertEqual(PagesUrlMbs.activities, url, 'activities page shown')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'activities page shown')
+
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
@@ -72,22 +70,21 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_open_activities_details_by_drop_list(self):
         self.login_page.success_login()
         self.agenda_page.open_agenda_drop_list()
-        url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
-        self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
-                                                                       'Drop List!'))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
+                         print('Activities Details Page Open By '
+                               'Drop List!'))
         self.driver.quit()
 
     def test_open_activities_details_by_plus_btn(self):
         self.login_page.success_login()
-        url = self.driver.current_url
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
-        self.assertNotEqual(PagesUrlMbs.activities_details, url, print('Activities Details Page Open By '
-                                                                       'Folder Icon'))
+        HelpersMbs.delay(2)
+        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By '
+                                                                              'Plus Icon'))
         self.driver.quit()
 
     def verify_match_creating_activity_details(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(2)
-
