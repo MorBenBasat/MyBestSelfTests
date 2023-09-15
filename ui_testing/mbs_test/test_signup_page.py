@@ -23,29 +23,9 @@ class TestSignUp(unittest.TestCase):
     def test_success_navigation_sign_up_page(self):
         self.signup_page.navigate_to_signup_page()
         HelpersMbs.delay(2)
-        url = self.driver.current_url
-        self.assertEqual(PagesUrlMbs.register, url, print("Sign Up Page Open"))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print("Sign Up Page Open"))
         self.driver.quit()
 
-    @pytest.mark.test37
-    def test_success_registration(self):
-        self.signup_page.navigate_to_signup_page()
-        HelpersMbs.delay(2)
-        self.signup_page.create_register(InvalidRegistrationUser.firstname, ValidRegistrationUser.lastname,
-                                         ValidRegistrationUser.email, ValidRegistrationUser.username,
-                                         ValidRegistrationUser.username, ValidRegistrationUser.password,
-                                         ValidRegistrationUser.confirm_password)
-        alert = self.helpers.alerts_signup()
-        HelpersMbs.delay(2)
-        self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
-        url = PagesUrlMbs.login
-        self.assertEqual(url, self.driver.current_url, 'נפתח דף כניסה')
-        self.login_page.login('45445888', '111111')
-        self.assertEqual(self.driver.current_url, url, "כניסה בוצעה בהצלחה")
-        self.helpers.alerts_login()
-        self.driver.quit()
-
-    @pytest.mark.test38
     def test_create_user_without_password(self):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(NoPasswordRegistration.firstname, NoPasswordRegistration.lastname,
@@ -56,6 +36,24 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
         self.driver.quit()
 
+    @pytest.mark.test37
+    def test_success_registration(self):
+        self.signup_page.navigate_to_signup_page()
+        HelpersMbs.delay(2)
+        self.signup_page.create_register(ValidRegistrationUser.firstname, ValidRegistrationUser.lastname,
+                                         ValidRegistrationUser.email, ValidRegistrationUser.username,
+                                         ValidRegistrationUser.username, ValidRegistrationUser.password,
+                                         ValidRegistrationUser.confirm_password)
+        alert = self.helpers.alerts_signup()
+        HelpersMbs.delay(2)
+        self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, 'נפתח דף כניסה')
+        self.login_page.login
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
+        self.helpers.alerts_login()
+        self.driver.quit()
+
+    @pytest.mark.test38
     @pytest.mark.test39
     def test_no_fll_signup_fields(self):
         self.signup_page.navigate_to_signup_page()

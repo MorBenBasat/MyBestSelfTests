@@ -23,6 +23,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         click_on_activities_page_drop_list = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
                                                                         DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK)
+        HelpersMbs.delay(2)
 
         click_on_activities_page_drop_list.click()
 

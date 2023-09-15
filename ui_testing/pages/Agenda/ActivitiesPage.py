@@ -24,6 +24,7 @@ class ActivitiesPage:
         click_on_activities_page_drop_list = wait_for_element_clickable(self.driver, *ActivitiesLocators.
                                                                         DROP_LIST_ACTIVITIES_PAGE_CLICK)
         click_on_activities_page_drop_list.click()
+        HelpersMbs.delay(2)
 
     def navigate_to_activities_page_by_folder_icon(self):
         HelpersMbs.delay(2)
