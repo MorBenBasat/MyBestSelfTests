@@ -2,7 +2,6 @@ import unittest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
-from pages.RecoverPasswordPage import RecoverPasswordPage
 
 
 class TestRecoverPage(unittest.TestCase):
