@@ -1,11 +1,10 @@
-import time
 import unittest
 import pytest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.login_users import TestLoginUsers, ValidNameInvalidPassword, InvalidLogin, InValidNameValidPassword, \
+from test_users.login_users import ValidNameInvalidPassword, InvalidLogin, InValidNameValidPassword, \
     NoFillUserName, NoFillPassword
 
 
@@ -38,7 +37,7 @@ class TestLoginPage(unittest.TestCase):
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         self.login_page.login(ValidNameInvalidPassword)
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, "שם משתמש או הסיסמא לא נכונים ")
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login,print( "שם משתמש או הסיסמא לא נכונים "))
         self.helpers.alerts_login()
         self.driver.quit()
 

@@ -1,5 +1,4 @@
 import unittest
-import pytest
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
@@ -7,9 +6,6 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.login_users import SuccessLoginUser
-
-
 class TestActivitiesPage(unittest.TestCase):
 
     def setUp(self):

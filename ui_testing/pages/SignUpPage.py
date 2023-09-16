@@ -16,34 +16,33 @@ class SignUpPage:
         create_user = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
         create_user.click()
 
-    def create_register(self, firstname, lastname, email, username, gender, password, confirm_password):
+    def create_register(self, UserRegistration):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
-        name.send_keys(firstname)
+        name.send_keys(UserRegistration.firstname)
 
         last_name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_LASTNAME)
-        last_name.send_keys(lastname)
+        last_name.send_keys(UserRegistration.lastname)
 
         write_email = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME_EMAIL)
-        write_email.send_keys(email)
+        write_email.send_keys(UserRegistration.email)
 
         user_name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_USERNAME)
-        user_name.send_keys(username)
+        user_name.send_keys(UserRegistration.username)
 
         gender_selection_male = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
         gender_selection_female = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
 
-        if gender == 'זכר':
+        if UserRegistration.gender == 'זכר':
             gender_selection_male.click()
-        elif gender == 'נקבה':
+        elif UserRegistration.gender == 'נקבה':
             gender_selection_female.click()
 
         password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_PASSWORD)
-        password_input.send_keys(password)
+        password_input.send_keys(UserRegistration.password)
 
         confirm_password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_CONFIRM_PASSWORD)
-        confirm_password_input.send_keys(confirm_password)
+        confirm_password_input.send_keys(UserRegistration.confirm_password)
 
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
         HelpersMbs.delay(2)
-
