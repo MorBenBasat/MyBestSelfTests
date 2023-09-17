@@ -8,6 +8,7 @@ from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
     DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoEmailRegistration, \
     NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword
+from test_users.login_users import  CreateAndLogin
 
 
 class TestSignUp(unittest.TestCase):
@@ -29,14 +30,13 @@ class TestSignUp(unittest.TestCase):
     def test_success_registration(self):
         self.signup_page.navigate_to_signup_page()
         HelpersMbs.delay(2)
-        self.signup_page.create_register(ValidRegistrationUser)
+        self.signup_page.create_and_login(ValidRegistrationUser)
         alert = self.helpers.alerts_signup()
         HelpersMbs.delay(2)
-        self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, 'נפתח דף כניסה')
-        self.login_page.login
+        self.assertEqual(
+            alert,
+            f'כניסה למערכת\nברוך הבא {ValidRegistrationUser.username}')
         self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
-        self.helpers.alerts_login()
         self.driver.quit()
 
     @pytest.mark.test38
@@ -101,3 +101,13 @@ class TestSignUp(unittest.TestCase):
         alert = self.helpers.alerts_signup()
         self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
         self.driver.quit()
+
+    def test_create_with_female_gender(self):
+        self.signup_page.navigate_to_signup_page()
+        is_clicked = self.signup_page.is_female_radio_button_clicked()
+        self.assertTrue(is_clicked, "The female radio button should be clicked")
+        alert = self.helpers.alerts_signup()
+        HelpersMbs.delay(2)
+        self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, 'נפתח דף כניסה')
+        self.login_page.login

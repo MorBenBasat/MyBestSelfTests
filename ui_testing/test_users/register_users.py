@@ -9,12 +9,14 @@ class TestRegisterUsers:
         self.confirm_password = confirm_password
 
 
-ValidRegistrationUser = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testusername12345", "זכר",
-                                          "123456test", "123456test")
+ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "4122124116161o", "זכר",
+                                        "123456test", "123456test")
 InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "test", "זכר", "123456test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "", "123456")
 DifferentPasswordAndConfirm = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "123123test",
                                                 "123456test")
+FemaleRadioSelection = TestRegisterUsers("female", "female", "validemail@gmail.com", "testusername123", "נקבה",
+                                         "123456test", "123456test")
 
 NoFirstNameRegistration = TestRegisterUsers("", "last", "test@gmail.com", "test123", "זכר", "123123test",
                                             "123456test")
@@ -29,3 +31,5 @@ InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail
                                           "123456test", "123456test")
 InvalidLengthPassword = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testusername12", "זכר",
                                           "InvalidPasswordLength123", "InvalidPasswordLength123")
+FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "femalselection123", "נקבה",
+                                          "123456test", "123456test")
