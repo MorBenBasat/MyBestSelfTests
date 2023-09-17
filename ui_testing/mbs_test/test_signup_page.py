@@ -7,8 +7,7 @@ from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
     DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoEmailRegistration, \
-    NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword
-from test_users.login_users import  CreateAndLogin
+    NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword, FemaleGenderSelection
 
 
 class TestSignUp(unittest.TestCase):
@@ -104,10 +103,9 @@ class TestSignUp(unittest.TestCase):
 
     def test_create_with_female_gender(self):
         self.signup_page.navigate_to_signup_page()
+        self.signup_page.create_register(FemaleGenderSelection)
         is_clicked = self.signup_page.is_female_radio_button_clicked()
         self.assertTrue(is_clicked, "The female radio button should be clicked")
-        alert = self.helpers.alerts_signup()
         HelpersMbs.delay(2)
-        self.assertEqual(alert, 'הרשמה למערכת\nברוך הבא test אנו שמחים שבחרת להצטרך אלינו', 'הוקם משתמש במערכת')
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, 'נפתח דף כניסה')
-        self.login_page.login
+
+

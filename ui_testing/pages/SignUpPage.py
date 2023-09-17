@@ -2,7 +2,6 @@ from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
 from locators.SignUpLocators import SignUpLocators
 from pages.LoginPage import LoginPage
-from test_users.register_users import FemaleGenderSelection
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable, wait_for_element_presence
 
 
@@ -38,7 +37,7 @@ class SignUpPage:
             gender_selection_male.click()
         elif UserRegistration.gender == 'נקבה':
             gender_selection_female.click()
-
+        HelpersMbs.delay(2)
         password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_PASSWORD)
         password_input.send_keys(UserRegistration.password)
 
@@ -50,9 +49,18 @@ class SignUpPage:
         HelpersMbs.delay(2)
 
     def is_female_radio_button_clicked(self):
-        female_button_locator = SignUpLocators.GENDER_RADIO_FEMALE
+        female_button_locator = SignUpLocators.GENDER_RADIO_FEMALE  # Use the new locator
         female_button = wait_for_element_visibility(self.driver, *female_button_locator)
-        is_clicked = female_button.is_selected()
+
+        if female_button.is_selected():
+            print("The female radio button is selected.")
+        else:
+            print("The female radio button is not selected.")
+
+    def is_male_radio_button_clicked(self):
+        male_button_locator = SignUpLocators.GENDER_RADIO_MALE
+        male_button = wait_for_element_visibility(self.driver, *male_button_locator)
+        is_clicked = male_button.is_selected()
         return is_clicked
 
     def create_and_login(self, UserRegistration):

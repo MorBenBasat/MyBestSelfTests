@@ -2,6 +2,10 @@ import unittest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
+from pages.Pages_url import PagesUrlMbs
+from pages.RecoverPasswordPage import RecoverPasswordPage
+from test_users.recover_password_page_users import ValidEmail, InvalidEmail, NoEmail
+import pytest
 
 
 class TestRecoverPage(unittest.TestCase):
@@ -9,15 +13,30 @@ class TestRecoverPage(unittest.TestCase):
         self.driver = initialize_driver()  # Initialize the WebDriver
         self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage clas
         self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
+        self.recover_password = RecoverPasswordPage(self.driver)
 
-    def test_only_send_email(self):
-        pass
+    @pytest.mark.test77
+    def test_success_navigation_recover_password_page(self):
+        self.recover_password.navigation_to_recover_password_page()
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.recover_password, print("Recover Password Page Open"))
+
+    @pytest.mark.test78
+    def test_success_sending_email(self):
+        self.recover_password.navigation_to_recover_password_page()
+        self.recover_password.send_email(ValidEmail)
+        # need to add asserttion
 
     def test_verify_email_in_gmail(self):
         pass
 
+    @pytest.mark.test79
     def test_not_valid_email(self):
-        pass
+        self.recover_password.navigation_to_recover_password_page()
+        self.recover_password.send_email(InvalidEmail)
+        # need to add asserttion
 
+    @pytest.mark.test80
     def test_not_exist_email(self):
-        pass
+        self.recover_password.navigation_to_recover_password_page()
+        self.recover_password.send_email(NoEmail)
+        # need to add asserttion
