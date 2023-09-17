@@ -6,6 +6,7 @@ from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
+from pages.LoginPage import LoginPage
 
 
 class ActivitiesDetailsPage:
@@ -14,8 +15,10 @@ class ActivitiesDetailsPage:
         self.helpers = HelpersMbs(self.driver)
         self.pageUrl = PagesUrlMbs.activities_details
         self.my_agenda = MyAgendaPage(self.driver)
+        self.login_page = LoginPage(self.driver)
 
     def navigate_to_activities_details_page(self):
+        self.login_page.success_login()
         HelpersMbs.delay(2)
         self.helpers.navigation_to_url(self.pageUrl)
 
