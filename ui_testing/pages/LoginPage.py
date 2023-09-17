@@ -23,6 +23,7 @@ class LoginPage:
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
         HelpersMbs.delay(1)
         login_btn.click()
+        HelpersMbs.delay(2)
 
     def success_login(self):
         self.driver.maximize_window()

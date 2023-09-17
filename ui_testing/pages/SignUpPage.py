@@ -1,7 +1,9 @@
 from helpers.Helpers import HelpersMbs
+from locators.LoginPageLocators import LoginPageLocators
 from locators.SignUpLocators import SignUpLocators
 from pages.LoginPage import LoginPage
-from waits.wait import wait_for_element_visibility, wait_for_element_clickable
+from test_users.register_users import FemaleGenderSelection
+from waits.wait import wait_for_element_visibility, wait_for_element_clickable, wait_for_element_presence
 
 
 class SignUpPage:
@@ -45,4 +47,25 @@ class SignUpPage:
 
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
+        HelpersMbs.delay(2)
+
+    def is_female_radio_button_clicked(self):
+        female_button_locator = SignUpLocators.GENDER_RADIO_FEMALE
+        female_button = wait_for_element_visibility(self.driver, *female_button_locator)
+        is_clicked = female_button.is_selected()
+        return is_clicked
+
+    def create_and_login(self, UserRegistration):
+        self.create_register(UserRegistration)
+        HelpersMbs.delay(2)
+        # Automatically log in with the same username and password
+        login_username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
+        login_username_input.send_keys(UserRegistration.username)
+
+        login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
+        login_password_input.send_keys(UserRegistration.password)
+
+        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
+        HelpersMbs.delay(1)
+        login_btn.click()
         HelpersMbs.delay(2)
