@@ -57,3 +57,4 @@ class HelpersMbs:
                 print("Input should be a non-negative number of seconds.")
         except ValueError:
             print("Invalid input. Please provide a valid number of seconds.")
+
