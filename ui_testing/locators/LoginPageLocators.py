@@ -8,4 +8,11 @@ class LoginPageLocators:
     LOGINPAGE_BTN = By.XPATH, "/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/p-button/button"
     FORGOT_PASSWORD_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/a[1]'
     CREATE_USER_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/a[2]'
+
+    USERNAME_FIELD_MANDATORY_ALERT = By.XPATH,'/html/body/app-root/div/div/app-login/div/p-card/div/div/div[' \
+                                              '2]/div/app-form/form/app-input-wrapper[1]/small'
+    PASSWORD_FIELD_MANDATORY_ALERT = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[' \
+                                               '2]/div/app-form/form/app-input-wrapper[2]/small'
+
+
    
