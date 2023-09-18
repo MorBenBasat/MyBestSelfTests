@@ -28,8 +28,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_create_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details('sanitytest', 'sanity test')
-        HelpersMbs.delay(2)
+        self.activities_details_page.fill_all_activities_details(ValidActivityDetails)
+        HelpersMbs.delay(1)
         self.helpers.alerts_activities_details()
 
         self.activities_page.navigate_to_activities_page()
@@ -78,7 +78,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
                                                                               'Plus Icon'))
         self.driver.quit()
 
-    def verify_match_creating_activity_details(self):
+    def test_verify_match_creating_activity_details(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(2)
+
+

@@ -9,7 +9,7 @@ class HelpersMbs:
 
     def navigation_to_url(self, url):
         self.driver.get(url)
-        HelpersMbs.delay(3)
+        HelpersMbs.delay(2)
 
     def alerts_login(self):
         alert = wait.wait_for_element_visibility(self.driver, By.XPATH,
