@@ -1,4 +1,4 @@
-import time
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from helpers.Helpers import HelpersMbs
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -16,10 +16,11 @@ class ActivitiesDetailsPage:
         self.pageUrl = PagesUrlMbs.activities_details
         self.my_agenda = MyAgendaPage(self.driver)
         self.login_page = LoginPage(self.driver)
+        self.action_chains = ActionChains(self.driver)
 
     def navigate_to_activities_details_page(self):
         self.login_page.success_login()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.helpers.navigation_to_url(self.pageUrl)
 
     def navigate_to_activities_details_page_by_drop_list(self):
@@ -31,25 +32,30 @@ class ActivitiesDetailsPage:
         click_on_activities_page_drop_list.click()
 
     def navigate_to_activities_details_page_by_plus_btn(self):
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.my_agenda.navigate_to_agenda_page()
 
         click_on_plus_btn = wait_for_element_clickable(self.driver,
                                                        *MyAgendaPageLocators.PLUS_BTN_OPEN_ACTIVITY_DETAILS)
         click_on_plus_btn.click()
 
-    def fill_all_activities_details(self, my_activity, why_i_do_this):
+    def fill_all_activities_details(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        my_activity_field.send_keys(my_activity)
+        my_activity_field.click
+        HelpersMbs.delay(2)
+        my_activity_field.send_keys(ActivityDetails.activity_name)
 
         why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        why_i_do_this_field.send_keys(why_i_do_this)
+        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
 
         hour_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         hour_field_open.click()
-        HelpersMbs.delay(2)
-        hour_up_arrow = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.HOUR_ARROW_UP)
-        hour_up_arrow.click()
+        HelpersMbs.delay(1)
+        for _ in range(5):
+            hour_field_open.send_keys(Keys.BACK_SPACE)
+        HelpersMbs.delay(1)
+        fill_hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        fill_hour_field.send_keys(ActivityDetails.hour)
 
         random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
         random_click.click()
@@ -59,8 +65,12 @@ class ActivitiesDetailsPage:
         days_field_open.click()
         HelpersMbs.delay(2)
 
-        days_field_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.MONDAY_BTN)
-        days_field_selection.click()
+        days_field_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
+        days_field_selection.send_keys('ראשון')
+        HelpersMbs.delay(2)
+
+        click_on_day = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
+        click_on_day.click()
 
         random_click.click()
 
