@@ -52,19 +52,9 @@ class LoginPage:
         else:
             print('Text is not as expected. Actual text:', password_mandatory_field_text.text)
 
-    def is_login_button_enabled(self, LoginErrorLength):
-        username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
-        password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
-
-        username_input.send_keys(LoginErrorLength.login)
-        password_input.send_keys(LoginErrorLength.password)
-
-        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
-
-        username_length = len(username_input.get_attribute('value'))
-        password_length = len(password_input.get_attribute('value'))
-
-        is_username_valid = 6 <= username_length <= 12
-        is_password_valid = 6 <= password_length <= 12
-
-        return is_username_valid and is_password_valid and login_btn.is_enabled()
+    def login_without_click_btn(self, UserLogin):
+        login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
+        login_username_input_.send_keys(UserLogin.login)
+        login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
+        login_password_input.send_keys(UserLogin.password)
+        HelpersMbs.delay(2)

@@ -66,7 +66,6 @@ class SignUpPage:
     def create_and_login(self, UserRegistration):
         self.create_register(UserRegistration)
         HelpersMbs.delay(2)
-        # Automatically log in with the same username and password
         login_username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
         login_username_input.send_keys(UserRegistration.username)
 
