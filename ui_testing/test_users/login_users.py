@@ -17,5 +17,6 @@ NoFillPassword = TestLoginUsers("ValidUser", "")
 ValidNameInvalidPassword = TestLoginUsers("test123", "123456")
 InValidNameValidPassword = TestLoginUsers("asd", "258963test")
 CreateAndLogin = TestLoginUsers(ValidRegistrationUser.username, ValidRegistrationUser.password)
-InvalidUsernameLength = TestLoginUsers("test","258963test")
-
+InvalidUsernameLength = TestLoginUsers("test", "258963test")
+InvalidPasswordLength = TestLoginUsers("Validtest123","123t")
+FillInvalidLengthFields = TestLoginUsers("test","1234")

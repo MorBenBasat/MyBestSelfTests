@@ -63,7 +63,7 @@ class HelpersMbs:
     @staticmethod
     def is_disabled(driver, selector: tuple[str, str]):
         btn = wait.wait_for_element_visibility(driver, *selector)
-        return not btn.is_enabled
+        return not btn.is_enabled()
 
     @staticmethod
     def is_field_valid(driver, selector: tuple[str, str]):

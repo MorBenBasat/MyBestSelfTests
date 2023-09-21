@@ -1,6 +1,7 @@
 from locators.LoginPageLocators import LoginPageLocators
 from pages.Pages_url import PagesUrlMbs
 from test_users.login_users import SuccessLoginUser
+from waits import wait
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from helpers.Helpers import HelpersMbs
 
@@ -18,9 +19,9 @@ class LoginPage:
 
     def login(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
-        login_username_input_.send_keys(UserLogin.login)  # שם משתמש : טסס
+        login_username_input_.send_keys(UserLogin.login)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
-        login_password_input.send_keys(UserLogin.password)  # סיסמא : 258963
+        login_password_input.send_keys(UserLogin.password)
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
         HelpersMbs.delay(1)
         login_btn.click()
@@ -32,29 +33,18 @@ class LoginPage:
         self.login(SuccessLoginUser)
         HelpersMbs.delay(2)
 
-    def verify_username_and_mandatory_text(self, expected_text):
-        username_mandatory_field_text = wait_for_element_presence(self.driver,
-                                                                  *LoginPageLocators.USERNAME_FIELD_MANDATORY_ALERT)
-
-        # Check if the text of the element matches the expected text
-        if username_mandatory_field_text.text == expected_text:
-            print('Text is as expected:', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', username_mandatory_field_text.text)
-
-    def verify_password_and_mandatory_text(self, expected_text):
-        password_mandatory_field_text = wait_for_element_presence(self.driver,
-                                                                  *LoginPageLocators.PASSWORD_FIELD_MANDATORY_ALERT)
-
-        # Check if the text of the element matches the expected text
-        if password_mandatory_field_text.text == expected_text:
-            print('Text is as expected:', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', password_mandatory_field_text.text)
-
-    def login_without_click_btn(self, UserLogin):
+    def fill_without_click_btn(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
         login_username_input_.send_keys(UserLogin.login)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserLogin.password)
-        HelpersMbs.delay(2)
+
+    def verify_login_page_mandatory_text(self, expected_text):
+        selector = wait_for_element_presence(self.driver, *LoginPageLocators.USERNAME_FIELD_MANDATORY_TEXT)
+        HelpersMbs.delay(1)
+
+        if selector.text == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', selector.text)
+        return selector.text
