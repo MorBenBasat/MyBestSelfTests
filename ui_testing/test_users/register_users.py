@@ -10,7 +10,7 @@ class TestRegisterUsers:
 
 
 ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "232666711o", "זכר",
-                                        "123456test", "123456test")
+                                          "123456test", "123456test")
 InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "test", "זכר", "123456test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "", "123456")
 DifferentPasswordAndConfirm = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "123123test",
@@ -31,5 +31,7 @@ InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail
                                           "123456test", "123456test")
 InvalidLengthPassword = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testusername12", "זכר",
                                           "InvalidPasswordLength123", "InvalidPasswordLength123")
-FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "femaleSlection12", "נקבה",
+FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "femaleSelection1233", "נקבה",
                                           "123456test", "123456test")
+MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "maleSelection1233", "זכר",
+                                        "123456test", "123456test")

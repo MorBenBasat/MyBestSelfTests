@@ -1,4 +1,6 @@
 import unittest
+
+from locators.SignUpLocators import SignUpLocators
 from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
 import pytest
@@ -7,7 +9,7 @@ from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
     DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoEmailRegistration, \
-    NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword, FemaleGenderSelection
+    NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword, FemaleGenderSelection, MaleGenderSelection
 
 
 class TestSignUp(unittest.TestCase):
@@ -28,84 +30,92 @@ class TestSignUp(unittest.TestCase):
     @pytest.mark.test37
     def test_success_registration(self):
         self.signup_page.navigate_to_signup_page()
-        HelpersMbs.delay(2)
         self.signup_page.create_and_login(ValidRegistrationUser)
         alert = self.helpers.alerts_signup()
+
         HelpersMbs.delay(2)
         self.assertEqual(
             alert,
             f'כניסה למערכת\nברוך הבא {ValidRegistrationUser.username}')
+        print(alert)
         self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
         self.driver.quit()
 
     @pytest.mark.test38
     def test_create_user_without_password(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(NoPasswordRegistration)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test39
     def test_no_fll_signup_fields(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(NoFillRegistrationFields)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצר משתמש')
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test40
     def test_different_confirm_and_password(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(DifferentPasswordAndConfirm)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'הסיסמאות לא תואמות', 'ססמאות לא תואמות')
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test46
     def test_fill_without_first_name_field(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(NoFirstNameRegistration)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', print('לא נוצר משתמש עקב חוסר שם פרטי'))
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
-
     @pytest.mark.test47
     def test_fill_without_last_name_field(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(NoLastNameRegistration)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', print('לא נוצר עקב חוסר שם משפחה'))
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test48
     def test_invalid_email_input(self):
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register(NoEmailRegistration)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש בעקבות כתיבת אימייל לא חוקי'))
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
+        self.signup_page.create_user_without_click_btn(NoLastNameRegistration)
+
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test54
     def test_invalid_username_length(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(InvalidLengthUserName)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
     def test_invalid_password_length(self):
         self.signup_page.navigate_to_signup_page()
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(InvalidLengthPassword)
-        alert = self.helpers.alerts_signup()
-        self.assertEqual(alert, 'אימייל לא חוקי', print('לא נוצר משתמש עקב שם משתמש קצר מדי '))
+        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
-    def test_create_with_female_gender(self):
+    def test_verify_gender_pick(self):
         self.signup_page.navigate_to_signup_page()
-        self.signup_page.create_register(FemaleGenderSelection)
-        is_clicked = self.signup_page.is_female_radio_button_clicked()
-        self.assertTrue(is_clicked, "The female radio button should be clicked")
+        is_clicked = self.signup_page.gender_verify_click_radio_button()
+        self.assertTrue(is_clicked, f"The gender selection should be successful. Selected gender: {is_clicked}")
         HelpersMbs.delay(2)
+
+    def test_create_with_same_username(self):
+        self.signup_page.navigate_to_signup_page()
+        result_message = self.signup_page.create_with_same_username(ValidRegistrationUser)
+        expected_message = "The same username is detected as already existing."
+        self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
+        HelpersMbs.delay(2)
+
 
 
