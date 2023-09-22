@@ -3,6 +3,7 @@ from locators.LoginPageLocators import LoginPageLocators
 from locators.SignUpLocators import SignUpLocators
 from pages.LoginPage import LoginPage
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable, wait_for_element_presence
+import random
 
 
 class SignUpPage:
@@ -16,6 +17,7 @@ class SignUpPage:
         self.login_page.navigate_to_login_page()
         create_user = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
         create_user.click()
+        HelpersMbs.delay(2)
 
     def create_register(self, UserRegistration):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
@@ -48,20 +50,32 @@ class SignUpPage:
         click_to_create.click()
         HelpersMbs.delay(2)
 
-    def is_female_radio_button_clicked(self):
-        female_button_locator = SignUpLocators.GENDER_RADIO_FEMALE  # Use the new locator
-        female_button = wait_for_element_visibility(self.driver, *female_button_locator)
+    def gender_verify_click_radio_button(self, gender=None):
+        HelpersMbs.delay(2)
+
+        if gender is None:
+            gender = random.choice(['זכר', 'נקבה'])
+        HelpersMbs.delay(1)
+        if gender == 'זכר':
+            male_button = wait_for_element_clickable(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
+            male_button.click()
+        elif gender == 'נקבה':
+            female_button = wait_for_element_clickable(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+            female_button.click()
+
+        HelpersMbs.delay(1)
+
+        female_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+        male_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
 
         if female_button.is_selected():
             print("The female radio button is selected.")
+        elif male_button.is_selected():
+            print("The male radio button is selected.")
         else:
-            print("The female radio button is not selected.")
+            print("No gender selected!")
 
-    def is_male_radio_button_clicked(self):
-        male_button_locator = SignUpLocators.GENDER_RADIO_MALE
-        male_button = wait_for_element_visibility(self.driver, *male_button_locator)
-        is_clicked = male_button.is_selected()
-        return is_clicked
+        HelpersMbs.delay(1)
 
     def create_and_login(self, UserRegistration):
         self.create_register(UserRegistration)
@@ -76,3 +90,41 @@ class SignUpPage:
         HelpersMbs.delay(1)
         login_btn.click()
         HelpersMbs.delay(2)
+
+    def create_user_without_click_btn(self, UserRegistration):
+        name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
+        name.send_keys(UserRegistration.firstname)
+
+        last_name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_LASTNAME)
+        last_name.send_keys(UserRegistration.lastname)
+
+        write_email = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME_EMAIL)
+        write_email.send_keys(UserRegistration.email)
+
+        user_name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_USERNAME)
+        user_name.send_keys(UserRegistration.username)
+
+        gender_selection_male = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
+        gender_selection_female = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+
+        if UserRegistration.gender == 'זכר':
+            gender_selection_male.click()
+        elif UserRegistration.gender == 'נקבה':
+            gender_selection_female.click()
+        HelpersMbs.delay(2)
+        password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_PASSWORD)
+        password_input.send_keys(UserRegistration.password)
+
+        confirm_password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_CONFIRM_PASSWORD)
+        confirm_password_input.send_keys(UserRegistration.confirm_password)
+
+    def create_with_same_username(self, UserRegistration):
+        self.create_register(UserRegistration)
+        HelpersMbs.delay(1)
+        self.create_register(UserRegistration)
+
+        already_exist_username = wait_for_element_visibility(self.driver, *SignUpLocators.USER_ALREADY_EXIST)
+
+        if already_exist_username.is_displayed():
+            return "The same username is detected as already existing."
+

@@ -9,7 +9,7 @@ class SignUpLocators:
     REGISTER_USERNAME = By.ID, 'username'
     GENDER_RADIO_MALE = By.XPATH, '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[' \
                                   '2]/div/app-input-radio-field/div/div/div/div[1]/p-radiobutton/div/div[2]'
-    GENDER_RADIO_FEMALE = By.XPATH,\
+    GENDER_RADIO_FEMALE = By.XPATH, \
         '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[' \
         '2]/div/app-input-radio-field/div/div/div/div[2]/p-radiobutton/div/div[2]'
 
@@ -21,4 +21,4 @@ class SignUpLocators:
     REGISTER_CREATE_BTN = By.XPATH, '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[' \
                                     '2]/div/p-button/button'
     ALREADY_HAVING_USER = By.XPATH, '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[2]/div/a'
-
+    USER_ALREADY_EXIST = By.CLASS_NAME, 'p-toast-message-content ng-tns-c3971568230-10'
