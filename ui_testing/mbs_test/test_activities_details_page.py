@@ -1,5 +1,7 @@
 import unittest
 import pytest
+
+from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
@@ -7,7 +9,8 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.activities_details_users import ValidActivityDetails
+from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName
+
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -23,7 +26,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     @pytest.mark.smoke
     def test_success_navigation_activities_details_page(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details, print('Activities Details Page Open!'))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
+                         print('Activities Details Page Open!'))
         self.driver.quit()
 
     def test_create_activity(self):
@@ -38,11 +42,13 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_my_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details('', ' test')
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.CONFIRM_BTN)
+        self.activities_details_page.fill_all_activities_details(NoFillActivityName)
         HelpersMbs.delay(2)
-        alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
+        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
+
+ 
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
@@ -81,5 +87,3 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(2)
-
-

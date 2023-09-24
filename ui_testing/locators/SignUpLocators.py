@@ -7,8 +7,12 @@ class SignUpLocators:
     REGISTER_LASTNAME = By.XPATH, '//*[@id="lastName"]'
     REGISTER_NAME_EMAIL = By.ID, 'email'
     REGISTER_USERNAME = By.ID, 'username'
-    GENDER_RADIO_MALE = (By.CSS_SELECTOR, 'input[type="radio"][value="Male"]')
-    GENDER_RADIO_FEMALE = (By.CSS_SELECTOR, 'input[type="radio"][value="Female"]')
+
+    GENDER_RADIO_MALE = By.XPATH, "/html/body/app-root/div/div/app-register/div/p-card/div/div/div[" \
+                                  "2]/div/app-input-radio-field/div/div/div/div[1]/p-radiobutton/div/div[2]"
+
+    GENDER_RADIO_FEMALE = By.XPATH, '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[' \
+                                    '2]/div/app-input-radio-field/div/div/div/div[2]/p-radiobutton/div/div[2]'
 
     REGISTER_PASSWORD = By.ID, 'password'
     REGISTER_CONFIRM_PASSWORD = By.ID, 'passwordVerify'

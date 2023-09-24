@@ -6,3 +6,4 @@ class TestActivityDetailsUsers:
 
 
 ValidActivityDetails = TestActivityDetailsUsers("activity name", "activity text", "04:20")
+NoFillActivityName = TestActivityDetailsUsers("", "activity text", "04:20")

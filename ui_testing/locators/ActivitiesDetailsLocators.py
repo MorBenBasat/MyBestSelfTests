@@ -22,7 +22,5 @@ class ActivitiesDetailsLocators:
                            '-multiselect/div/p-overlay/div/div/div/div[2]/ul/p-multiselectitem[2]/li'
 
     CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/p-button/button'
-    GREEN_ALERT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
-    RED_ALERT = None
 
     DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK = By.CSS_SELECTOR, 'a[ng-reflect-router-link="/activities-details/0"]'
