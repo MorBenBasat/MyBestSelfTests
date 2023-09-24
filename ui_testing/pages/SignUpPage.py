@@ -66,7 +66,7 @@ class SignUpPage:
         HelpersMbs.delay(1)
 
         female_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
-        male_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
+        male_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
 
         if female_button.is_selected():
             print("The female radio button is selected.")
