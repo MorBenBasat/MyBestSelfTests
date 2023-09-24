@@ -1,9 +1,9 @@
 import unittest
+import pytest
 
 from locators.SignUpLocators import SignUpLocators
 from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
-import pytest
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
@@ -121,5 +121,9 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
         HelpersMbs.delay(2)
 
-
-    
+    def test_create_user_with_all_fields(self):
+        self.signup_page.navigate_to_signup_page()
+        self.signup_page.create_register(ValidRegistrationUser)
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
+        self.assertEqual(register_btn_disable, False, print("כפתור מוצג לחיץ"))
+        self.driver.quit()

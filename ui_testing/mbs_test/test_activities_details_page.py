@@ -37,7 +37,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.helpers.alerts_activities_details()
         self.activities_page.navigate_to_activities_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'activities page shown')
-
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
@@ -47,8 +46,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         HelpersMbs.delay(2)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
-
- 
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
