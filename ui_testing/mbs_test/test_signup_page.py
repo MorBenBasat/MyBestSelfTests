@@ -72,6 +72,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.create_register(NoFirstNameRegistration)
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
+
     @pytest.mark.test47
     def test_fill_without_last_name_field(self):
         self.signup_page.navigate_to_signup_page()
@@ -97,6 +98,7 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
+    @pytest.mark.test95
     def test_invalid_password_length(self):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
@@ -104,18 +106,20 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
+    @pytest.mark.test96
     def test_verify_gender_pick(self):
         self.signup_page.navigate_to_signup_page()
         is_clicked = self.signup_page.gender_verify_click_radio_button()
         self.assertTrue(is_clicked, f"The gender selection should be successful. Selected gender: {is_clicked}")
         HelpersMbs.delay(2)
 
+    @pytest.mark.test97
     def test_create_with_same_username(self):
         self.signup_page.navigate_to_signup_page()
-        result_message = self.signup_page.create_with_same_username(ValidRegistrationUser)
-        expected_message = "The same username is detected as already existing."
+        result_message = self.signup_page.create_with_same_field(ValidRegistrationUser)
+        expected_message = "user already exists"
         self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
         HelpersMbs.delay(2)
 
 
-
+    

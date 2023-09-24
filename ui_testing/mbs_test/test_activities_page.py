@@ -6,6 +6,8 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
+
+
 class TestActivitiesPage(unittest.TestCase):
 
     def setUp(self):
@@ -26,3 +28,9 @@ class TestActivitiesPage(unittest.TestCase):
         self.activities_page.navigate_to_activities_page_by_drop_list()
         self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By Drop '
                                                                               'List'))
+
+    def test_edit_btn_click_and_update(self):
+        self.login_page.success_login()
+        self.activities_page.navigate_to_activities_page()
+        self.activities_page.edit_exist_activity()
+        print(self.helpers.alerts_login())

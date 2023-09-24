@@ -74,7 +74,6 @@ class ActivitiesDetailsPage:
 
         random_click.click()
 
-        confirm_btn = self.driver.find_element(By.XPATH, '/html/body/app-root/div/div['
-                                                         '2]/app-activities-details/div/p-button/button')
+        confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
 
         confirm_btn.click()

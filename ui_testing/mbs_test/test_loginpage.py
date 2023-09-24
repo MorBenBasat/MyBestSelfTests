@@ -67,6 +67,7 @@ class TestLoginPage(unittest.TestCase):
         self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
         self.driver.quit()
 
+    @pytest.mark.test98
     def test_verify_mandatory_login_page_text(self):
         self.login_page.navigate_to_login_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
@@ -110,4 +111,3 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.fill_without_click_btn(FillInvalidLengthFields)
         self.assertEqual(login_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
-
