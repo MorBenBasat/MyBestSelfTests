@@ -1,4 +1,5 @@
 from helpers.Helpers import HelpersMbs
+from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
@@ -27,8 +28,17 @@ class ActivitiesPage:
         HelpersMbs.delay(2)
 
     def navigate_to_activities_page_by_folder_icon(self):
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         MyAgendaPage.navigate_to_agenda_page(self.driver)
         click_on_folder_icon_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.
                                                               FOLDER_BTN_OPEN_ALL_ACTIVITIES)
         click_on_folder_icon_btn.click()
+
+    def edit_exist_activity(self):
+        edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
+        edit_btn.click()
+        edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        edit_the_activity.send_keys(" new text")
+        confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
+        confirm_btn.click()
+        HelpersMbs.delay(1)

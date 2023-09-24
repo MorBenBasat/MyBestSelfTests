@@ -70,17 +70,19 @@ class SignUpPage:
 
         if female_button.is_selected():
             print("The female radio button is selected.")
+            return True  # Return True when female radio button is selected
         elif male_button.is_selected():
             print("The male radio button is selected.")
+            return True  # Return True when male radio button is selected
         else:
             print("No gender selected!")
-
-        HelpersMbs.delay(1)
+            return False  # Return False when no gender is selected
 
     def create_and_login(self, UserRegistration):
         self.create_register(UserRegistration)
         HelpersMbs.delay(2)
         login_username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
+        login_username_input.click()
         login_username_input.send_keys(UserRegistration.username)
 
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
@@ -118,13 +120,17 @@ class SignUpPage:
         confirm_password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_CONFIRM_PASSWORD)
         confirm_password_input.send_keys(UserRegistration.confirm_password)
 
-    def create_with_same_username(self, UserRegistration):
+    def create_with_same_field(self, UserRegistration):
         self.create_register(UserRegistration)
-        HelpersMbs.delay(1)
+        HelpersMbs.delay(2)
+        click_create_user_btn = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
+        click_create_user_btn.click()
         self.create_register(UserRegistration)
 
-        already_exist_username = wait_for_element_visibility(self.driver, *SignUpLocators.USER_ALREADY_EXIST)
+        already_exist = wait_for_element_visibility(self.driver, *SignUpLocators.USER_ALREADY_EXIST)
 
-        if already_exist_username.is_displayed():
-            return "The same username is detected as already existing."
-
+        if already_exist.text == "user already exists":
+            print("User already exists")
+            return "user already exists"  # Return the message for validation in the test case
+        else:
+            return None
