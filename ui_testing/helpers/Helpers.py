@@ -63,9 +63,9 @@ class HelpersMbs:
     @staticmethod
     def is_disabled(driver, selector: tuple[str, str]):
         btn = wait.wait_for_element_visibility(driver, *selector)
-        return not btn.is_enabled()
+        return "true" in btn.get_attribute("ng-reflect-disabled")
 
     @staticmethod
     def is_field_valid(driver, selector: tuple[str, str]):
         field = wait.wait_for_element_visibility(driver, *selector)
-        return "ng-invalid" in field.get_attribute("class") and "ng-dirty" in field.get_attribute("class")
+        return "ng-invalid" not in field.get_attribute("class") or "ng-dirty" not in field.get_attribute("class")
