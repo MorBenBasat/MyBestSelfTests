@@ -79,6 +79,7 @@ class TestSignUp(unittest.TestCase):
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(NoLastNameRegistration)
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+
         self.driver.quit()
 
     @pytest.mark.test48

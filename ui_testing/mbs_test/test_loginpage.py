@@ -52,7 +52,7 @@ class TestLoginPage(unittest.TestCase):
     def test_only_password(self):
         self.login_page.navigate_to_login_page()
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.DISABLE_LOGINPAGE_BTN)
-        self.login_page.fill_without_click_btn(NoFillUserName)
+        self.login_page.login(NoFillUserName)
         self.assertEqual(login_btn_disable, True, 'כפתור מוצג לא לחיץ')
         self.driver.quit()
 
