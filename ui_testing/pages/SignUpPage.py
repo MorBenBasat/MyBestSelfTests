@@ -1,9 +1,11 @@
+import random
+
+
 from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
 from locators.SignUpLocators import SignUpLocators
 from pages.LoginPage import LoginPage
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable, wait_for_element_presence
-import random
 
 
 class SignUpPage:

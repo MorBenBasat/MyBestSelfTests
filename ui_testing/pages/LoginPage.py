@@ -1,7 +1,6 @@
 from locators.LoginPageLocators import LoginPageLocators
 from pages.Pages_url import PagesUrlMbs
 from test_users.login_users import SuccessLoginUser
-from waits import wait
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from helpers.Helpers import HelpersMbs
 
@@ -22,7 +21,7 @@ class LoginPage:
         login_username_input_.send_keys(UserLogin.login)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserLogin.password)
-        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
+        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGIN_BTN)
         HelpersMbs.delay(1)
         login_btn.click()
         HelpersMbs.delay(2)

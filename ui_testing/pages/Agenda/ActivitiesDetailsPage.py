@@ -1,5 +1,4 @@
 from selenium.webdriver import ActionChains, Keys
-from selenium.webdriver.common.by import By
 from helpers.Helpers import HelpersMbs
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage

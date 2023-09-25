@@ -1,6 +1,5 @@
 import time
 
-from locators.LoginPageLocators import LoginPageLocators
 from waits import wait
 from selenium.webdriver.common.by import By
 
@@ -64,6 +63,10 @@ class HelpersMbs:
     def is_disabled(driver, selector: tuple[str, str]):
         btn = wait.wait_for_element_visibility(driver, *selector)
         return "true" in btn.get_attribute("ng-reflect-disabled")
+
+    def is_enabled(self, selector: tuple[str, str]):
+        btn = wait.wait_for_element_clickable(self, *selector)
+        return btn.is_enabled()
 
     @staticmethod
     def is_field_valid(driver, selector: tuple[str, str]):
