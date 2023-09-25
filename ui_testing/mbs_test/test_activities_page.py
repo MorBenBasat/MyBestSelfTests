@@ -1,4 +1,5 @@
 import unittest
+
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs

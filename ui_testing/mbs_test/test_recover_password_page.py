@@ -1,11 +1,12 @@
 import unittest
+import pytest
+
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from pages.RecoverPasswordPage import RecoverPasswordPage
 from test_users.recover_password_page_users import ValidEmail, InvalidEmail, NoEmail
-import pytest
 
 
 class TestRecoverPage(unittest.TestCase):
