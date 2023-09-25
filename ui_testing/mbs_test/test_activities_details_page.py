@@ -9,8 +9,8 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName
-
+from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName, NoFillWhyImDoingThis, \
+    NoFillField
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -41,26 +41,29 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_my_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.CONFIRM_BTN)
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+
         self.activities_details_page.fill_all_activities_details(NoFillActivityName)
-        HelpersMbs.delay(2)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details('test', ' ')
-        HelpersMbs.delay(2)
-        alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
+        confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+
+        self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
+        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג  לחיץ"))
+
         self.driver.quit()
 
     def test_no_fill_activities_details_fields(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details('', '')
-        HelpersMbs.delay(2)
-        alert = self.helpers.alerts_activities_details()
-        self.assertEqual(alert, 'לא מולאו כל הפרטים', 'לא נוצרה משימה')
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+
+        self.activities_details_page.fill_all_activities_details(NoFillField)
+        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+
         self.driver.quit()
 
     def test_open_activities_details_by_drop_list(self):
@@ -70,12 +73,13 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
                          print('Activities Details Page Open By '
                                'Drop List!'))
+
         self.driver.quit()
 
     def test_open_activities_details_by_plus_btn(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By '
                                                                               'Plus Icon'))
         self.driver.quit()
@@ -84,3 +88,15 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(2)
+
+        self.driver.quit()
+
+    def test_choose_time_by_arrows(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.select_time_by_arrows(ValidActivityDetails)
+        print("All arrows has been clicked!")
+        self.driver.quit()
+
+    def test_choose_day_and_remove(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.fill_fields_until_day_field(ValidActivityDetails)
