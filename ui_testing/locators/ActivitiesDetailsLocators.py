@@ -9,17 +9,32 @@ class ActivitiesDetailsLocators:
     HOUR_ARROW_DOWN = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[1]/button[2]'
     MIN_ARROW_UP = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[3]/button[1]'
     MIN_ARROW_DOWN = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[3]/button[2]'
+
     DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
                            '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/div[2]/div'
 
     DAYS_SEARCH_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
                                   '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
                                   '/div[1]/div[2]/input'
+
+    REMOVE_DAY_SELECTION = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app' \
+                                     '-input-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/div[' \
+                                     '2]/div/div/timescircleicon'
+
+    DAY_IN_DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                                  '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/div[2]/div/div[1]'
+
     SUNDAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
                            '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[' \
                            '2]/ul/p-multiselectitem/li'
+
     MONDAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-input-combobox-field/div/p' \
                            '-multiselect/div/p-overlay/div/div/div/div[2]/ul/p-multiselectitem[2]/li'
+
+    PICK_ALL_DAYS_RADIO_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app' \
+                                        '-input-wrapper[' \
+                                        '4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[' \
+                                        '1]/div[1]/div[2]'
 
     CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/p-button/button'
 

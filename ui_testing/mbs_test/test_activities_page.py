@@ -35,3 +35,6 @@ class TestActivitiesPage(unittest.TestCase):
         self.activities_page.navigate_to_activities_page()
         self.activities_page.edit_exist_activity()
         print(self.helpers.alerts_login())
+
+
+
