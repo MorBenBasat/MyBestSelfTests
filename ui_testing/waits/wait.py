@@ -18,3 +18,4 @@ def wait_for_element_clickable(driver, by, locator, timeout=10):
     Wait for the element to be clickable on the page.
     """
     return WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, locator)))
+

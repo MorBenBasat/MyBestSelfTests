@@ -3,7 +3,7 @@ from helpers.Helpers import HelpersMbs
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_presence, wait_for_element_clickable
+from waits.wait import wait_for_element_presence, wait_for_element_clickable,wait_for_element_visibility
 from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.LoginPage import LoginPage
 
@@ -38,42 +38,8 @@ class ActivitiesDetailsPage:
         click_on_plus_btn.click()
 
     def fill_all_activities_details(self, ActivityDetails):
-        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        my_activity_field.click
-        HelpersMbs.delay(2)
-        my_activity_field.send_keys(ActivityDetails.activity_name)
-
-        why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
-
-        time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
-        time_field_open.click()
-        HelpersMbs.delay(1)
-        for _ in range(5):
-            time_field_open.send_keys(Keys.BACK_SPACE)
-        HelpersMbs.delay(1)
-        fill_hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
-        fill_hour_field.send_keys(ActivityDetails.hour)
-
-        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        random_click.click()
-        HelpersMbs.delay(2)
-
-        days_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
-        days_field_open.click()
-        HelpersMbs.delay(2)
-
-        days_field_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
-        days_field_selection.send_keys('ראשון')
-        HelpersMbs.delay(2)
-
-        click_on_day = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
-        click_on_day.click()
-
-        random_click.click()
-
+        self.fill_all_activities_details_without_btn_click(ActivityDetails)
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
-
         confirm_btn.click()
 
     def fill_fields_until_time_field(self, ActivityDetails):
@@ -106,9 +72,6 @@ class ActivitiesDetailsPage:
         random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
         random_click.click()
         HelpersMbs.delay(2)
-
-    def select_day_and_remove(self, ActivityDetails):
-        self.fill_fields_until_day_field(ActivityDetails)
 
     def select_time_by_arrows(self, ActivityDetails):
         self.fill_fields_until_time_field(ActivityDetails)
@@ -161,3 +124,55 @@ class ActivitiesDetailsPage:
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
 
         confirm_btn.click()
+
+    def fill_all_activities_details_without_btn_click(self, ActivityDetails):
+        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        my_activity_field.click
+        HelpersMbs.delay(2)
+        my_activity_field.send_keys(ActivityDetails.activity_name)
+
+        why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
+
+        time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        time_field_open.click()
+        HelpersMbs.delay(1)
+        for _ in range(5):
+            time_field_open.send_keys(Keys.BACK_SPACE)
+        HelpersMbs.delay(1)
+        fill_hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        fill_hour_field.send_keys(ActivityDetails.hour)
+
+        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+        random_click.click()
+        HelpersMbs.delay(2)
+
+        days_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        days_field_open.click()
+        HelpersMbs.delay(2)
+
+        days_field_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
+        days_field_selection.send_keys('ראשון')
+        HelpersMbs.delay(2)
+
+        click_on_day = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
+        click_on_day.click()
+
+        random_click.click()
+
+    def select_day_and_remove(self, ActivityDetails):
+        self.fill_all_activities_details_without_btn_click(ActivityDetails)
+        click_to_remove_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.REMOVE_DAY_SELECTION)
+        HelpersMbs.delay(1)
+        click_to_remove_day.click()
+        HelpersMbs.delay(1)
+
+    def radio_all_days_click(self, ActivityDetails):
+        self.fill_fields_until_time_field(ActivityDetails)
+        click_open_days_field = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.DAYS_FIELD)
+        click_open_days_field.click()
+        HelpersMbs.delay(1)
+        click_all_days_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.PICK_ALL_DAYS_RADIO_BTN)
+        click_all_days_btn.click()
+        return wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+

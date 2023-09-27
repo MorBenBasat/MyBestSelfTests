@@ -34,7 +34,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details(ValidActivityDetails)
         HelpersMbs.delay(1)
-        self.helpers.alerts_activities_details()
+        print(self.helpers.alerts_activities_details())
         self.activities_page.navigate_to_activities_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'activities page shown')
         self.driver.quit()
@@ -87,7 +87,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_match_creating_activity_details(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
         self.driver.quit()
 
@@ -99,4 +99,16 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_choose_day_and_remove(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_fields_until_day_field(ValidActivityDetails)
+        self.activities_details_page.select_day_and_remove(ValidActivityDetails)
+        assert ActivitiesDetailsLocators.DAY_IN_DAYS_FIELD not in ActivitiesDetailsLocators.DAYS_FIELD
+
+    def test_click_all_day_radio_btn(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        days_field = self.activities_details_page.radio_all_days_click(ValidActivityDetails)
+
+        # Get the text content of the field and split it by a separator (e.g., comma) to count the days
+        days_text = days_field.text
+        days_list = days_text.split(',')
+        HelpersMbs.delay(1)
+        # Check if the list contains exactly 7 items (days)
+        assert len(days_list) == 7, f"Expected 7 days, but found {len(days_list)} days:\n{days_list}"
