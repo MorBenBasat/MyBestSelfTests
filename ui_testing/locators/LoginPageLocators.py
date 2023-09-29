@@ -13,3 +13,6 @@ class LoginPageLocators:
                                               '2]/div/app-form/form/app-input-wrapper[1]/small'
     PASSWORD_FIELD_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[' \
                                               '2]/div/app-form/form/app-input-wrapper[2]/small'
+
+    LENGTH_ALERT = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[' \
+                             '2]/div/app-form/form/app-input-wrapper[2]/small'

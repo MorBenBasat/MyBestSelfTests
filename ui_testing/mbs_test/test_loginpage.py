@@ -8,7 +8,7 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.login_users import ValidNameInvalidPassword, InvalidLogin, InValidNameValidPassword, \
     NoFillUserName, NoFillPassword, SuccessLoginUser, UserNameInvalidLength, PasswordInvalidLength, \
-    FillInvalidLengthFields
+    FillInvalidLengthFields, UserTestForLengthAlert
 
 
 class TestLoginPage(unittest.TestCase):
@@ -96,7 +96,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.DISABLE_LOGINPAGE_BTN)
         self.login_page.fill_without_click_btn(UserNameInvalidLength)
-        HelpersMbs.delay(1)
+        HelpersMbs.delay(2)
         self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
 
         self.driver.quit()
@@ -119,5 +119,10 @@ class TestLoginPage(unittest.TestCase):
 
         self.driver.quit()
 
-    def test_text_invalid_length(self):
-        pass
+    def test_is_display_invalid_length_alert(self):
+        self.login_page.navigate_to_login_page()
+        expected_text = 'המינימום תווים בשדה זה הוא 6'
+        self.login_page.fill_without_click_btn(UserTestForLengthAlert)
+        actual_text = self.login_page.verify_login_page_length_alert(expected_text)
+        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+

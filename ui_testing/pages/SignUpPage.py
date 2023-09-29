@@ -90,7 +90,7 @@ class SignUpPage:
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserRegistration.password)
 
-        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGINPAGE_BTN)
+        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.DISABLE_LOGINPAGE_BTN)
         HelpersMbs.delay(1)
         login_btn.click()
         HelpersMbs.delay(2)
