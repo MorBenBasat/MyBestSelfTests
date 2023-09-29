@@ -128,7 +128,7 @@ class ActivitiesDetailsPage:
     def fill_all_activities_details_without_btn_click(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
         my_activity_field.click
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
 
         why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
@@ -165,7 +165,6 @@ class ActivitiesDetailsPage:
         click_to_remove_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.REMOVE_DAY_SELECTION)
         HelpersMbs.delay(1)
         click_to_remove_day.click()
-        HelpersMbs.delay(1)
 
     def radio_all_days_click(self, ActivityDetails):
         self.fill_fields_until_time_field(ActivityDetails)

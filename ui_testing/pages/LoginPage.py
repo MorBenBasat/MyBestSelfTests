@@ -30,7 +30,7 @@ class LoginPage:
         self.driver.maximize_window()
         self.navigate_to_login_page()
         self.login(SuccessLoginUser)
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
     def fill_without_click_btn(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
@@ -40,6 +40,16 @@ class LoginPage:
 
     def verify_login_page_mandatory_text(self, expected_text):
         selector = wait_for_element_presence(self.driver, *LoginPageLocators.USERNAME_FIELD_MANDATORY_TEXT)
+        HelpersMbs.delay(1)
+
+        if selector.text == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', selector.text)
+        return selector.text
+
+    def verify_login_page_length_alert(self, expected_text):
+        selector = wait_for_element_presence(self.driver, *LoginPageLocators.LENGTH_ALERT)
         HelpersMbs.delay(1)
 
         if selector.text == expected_text:

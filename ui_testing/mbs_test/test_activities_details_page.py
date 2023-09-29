@@ -106,9 +106,11 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         days_field = self.activities_details_page.radio_all_days_click(ValidActivityDetails)
 
-        # Get the text content of the field and split it by a separator (e.g., comma) to count the days
         days_text = days_field.text
-        days_list = days_text.split(',')
+        print('days_text: ' + days_text)
+
+        days_list = days_text.split('\n')
+        print(f"days_list:  {len(days_list)}, success ")
+
         HelpersMbs.delay(1)
-        # Check if the list contains exactly 7 items (days)
         assert len(days_list) == 7, f"Expected 7 days, but found {len(days_list)} days:\n{days_list}"
