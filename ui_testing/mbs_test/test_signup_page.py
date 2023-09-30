@@ -122,6 +122,7 @@ class TestSignUp(unittest.TestCase):
         self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
         HelpersMbs.delay(2)
 
+    @pytest.mark.test116
     def test_create_user_with_all_fields(self):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(ValidRegistrationUser)
