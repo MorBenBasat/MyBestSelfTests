@@ -3,7 +3,7 @@ from helpers.Helpers import HelpersMbs
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_presence, wait_for_element_clickable,wait_for_element_visibility
+from waits.wait import wait_for_element_presence, wait_for_element_clickable, wait_for_element_visibility
 from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.LoginPage import LoginPage
 
@@ -168,10 +168,25 @@ class ActivitiesDetailsPage:
 
     def radio_all_days_click(self, ActivityDetails):
         self.fill_fields_until_time_field(ActivityDetails)
-        click_open_days_field = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.DAYS_FIELD)
+        click_open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
         click_open_days_field.click()
         HelpersMbs.delay(1)
         click_all_days_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.PICK_ALL_DAYS_RADIO_BTN)
         click_all_days_btn.click()
         return wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
 
+    def write_unexist_day_in_day_search(self,expected_message):
+        click_open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        click_open_days_field.click()
+        HelpersMbs.delay(1)
+        write_day_in_search_field = wait_for_element_visibility(self.driver,
+                                                                *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
+        write_day_in_search_field.send_keys("not exist")
+        HelpersMbs.delay(1)
+        alert_message_not_exist = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.NO_FOUND_DAY_ALERT)
+        HelpersMbs.delay(1)
+        if alert_message_not_exist.text == expected_message:
+            print('text is as expected', expected_message)
+        else:
+            print('Text is not as expected.Actual text:', alert_message_not_exist)
+        return alert_message_not_exist.text

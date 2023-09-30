@@ -8,8 +8,8 @@ from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
-    DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoEmailRegistration, \
-    NoFillRegistrationFields, InvalidLengthUserName, InvalidLengthPassword, FemaleGenderSelection, MaleGenderSelection
+    DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoFillRegistrationFields \
+    , InvalidLengthUserName, InvalidLengthPassword
 
 
 class TestSignUp(unittest.TestCase):
