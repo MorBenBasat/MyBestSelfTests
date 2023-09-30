@@ -23,7 +23,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_page = ActivitiesPage(self.driver)
         self.agenda_page = MyAgendaPage(self.driver)
 
-    @pytest.mark.smoke
     def test_success_navigation_activities_details_page(self):
         self.activities_details_page.navigate_to_activities_details_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
