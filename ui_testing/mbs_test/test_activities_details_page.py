@@ -114,3 +114,9 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         HelpersMbs.delay(1)
         assert len(days_list) == 7, f"Expected 7 days, but found {len(days_list)} days:\n{days_list}"
+
+    def test_verify_not_exist_day(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        expected_text = 'No results found'
+        actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
+        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))

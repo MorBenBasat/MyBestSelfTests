@@ -41,3 +41,6 @@ class ActivitiesDetailsLocators:
     DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK = By.CSS_SELECTOR, 'a[ng-reflect-router-link="/activities-details/0"]'
 
     DISABLE_CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/p-button'
+    NO_FOUND_DAY_ALERT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                                   '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                                   '/div[2]/ul/li'
