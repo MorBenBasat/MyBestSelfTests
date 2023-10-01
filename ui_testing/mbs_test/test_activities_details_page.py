@@ -1,5 +1,4 @@
 import unittest
-import pytest
 
 from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPage import ActivitiesPage
