@@ -83,6 +83,7 @@ class TestLoginPage(unittest.TestCase):
             login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.DISABLE_LOGINPAGE_BTN)
             self.assertEqual(login_btn_disable, True, 'כפתור מוצג לא לחיץ')
 
+    @pytest.mark.test119
     def test_btn_is_field_valid(self):
         self.login_page.navigate_to_login_page()
         login_btn_enabled = HelpersMbs.is_enabled(self.driver, LoginPageLocators.DISABLE_LOGINPAGE_BTN)
@@ -125,4 +126,3 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.fill_without_click_btn(UserTestForLengthAlert)
         actual_text = self.login_page.verify_login_page_length_alert(expected_text)
         self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
-
