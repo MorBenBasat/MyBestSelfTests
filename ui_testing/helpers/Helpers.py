@@ -62,7 +62,7 @@ class HelpersMbs:
     @staticmethod
     def is_disabled(driver, selector: tuple[str, str]):
         btn = wait.wait_for_element_visibility(driver, *selector)
-        return "true" in btn.get_attribute("ng-reflect-disabled")
+        return "p-disabled" in btn.get_attribute("class")
 
     def is_enabled(self, selector: tuple[str, str]):
         btn = wait.wait_for_element_clickable(self, *selector)
