@@ -47,10 +47,6 @@ class SignUpPage:
         confirm_password_input = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_CONFIRM_PASSWORD)
         confirm_password_input.send_keys(UserRegistration.confirm_password)
 
-        click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
-        click_to_create.click()
-        HelpersMbs.delay(3)
-
     def gender_verify_click_radio_button(self, gender=None):
         HelpersMbs.delay(2)
 
@@ -81,6 +77,9 @@ class SignUpPage:
 
     def create_and_login(self, UserRegistration):
         self.create_register(UserRegistration)
+        HelpersMbs.delay(2)
+        click_create_user_btn = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
+        click_create_user_btn.click()
         HelpersMbs.delay(2)
         login_username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
         login_username_input.click()
@@ -124,9 +123,15 @@ class SignUpPage:
     def create_with_same_field(self, UserRegistration):
         self.create_register(UserRegistration)
         HelpersMbs.delay(2)
-        click_create_user_btn = wait_for_element_visibility(self.driver, *SignUpLocators.CREATE_NEW_USER)
+        click_create_user_btn = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_create_user_btn.click()
+        HelpersMbs.delay(2)
+        self.navigate_to_signup_page()
+        HelpersMbs.delay(2)
         self.create_register(UserRegistration)
+        HelpersMbs.delay(2)
+        click_create_user_btn = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
+        click_create_user_btn.click()
 
         already_exist = wait_for_element_visibility(self.driver, *SignUpLocators.USER_ALREADY_EXIST)
 
