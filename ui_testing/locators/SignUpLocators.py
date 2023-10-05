@@ -18,6 +18,6 @@ class SignUpLocators:
 
     REGISTER_PASSWORD = By.ID, 'password'
     REGISTER_CONFIRM_PASSWORD = By.ID, 'passwordVerification'
-    REGISTER_CREATE_BTN = By.ID, 'register-btn'
+    REGISTER_CREATE_BTN = By.XPATH, '//*[@id="register-btn"]/button'
     ALREADY_HAVING_USER = By.XPATH, '/html/body/app-root/div/div/app-register/div/p-card/div/div/div[2]/div/a'
-    USER_ALREADY_EXIST = By.XPATH, '/p-toastitem/div/div'
+    USER_ALREADY_EXIST = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div/div/div[2]'

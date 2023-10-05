@@ -25,3 +25,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.disconnect_system.click_on_logo()
         self.assertEqual(PagesUrlMbs.login, self.driver.current_url,
                          print("login page open after click on logo"))
+
+    def test_verify_fields_cleared(self):
+        self.login_page.success_login()
+        self.disconnect_system.click_on_disconnect_btn()
+        self.disconnect_system.verify_username_is_clear()

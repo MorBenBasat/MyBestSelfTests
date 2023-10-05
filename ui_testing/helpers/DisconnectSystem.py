@@ -23,9 +23,12 @@ class DisconnectSystem:
         click_on_logo = wait_for_element_clickable(self.driver, *DisconnectSystemLocators.LOGO)
         click_on_logo.click()
 
-    def verify_login_is_clear(self):
+    def verify_username_is_clear(self):
         click_on_btn = wait_for_element_clickable(self.driver, *DisconnectSystemLocators.DISCONNECT_BTN)
         click_on_btn.click()
         username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
-        password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
-        return username_input, password_input
+        HelpersMbs.delay(1)
+        if username_input.text == "":
+            print("username field is clear")
+        else:
+            raise Exception("NOT CLEAR")

@@ -49,7 +49,7 @@ class SignUpPage:
 
         click_to_create = wait_for_element_clickable(self.driver, *SignUpLocators.REGISTER_CREATE_BTN)
         click_to_create.click()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(3)
 
     def gender_verify_click_radio_button(self, gender=None):
         HelpersMbs.delay(2)
@@ -89,10 +89,10 @@ class SignUpPage:
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserRegistration.password)
 
-        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.DISABLE_LOGINPAGE_BTN)
+        login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.CREATE_USER_BTN)
         HelpersMbs.delay(1)
         login_btn.click()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
     def create_user_without_click_btn(self, UserRegistration):
         name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_NAME)
@@ -130,8 +130,9 @@ class SignUpPage:
 
         already_exist = wait_for_element_visibility(self.driver, *SignUpLocators.USER_ALREADY_EXIST)
 
-        if already_exist.text == "user already exists":
-            print("User already exists")
-            return "user already exists"  # Return the message for validation in the test case
+        if already_exist.text == "User already exists.":
+            print("User already exists.")
+            return "User already exists."  # Return the message for validation in the test case
         else:
+            print("Unexpected message:", already_exist.text)
             return None
