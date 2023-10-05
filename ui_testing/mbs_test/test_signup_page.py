@@ -9,7 +9,7 @@ from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
     DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoFillRegistrationFields \
-    , InvalidLengthUserName, InvalidLengthPassword
+    , InvalidLengthUserName, InvalidLengthPassword, ValidRegisterUserExist
 
 
 class TestSignUp(unittest.TestCase):
@@ -117,8 +117,8 @@ class TestSignUp(unittest.TestCase):
     @pytest.mark.test97
     def test_create_with_same_username(self):
         self.signup_page.navigate_to_signup_page()
-        result_message = self.signup_page.create_with_same_field(ValidRegistrationUser)
-        expected_message = "user already exists"
+        result_message = self.signup_page.create_with_same_field(ValidRegisterUserExist)
+        expected_message = 'User already exists.'  # Set the expected message to the correct value
         self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
         HelpersMbs.delay(2)
 
