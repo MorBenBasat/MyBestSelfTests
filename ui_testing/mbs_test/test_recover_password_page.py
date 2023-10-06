@@ -6,7 +6,7 @@ from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from pages.RecoverPasswordPage import RecoverPasswordPage
-from test_users.recover_password_page_users import ValidEmail, InvalidEmail, NoEmail
+from test_users.recover_password_page_users import ValidEmail, InvalidEmailType, NoEmail
 
 
 class TestRecoverPage(unittest.TestCase):
@@ -27,19 +27,28 @@ class TestRecoverPage(unittest.TestCase):
         self.recover_password.send_email(ValidEmail)
         # need to add asserttion
 
+    def test_verirfy_mandatory_email_field(self):
+        pass
+
     def test_verify_email_in_gmail(self):
         pass
 
     @pytest.mark.test79
     def test_not_valid_email(self):
         self.recover_password.navigation_to_recover_password_page()
-        result_message = self.recover_password.invalid_email_login(InvalidEmail)
+        result_message = self.recover_password.invalid_email_login(InvalidEmailType)
         expected_message = 'נא להזין מייל חוקי'
         self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
+
     @pytest.mark.test80
     def test_not_exist_email(self):
         self.recover_password.navigation_to_recover_password_page()
         self.recover_password.send_email(NoEmail)
 
-        # need to add asserttion
+    def test_click_register_btn(self):
+        self.recover_password.click_register_btn()
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print('נפתח דף הרשמה למערכת'))
 
+    def test_click_login_btn(self):
+        self.recover_password.click_login_btn()
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.login, print("נפתח דף כניסה למערכת"))

@@ -6,5 +6,6 @@ class TestRecoverPasswordUsers:
 
 
 ValidEmail = TestRecoverPasswordUsers("test123@gmail.com")
-InvalidEmail = TestRecoverPasswordUsers("testtest")
+InvalidEmailType = TestRecoverPasswordUsers("testtest")
 NoEmail = TestRecoverPasswordUsers("")
+
