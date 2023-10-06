@@ -27,8 +27,11 @@ class TestRecoverPage(unittest.TestCase):
         self.recover_password.send_email(ValidEmail)
         # need to add asserttion
 
-    def test_verirfy_mandatory_email_field(self):
-        pass
+    def test_verify_mandatory_email_field(self):
+        self.recover_password.navigation_to_recover_password_page()
+        result_text = self.recover_password.mandatory_email_text(NoEmail)
+        expected_text = 'נא מלא שדה זה לפני שליחה'
+        self.assertEqual(result_text, expected_text, print(result_text))
 
     def test_verify_email_in_gmail(self):
         pass
@@ -38,7 +41,7 @@ class TestRecoverPage(unittest.TestCase):
         self.recover_password.navigation_to_recover_password_page()
         result_message = self.recover_password.invalid_email_login(InvalidEmailType)
         expected_message = 'נא להזין מייל חוקי'
-        self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
+        self.assertEqual(result_message, expected_message, print(result_message))
 
     @pytest.mark.test80
     def test_not_exist_email(self):
