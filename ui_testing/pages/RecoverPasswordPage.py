@@ -34,10 +34,18 @@ class RecoverPasswordPage:
         self.send_email_without_click_btn(EmailRecoverPassword)
         invalid_email = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.ERROR_ALERT)
         if invalid_email.text == "נא להזין מייל חוקי":
-            print("מופיע נא להזין מייל חוקי")
             return "נא להזין מייל חוקי"
         else:
             print("Unexpected message:", invalid_email.text)
+            return None
+
+    def mandatory_email_text(self, EmailRecoverPassword):
+        self.send_email_without_click_btn(EmailRecoverPassword)
+        mandatory_text = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.MANDATORY_EMAIL_ALERT)
+        if mandatory_text.text == "נא מלא שדה זה לפני שליחה":
+            return "נא מלא שדה זה לפני שליחה"
+        else:
+            print("Unexpected message:", mandatory_text.text)
             return None
 
     def click_register_btn(self):
