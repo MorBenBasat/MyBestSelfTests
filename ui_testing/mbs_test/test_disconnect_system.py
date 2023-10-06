@@ -4,7 +4,6 @@ from helpers.DisconnectSystem import DisconnectSystem
 from initialize_driver import initialize_driver
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.login_users import SuccessLoginUser
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):

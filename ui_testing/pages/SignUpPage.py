@@ -132,7 +132,7 @@ class SignUpPage:
 
         if already_exist.text == "User already exists.":
             print("User already exists.")
-            return "User already exists."  # Return the message for validation in the test case
+            return "User already exists."
         else:
             print("Unexpected message:", already_exist.text)
             return None

@@ -33,11 +33,13 @@ class TestRecoverPage(unittest.TestCase):
     @pytest.mark.test79
     def test_not_valid_email(self):
         self.recover_password.navigation_to_recover_password_page()
-        self.recover_password.send_email(InvalidEmail)
-        # need to add asserttion
-
+        result_message = self.recover_password.invalid_email_login(InvalidEmail)
+        expected_message = 'נא להזין מייל חוקי'
+        self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
     @pytest.mark.test80
     def test_not_exist_email(self):
         self.recover_password.navigation_to_recover_password_page()
         self.recover_password.send_email(NoEmail)
+
         # need to add asserttion
+
