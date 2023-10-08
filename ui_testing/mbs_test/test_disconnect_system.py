@@ -29,3 +29,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.disconnect_system.click_on_disconnect_btn()
         self.disconnect_system.verify_username_is_clear()
+
+

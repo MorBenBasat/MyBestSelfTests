@@ -118,3 +118,19 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         expected_text = 'No results found'
         actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
         self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+
+    def test_verify_mandatory_text_my_activity_name(self):
+        HelpersMbs.delay(1)
+        self.activities_details_page.navigate_to_activities_details_page()
+        expected_text = 'נא מלא שדה זה לפני שליחה'
+        self.activities_details_page.fill_fields_until_time_field(NoFillActivityName)
+        actual_text = self.activities_details_page.mandatory_my_activity_text(expected_text)
+        self.assertEqual(actual_text, expected_text, "מופיע דרישת מילוי")
+
+    def test_verify_mandatory_text_hour_field(self):
+        HelpersMbs.delay(1)
+        self.activities_details_page.navigate_to_activities_details_page()
+        expected_text = 'נא מלא שדה זה לפני שליחה'
+        self.activities_details_page.fill_fields_until_day_field(ValidActivityDetails)
+        actual_text = self.activities_details_page.mandatory_days_text(expected_text)
+        self.assertEqual(actual_text, expected_text, "מופיע דרישת מילוי")

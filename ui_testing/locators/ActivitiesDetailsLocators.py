@@ -44,3 +44,7 @@ class ActivitiesDetailsLocators:
     NO_FOUND_DAY_ALERT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
                                    '-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
                                    '/div[2]/ul/li'
+    MY_ACTIVITY_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[' \
+                                           '2]/app-activities-details/div/app-form/form/app-input-wrapper[1]/small'
+    DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                                    '-wrapper[4]/small'

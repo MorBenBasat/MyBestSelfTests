@@ -9,3 +9,5 @@ ValidActivityDetails = TestActivityDetailsUsers("activity name", "activity text"
 NoFillActivityName = TestActivityDetailsUsers("", "activity text", "04:20")
 NoFillWhyImDoingThis = TestActivityDetailsUsers("my mission", "", "4:20")
 NoFillField = TestActivityDetailsUsers("", "", "")
+
+
