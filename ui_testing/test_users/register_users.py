@@ -35,5 +35,5 @@ FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail
                                           "123456test", "123456test")
 MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "maleSelection1233", "זכר",
                                         "123456test", "123456test")
-ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "141415661511145o", "זכר",
+ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "14115145o", "זכר",
                                            "123456test", "123456test")

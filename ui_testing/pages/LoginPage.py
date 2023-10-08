@@ -57,3 +57,13 @@ class LoginPage:
         else:
             print('Text is not as expected. Actual text:', selector.text)
         return selector.text
+
+    def verify_logo_login_name(self, expected_text):
+        selector = wait_for_element_presence(self.driver, *LoginPageLocators.LOGO_LOGIN_NAME)
+        HelpersMbs.delay(1)
+
+        if selector.text == expected_text:
+            print('text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', selector.text)
+        return selector.text

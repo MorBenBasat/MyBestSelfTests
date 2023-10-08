@@ -125,4 +125,10 @@ class TestLoginPage(unittest.TestCase):
         expected_text = 'המינימום תווים בשדה זה הוא 6'
         self.login_page.fill_without_click_btn(UserTestForLengthAlert)
         actual_text = self.login_page.verify_login_page_length_alert(expected_text)
-        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+        self.assertEqual(actual_text, expected_text, 'טקסט דרישת מילוי מופיע')
+
+    def test_logo_login_name(self):
+        self.login_page.navigate_to_login_page()
+        expected_text = 'כניסה למערכת'
+        actual_text = self.login_page.verify_logo_login_name(expected_text)
+        self.assertEqual(actual_text,expected_text,'לוגו מציג כניסה למערכת')
