@@ -175,7 +175,8 @@ class ActivitiesDetailsPage:
         click_all_days_btn.click()
         return wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
 
-    def write_unexist_day_in_day_search(self,expected_message):
+    def write_unexist_day_in_day_search(self, expected_message):
+        HelpersMbs.delay(2)
         click_open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
         click_open_days_field.click()
         HelpersMbs.delay(1)
@@ -190,3 +191,31 @@ class ActivitiesDetailsPage:
         else:
             print('Text is not as expected.Actual text:', alert_message_not_exist)
         return alert_message_not_exist.text
+
+    def verify_my_activity_mandatory_text(self, expected_text):
+        HelpersMbs.delay(1)
+        selector = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_MANDATORY_TEXT)
+        HelpersMbs.delay(1)
+
+        if selector.text == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', selector.text)
+        return selector.text
+
+    def verify_hour_mandatory_text(self, expected_text):
+        time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        time_field_open.click()
+        HelpersMbs.delay(1)
+        for _ in range(5):
+            time_field_open.send_keys(Keys.BACK_SPACE)
+        HelpersMbs.delay(1)
+        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        random_click.click()
+        selector = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_MANDATORY_TEXT)
+        HelpersMbs.delay(1)
+        if selector.text == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', selector.text)
+        return selector.text

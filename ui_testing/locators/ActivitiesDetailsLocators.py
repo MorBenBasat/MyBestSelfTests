@@ -48,3 +48,5 @@ class ActivitiesDetailsLocators:
                                            '2]/app-activities-details/div/app-form/form/app-input-wrapper[1]/small'
     DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
                                     '-wrapper[4]/small'
+    HOUR_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                                    '-wrapper[3]/small'
