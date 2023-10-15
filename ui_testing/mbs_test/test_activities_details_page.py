@@ -130,3 +130,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_my_activity_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+
+    def test_ss(self):
+        pass
