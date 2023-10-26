@@ -39,7 +39,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_my_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details(NoFillActivityName)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
@@ -48,7 +48,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+        confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
         self.assertEqual(confirm_btn_able, True, print("כפתור מוצג  לחיץ"))
@@ -57,9 +57,10 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_activities_details_fields(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
-
         self.activities_details_page.fill_all_activities_details(NoFillField)
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
+                                                     ACTIVITIES_DETAILS_CONFIRM_BTN)
+
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
 
         self.driver.quit()
@@ -131,5 +132,3 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         actual_text = self.activities_details_page.verify_my_activity_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
 
-    def test_ss(self):
-        pass

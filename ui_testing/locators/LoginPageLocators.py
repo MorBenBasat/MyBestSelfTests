@@ -5,7 +5,6 @@ class LoginPageLocators:
     LOGINPAGE_USERNAME = By.XPATH, '//*[@id="username"]'
     LOGINPAGE_PASSWORD = By.XPATH, '//*[@id="password"]'
     LOGIN_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/p-button/button'
-    DISABLE_LOGINPAGE_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/p-button'
     FORGOT_PASSWORD_BTN = By.XPATH, '/html/body/app-root/div/div/app-login/div/p-card/div/div/div[2]/div/a[1]'
     CREATE_USER_BTN = By.CSS_SELECTOR, "button.p-ripple.p-element.p-button.p-component[type='button']"
 

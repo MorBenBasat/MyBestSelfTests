@@ -23,11 +23,10 @@ class ActivitiesDetailsPage:
 
     def navigate_to_activities_details_page_by_drop_list(self):
         HelpersMbs.delay(1)
-        click_on_activities_page_drop_list = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
-                                                                        DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK)
+        click_add_new_activity_detail = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
         HelpersMbs.delay(1)
 
-        click_on_activities_page_drop_list.click()
+        click_add_new_activity_detail.click()
 
     def navigate_to_activities_details_page_by_plus_btn(self):
         HelpersMbs.delay(1)
@@ -39,8 +38,7 @@ class ActivitiesDetailsPage:
 
     def fill_all_activities_details(self, ActivityDetails):
         self.fill_all_activities_details_without_btn_click(ActivityDetails)
-        confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
-        confirm_btn.click()
+
 
     def fill_fields_until_time_field(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
@@ -121,7 +119,7 @@ class ActivitiesDetailsPage:
 
         random_click.click()
 
-        confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DISABLE_CONFIRM_BTN)
+        confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         confirm_btn.click()
 
