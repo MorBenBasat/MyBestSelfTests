@@ -124,11 +124,16 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_hour_mandatory_text(expected_text)
-        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+        self.assertEqual(actual_text, expected_text)
 
     def test_verify_mandatory_text_my_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_my_activity_mandatory_text(expected_text)
-        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+        self.assertEqual(actual_text, expected_text)
 
+    def test_verify_mandatory_days_text(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        expected_text = 'נא מלא שדה זה לפני שליחה'
+        actual_text = self.activities_details_page.verify_day_mandatory_text(expected_text)
+        self.assertEqual(actual_text, expected_text)

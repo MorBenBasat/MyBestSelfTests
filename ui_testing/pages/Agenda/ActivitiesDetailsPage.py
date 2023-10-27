@@ -23,7 +23,8 @@ class ActivitiesDetailsPage:
 
     def navigate_to_activities_details_page_by_drop_list(self):
         HelpersMbs.delay(1)
-        click_add_new_activity_detail = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
+        click_add_new_activity_detail = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
+                                                                   DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
         HelpersMbs.delay(1)
 
         click_add_new_activity_detail.click()
@@ -38,7 +39,6 @@ class ActivitiesDetailsPage:
 
     def fill_all_activities_details(self, ActivityDetails):
         self.fill_all_activities_details_without_btn_click(ActivityDetails)
-
 
     def fill_fields_until_time_field(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
@@ -192,14 +192,14 @@ class ActivitiesDetailsPage:
 
     def verify_my_activity_mandatory_text(self, expected_text):
         HelpersMbs.delay(1)
-        selector = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_MANDATORY_TEXT)
+        my_activity_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_MANDATORY_TEXT)
         HelpersMbs.delay(1)
 
-        if selector.text == expected_text:
+        if my_activity_text.text == expected_text:
             print('Text is as expected:', expected_text)
         else:
-            print('Text is not as expected. Actual text:', selector.text)
-        return selector.text
+            print('Text is not as expected. Actual text:', my_activity_text.text)
+        return my_activity_text.text
 
     def verify_hour_mandatory_text(self, expected_text):
         time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
@@ -210,10 +210,22 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
         random_click.click()
-        selector = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_MANDATORY_TEXT)
+        my_activity_hour_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.
+                                                          MY_ACTIVITY_MANDATORY_TEXT)
         HelpersMbs.delay(1)
-        if selector.text == expected_text:
+        if my_activity_hour_text.text == expected_text:
             print('Text is as expected:', expected_text)
         else:
-            print('Text is not as expected. Actual text:', selector.text)
-        return selector.text
+            print('Text is not as expected. Actual text:', my_activity_hour_text.text)
+        return my_activity_hour_text.text
+
+    def verify_day_mandatory_text(self, expected_text):
+        HelpersMbs.delay(1)
+        my_activity_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_MANDATORY_TEXT)
+        HelpersMbs.delay(1)
+
+        if my_activity_text.text == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', my_activity_text.text)
+        return my_activity_text.text
