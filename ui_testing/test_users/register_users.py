@@ -9,7 +9,7 @@ class TestRegisterUsers:
         self.confirm_password = confirm_password
 
 
-ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "user12234", "זכר",
+ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "use4344", "זכר",
                                           "123456testi2", "123456testi2")
 InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "test", "זכר", "123456test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "", "123456")

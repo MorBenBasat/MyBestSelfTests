@@ -60,8 +60,8 @@ class TestSignUp(unittest.TestCase):
     @pytest.mark.test40
     def test_different_confirm_and_password(self):
         self.signup_page.navigate_to_signup_page()
-        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_register(DifferentPasswordAndConfirm)
+        register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
         self.driver.quit()
 
@@ -87,8 +87,8 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoLastNameRegistration)
-
         self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+
         self.driver.quit()
 
     @pytest.mark.test54
