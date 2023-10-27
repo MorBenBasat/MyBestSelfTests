@@ -39,7 +39,8 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_my_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
+                                                     ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details(NoFillActivityName)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
@@ -137,3 +138,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_day_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
+
+    def test_verify_activity_name_equals_green_alert_text(self):
+        self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.verify_activity_name_in_green_alert(ValidActivityDetails)

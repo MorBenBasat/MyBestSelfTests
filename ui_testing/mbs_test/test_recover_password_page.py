@@ -11,9 +11,9 @@ from test_users.recover_password_page_users import ValidEmail, InvalidEmailType,
 
 class TestRecoverPage(unittest.TestCase):
     def setUp(self):
-        self.driver = initialize_driver()  # Initialize the WebDriver
-        self.helpers = HelpersMbs(self.driver)  # Create an instance of the LoginPage clas
-        self.login_page = LoginPage(self.driver)  # Create an instance of the LoginPage class
+        self.driver = initialize_driver()
+        self.helpers = HelpersMbs(self.driver)
+        self.login_page = LoginPage(self.driver)
         self.recover_password = RecoverPasswordPage(self.driver)
 
     @pytest.mark.test77
