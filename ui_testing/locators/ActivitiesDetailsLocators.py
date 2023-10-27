@@ -40,9 +40,9 @@ class ActivitiesDetailsLocators:
 
     DROP_LIST_ACTIVITIES_DETAILS_PAGE_CLICK = By.CSS_SELECTOR, 'a[ng-reflect-router-link="/activities-details/0"]'
 
-    DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN = By.XPATH,'/html/body/app-root/div/div[' \
-                                                    '1]/app-header/p-menubar/div/p-menubarsub/ul/li[' \
-                                                    '2]/p-menubarsub/ul/li[2]/a'
+    DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN = By.XPATH, '/html/body/app-root/div/div[' \
+                                                     '1]/app-header/p-menubar/div/p-menubarsub/ul/li[' \
+                                                     '2]/p-menubarsub/ul/li[2]/a'
 
     ACTIVITIES_DETAILS_CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[' \
                                                '2]/app-activities-details/div/p-button/button'
@@ -51,7 +51,10 @@ class ActivitiesDetailsLocators:
                                    '/div[2]/ul/li'
     MY_ACTIVITY_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[' \
                                            '2]/app-activities-details/div/app-form/form/app-input-wrapper[1]/small'
-    DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+    DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input'\
+                                    \
                                     '-wrapper[4]/small'
-    HOUR_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+    HOUR_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input'\
+                                    \
                                     '-wrapper[3]/small'
+    GREEN_ALERT_TEXT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div/div/div[2]'

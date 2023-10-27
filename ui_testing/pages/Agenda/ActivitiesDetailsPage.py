@@ -25,7 +25,6 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         click_add_new_activity_detail = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
                                                                    DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
-        HelpersMbs.delay(1)
 
         click_add_new_activity_detail.click()
 
@@ -229,3 +228,14 @@ class ActivitiesDetailsPage:
         else:
             print('Text is not as expected. Actual text:', my_activity_text.text)
         return my_activity_text.text
+
+    def verify_activity_name_in_green_alert(self, ActivityDetails):
+        self.fill_all_activities_details(ActivityDetails)
+        button_click = wait_for_element_clickable(self.driver,
+                                                  *ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
+        button_click.click()
+        expected_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.GREEN_ALERT_TEXT)
+
+        if ActivityDetails.activity_name in expected_text.text:
+            print('name expected', expected_text)
+        return expected_text
