@@ -34,7 +34,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
         self.activities_page.edit_exist_activity()
-        print(self.helpers.alerts_login())
+        print(self.helpers.alerts_display())
 
 
 
