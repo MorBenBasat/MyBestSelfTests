@@ -32,7 +32,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_all_activities_details(ValidActivityDetails)
         HelpersMbs.delay(1)
-        print(self.helpers.alerts_activities_details())
+        print(self.helpers.alerts_display())
         self.activities_page.navigate_to_activities_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'activities page shown')
         self.driver.quit()
