@@ -20,7 +20,7 @@ class ActivitiesPage:
         self.helpers.navigation_to_url(self.pageUrl)
 
     def navigate_to_activities_page_by_drop_list(self):
-        HelpersMbs.delay(1)
+        HelpersMbs.delay(2)
         self.my_agenda.open_agenda_drop_list()
         click_on_activities_page_drop_list = wait_for_element_clickable(self.driver, *ActivitiesLocators.
                                                                         DROP_LIST_ACTIVITIES_PAGE_CLICK)

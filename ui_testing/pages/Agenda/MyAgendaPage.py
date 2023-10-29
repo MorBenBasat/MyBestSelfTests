@@ -15,6 +15,7 @@ class MyAgendaPage:
         HelpersMbs.delay(2)
 
     def open_agenda_drop_list(self):
+        HelpersMbs.delay(1)
         click_on_agenda_drop_list = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.
                                                                CLICK_ON_AGENDA_DROP_LIST)
         click_on_agenda_drop_list.click()

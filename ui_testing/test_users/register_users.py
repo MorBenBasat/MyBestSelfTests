@@ -9,7 +9,7 @@ class TestRegisterUsers:
         self.confirm_password = confirm_password
 
 
-ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "sas333axvdvs", "זכר",
+ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "sasax1221vdvs", "זכר",
                                           "123456test", "123456test")
 InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "test", "זכר", "123436test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "", "123456")
@@ -35,5 +35,5 @@ FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail
                                           "123456test", "123456test")
 MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "maleSelection1233", "זכר",
                                         "123456test", "123456test")
-ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "1411hg45o", "זכר",
+ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "1411hMMg45o", "זכר",
                                            "123456test", "123456test")
