@@ -52,7 +52,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
-        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג  לחיץ"))
+        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג לחיץ"))
 
         self.driver.quit()
 

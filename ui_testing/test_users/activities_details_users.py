@@ -6,7 +6,7 @@ class TestActivityDetailsUsers:
         self.day = day
 
 
-ValidActivityDetails = TestActivityDetailsUsers("activity name", "activity text", "04:20", 'ראשון')
-NoFillActivityName = TestActivityDetailsUsers("", "activity text", "04:20", 'ראשון')
-NoFillWhyImDoingThis = TestActivityDetailsUsers("my mission", "", "4:20", 'ראשון')
-NoFillField = TestActivityDetailsUsers("", "", "", None)
+ValidActivityDetails = TestActivityDetailsUsers("activity name", "activity text", "04:20",'ראשון')
+NoFillActivityName = TestActivityDetailsUsers("", "activity text", "04:20",'ראשון')
+NoFillWhyImDoingThis = TestActivityDetailsUsers("my mission", "", "4:20", "ראשון")
+NoFillField = TestActivityDetailsUsers("", "", "",None)
