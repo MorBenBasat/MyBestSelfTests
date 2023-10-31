@@ -67,3 +67,5 @@ class LoginPage:
         else:
             print('Text is not as expected. Actual text:', selector.text)
         return selector.text
+
+
