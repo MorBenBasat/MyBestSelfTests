@@ -70,10 +70,10 @@ class SignUpPage:
 
         if female_button.is_selected():
             print("The female radio button is selected.")
-            return True  # Return True when female radio button is selected
+            return True
         elif male_button.is_selected():
             print("The male radio button is selected.")
-            return True  # Return True when male radio button is selected
+            return True
         else:
             print("No gender selected!")
             return False

@@ -15,6 +15,5 @@ class PagesUrl:
         return f"{self.baseURL}/{path}"
 
 
-# Creating an object of the PagesUrl class
 PagesUrlMbs = PagesUrl("login", "register", "my-profile", "agenda", "activities-details/0", "activities", "logout",
                        "recover-password")
