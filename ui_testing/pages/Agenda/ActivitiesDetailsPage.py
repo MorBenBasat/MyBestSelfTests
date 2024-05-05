@@ -97,7 +97,6 @@ class ActivitiesDetailsPage:
         min_arrow_down.click()
         HelpersMbs.delay(1)
 
-
     def fill_all_activities_details_without_btn_click(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
         my_activity_field.click()
