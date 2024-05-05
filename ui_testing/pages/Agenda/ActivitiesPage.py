@@ -38,7 +38,7 @@ class ActivitiesPage:
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
         edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        edit_the_activity.send_keys(" new text")
+        edit_the_activity.send_keys("new text")
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         confirm_btn.click()
         HelpersMbs.delay(1)

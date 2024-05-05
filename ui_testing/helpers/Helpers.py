@@ -21,8 +21,6 @@ class HelpersMbs:
         else:
             return None
 
-
-
     @staticmethod
     def delay(seconds):
         try:

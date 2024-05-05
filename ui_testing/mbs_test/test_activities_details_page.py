@@ -43,16 +43,17 @@ class TestActivitiesDetailsPage(unittest.TestCase):
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details(NoFillActivityName)
-        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ ללא מילוי שם משימה"))
 
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
+
         confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
-        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג לחיץ"))
+        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג לחיץ לאחר אי מילוי מדוע אני עושה את זה"))
 
         self.driver.quit()
 

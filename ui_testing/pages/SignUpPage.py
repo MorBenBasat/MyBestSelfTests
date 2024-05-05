@@ -1,5 +1,4 @@
 import random
-
 from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
 from locators.SignUpLocators import SignUpLocators

@@ -7,7 +7,7 @@ class TestLoginUsers:
         self.password = password
 
 
-SuccessLoginUser = TestLoginUsers("ValidUser13", "123456test")
+SuccessLoginUser = TestLoginUsers("morbenbasat", "258963mor")
 InvalidLogin = TestLoginUsers("Invalid", "Invalid")
 UserNameInvalidLength = TestLoginUsers("test", "123456test")
 PasswordInvalidLength = TestLoginUsers("Testr123", "1234")

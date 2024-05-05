@@ -30,7 +30,7 @@ class LoginPage:
         self.driver.maximize_window()
         self.navigate_to_login_page()
         self.login(SuccessLoginUser)
-        HelpersMbs.delay(1)
+        HelpersMbs.delay(2)
 
     def fill_without_click_btn(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
@@ -58,7 +58,7 @@ class LoginPage:
             print('Text is not as expected. Actual text:', selector.text)
         return selector.text
 
-    def verify_logo_login_name(self, expected_text):
+    def verify_title_login_name(self, expected_text):
         selector = wait_for_element_presence(self.driver, *LoginPageLocators.LOGO_LOGIN_NAME)
         HelpersMbs.delay(1)
 
