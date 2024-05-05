@@ -10,6 +10,7 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName, NoFillWhyImDoingThis, \
     NoFillField
+from waits.wait import wait_for_element_presence
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -30,7 +31,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_create_activity(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details(ValidActivityDetails)
+        self.activities_details_page.create_activity_details(ValidActivityDetails)
         HelpersMbs.delay(1)
         print(self.helpers.alerts_display())
         self.activities_page.navigate_to_activities_page()
@@ -42,14 +43,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.activities_details_page.fill_all_activities_details(NoFillActivityName)
+        self.activities_details_page.create_activity_details(NoFillActivityName)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ ללא מילוי שם משימה"))
 
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details(NoFillWhyImDoingThis)
+        self.activities_details_page.create_activity_details(NoFillWhyImDoingThis)
 
         confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
 
@@ -59,7 +60,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_no_fill_activities_details_fields(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.fill_all_activities_details(NoFillField)
+        self.activities_details_page.create_activity_details(NoFillField)
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
@@ -143,4 +144,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_verify_activity_name_equals_green_alert_text(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.verify_activity_name_in_green_alert(ValidActivityDetails)
+        green_alert_text = self.activities_details_page.green_creation_alert(ValidActivityDetails)
+
+        assert ValidActivityDetails.activity_name in green_alert_text
+        print(f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה בשם : ")

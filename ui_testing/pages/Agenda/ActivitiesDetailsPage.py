@@ -36,7 +36,7 @@ class ActivitiesDetailsPage:
                                                        *MyAgendaPageLocators.PLUS_BTN_OPEN_ACTIVITY_DETAILS)
         click_on_plus_btn.click()
 
-    def fill_all_activities_details(self, ActivityDetails):
+    def create_activity_details(self, ActivityDetails):
         self.fill_all_activities_details_without_btn_click(ActivityDetails)
         HelpersMbs.delay(1)
         click_confirm_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
@@ -210,13 +210,8 @@ class ActivitiesDetailsPage:
             print('Text is not as expected. Actual text:', my_activity_text.text)
         return my_activity_text.text
 
-    def verify_activity_name_in_green_alert(self, ActivityDetails):
-        self.fill_all_activities_details(ActivityDetails)
-        button_click = wait_for_element_clickable(self.driver,
-                                                  *ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
-        button_click.click()
-        expected_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.GREEN_ALERT_TEXT)
-
-        if ActivityDetails.activity_name in expected_text.text:
-            print('name expected', expected_text)
-        return expected_text
+    def green_creation_alert(self,ActivityDetails):
+        self.create_activity_details(ActivityDetails)
+        green_alert_element = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.GREEN_ALERT)
+        green_alert_text = green_alert_element.text
+        return green_alert_text

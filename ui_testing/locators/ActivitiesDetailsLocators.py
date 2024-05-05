@@ -33,8 +33,8 @@ class ActivitiesDetailsLocators:
 
     PICK_ALL_DAYS_RADIO_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app' \
                                         '-input-wrapper[' \
-                                        '4]/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[' \
-                                        '1]/div[1]/div[2]'
+                                        '4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                                        '/div[1]/div[1]/div[2]'
 
     CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/p-button/button'
 
@@ -51,10 +51,11 @@ class ActivitiesDetailsLocators:
                                    '/div[2]/ul/li'
     MY_ACTIVITY_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[' \
                                            '2]/app-activities-details/div/app-form/form/app-input-wrapper[1]/small'
-    DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input'\
-                                    \
+    DAYS_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+ \
                                     '-wrapper[4]/small'
-    HOUR_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input'\
-                                    \
+    HOUR_MANDATORY_TEXT = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+ \
                                     '-wrapper[3]/small'
     GREEN_ALERT_TEXT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div/div/div[2]'
+    GREEN_ALERT = By.XPATH,"/html/body/app-root/div/p-toast/div/p-toastitem/div/div"
