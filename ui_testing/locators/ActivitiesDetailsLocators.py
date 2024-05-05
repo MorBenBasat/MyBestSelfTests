@@ -18,7 +18,7 @@ class ActivitiesDetailsLocators:
                                   '/div/div[1]/div[2]/input'
 
     REMOVE_DAY_SELECTION = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app' \
-                                     '-input-wrapper[4]/app-input-combobox-field/div/p-multiselect/div/div[' \
+                                     '-input-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[' \
                                      '2]/div/div/timescircleicon'
 
     DAY_IN_DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \

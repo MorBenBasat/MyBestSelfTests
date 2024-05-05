@@ -102,6 +102,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.select_day_and_remove(ValidActivityDetails)
         assert ActivitiesDetailsLocators.DAY_IN_DAYS_FIELD not in ActivitiesDetailsLocators.DAYS_FIELD
+        print("Day successfully removed!")
 
     def test_click_all_day_radio_btn(self):
         self.activities_details_page.navigate_to_activities_details_page()

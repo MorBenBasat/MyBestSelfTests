@@ -142,6 +142,7 @@ class ActivitiesDetailsPage:
         click_to_remove_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.REMOVE_DAY_SELECTION)
         HelpersMbs.delay(1)
         click_to_remove_day.click()
+        HelpersMbs.delay(2)
 
     def radio_all_days_click(self, ActivityDetails):
         self.fill_fields_until_time_field(ActivityDetails)
