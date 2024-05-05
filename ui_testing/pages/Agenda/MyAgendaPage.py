@@ -1,7 +1,9 @@
+from selenium.webdriver import ActionChains
+
 from helpers.Helpers import HelpersMbs
 from locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_clickable
+from waits.wait import wait_for_element_clickable, wait_for_element_presence
 
 
 class MyAgendaPage:
@@ -16,12 +18,12 @@ class MyAgendaPage:
 
     def open_agenda_drop_list(self):
         HelpersMbs.delay(1)
-        click_on_agenda_drop_list = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.
-                                                               CLICK_ON_AGENDA_DROP_LIST)
-        click_on_agenda_drop_list.click()
+        open_agenda_drop_list_element = wait_for_element_presence(self.driver,
+                                                                  *MyAgendaPageLocators.OPEN_AGENDA_DROP_LIST)
+        action = ActionChains(self.driver)
+        action.move_to_element(open_agenda_drop_list_element).perform()
+        HelpersMbs.delay(1)
 
     def open_activity_page_by_plus_icon(self):
         click_plus_icon = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.PLUS_BTN_OPEN_ACTIVITY_DETAILS)
         click_plus_icon.click()
-
-

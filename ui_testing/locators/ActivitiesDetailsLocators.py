@@ -42,7 +42,7 @@ class ActivitiesDetailsLocators:
 
     DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN = By.XPATH, '/html/body/app-root/div/div[' \
                                                      '1]/app-header/p-menubar/div/p-menubarsub/ul/li[' \
-                                                     '2]/p-menubarsub/ul/li[2]/a'
+                                                     '2]/p-menubarsub/ul/li[2]/div/a'
 
     ACTIVITIES_DETAILS_CONFIRM_BTN = By.XPATH, '/html/body/app-root/div/div[' \
                                                '2]/app-activities-details/div/p-button/button'

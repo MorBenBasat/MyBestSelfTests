@@ -94,7 +94,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def test_choose_time_by_arrows(self):
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.select_time_by_arrows(ValidActivityDetails)
+        self.activities_details_page.select_time_by_arrows()
         print("All arrows has been clicked!")
         self.driver.quit()
 
