@@ -1,5 +1,4 @@
 import unittest
-from locators.ActivitiesLocators import ActivitiesLocators
 
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
@@ -8,7 +7,6 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.activities_details_users import ValidActivityDetails
 
 
 class TestActivitiesPage(unittest.TestCase):
