@@ -19,3 +19,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.helpers.click_on_logo()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, print("My profile open on logo click "))
+
+    def tearDown(self):
+        pass
