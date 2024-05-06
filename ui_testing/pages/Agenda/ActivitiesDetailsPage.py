@@ -41,6 +41,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         click_confirm_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         click_confirm_btn.click()
+        HelpersMbs.delay(2)
 
     def fill_fields_until_time_field(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)

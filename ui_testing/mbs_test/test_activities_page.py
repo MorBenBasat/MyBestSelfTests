@@ -7,6 +7,7 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
+from test_users.activities_details_users import TestActivityDetailsUsers, ValidActivityDetails
 
 
 class TestActivitiesPage(unittest.TestCase):
@@ -39,4 +40,20 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.assertEqual(actual_text, expected_text)
 
+    def test_verify_field_values_on_card(self):
+        self.login_page.success_login()
+        self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.create_activity_details(ValidActivityDetails)
 
+        valid_activity_details = TestActivityDetailsUsers(ValidActivityDetails.activity_name, ValidActivityDetails.
+                                                          activity_text, ValidActivityDetails.hour,
+                                                          ValidActivityDetails.
+                                                          day)
+
+        activity_name_text, activity_text_text, hour_text, day_text = self.activities_page.verify_field_values_on_card()
+        HelpersMbs.delay(1)
+        # Assert that the field values on the card match the activity details
+        assert valid_activity_details.activity_name == activity_name_text
+        assert valid_activity_details.activity_text == activity_text_text
+        assert valid_activity_details.hour == hour_text
+        assert valid_activity_details.day == day_text

@@ -34,7 +34,7 @@ class ActivitiesPage:
                                                               FOLDER_BTN_OPEN_ALL_ACTIVITIES)
         click_on_folder_icon_btn.click()
 
-    def edit_exist_activity(self,text_fill):
+    def edit_exist_activity(self, text_fill):
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
         edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
@@ -53,3 +53,17 @@ class ActivitiesPage:
         else:
             print('Text is not as expected. Actual text:', alert_text.text)
         return alert_text.text
+
+    def verify_field_values_on_card(self):
+        activity_name_on_card = self.driver.find_element(self.driver.ActivitiesLocators.ACTIVITY_NAME_ON_CARD)
+        activity_text_on_card = self.driver.find_element(self.driver.ActivitiesLocators.ACTIVITY_TEXT_ON_CARD)
+        hour_on_card = self.driver.find_element(self.driver.ActivitiesLocators.HOUR_ON_CARD)
+        day_on_card = self.driver.find_element(self.driver.ActivitiesLocators.DAY_ON_CARD)
+
+        activity_name_text = activity_name_on_card.text
+        activity_text_text = activity_text_on_card.text
+        hour_text = hour_on_card.text
+        day_text = day_on_card.text
+
+        # Return the text values
+        return activity_name_text, activity_text_text, hour_text, day_text
