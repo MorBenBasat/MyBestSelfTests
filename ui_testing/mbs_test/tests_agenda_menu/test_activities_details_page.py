@@ -1,6 +1,6 @@
 import unittest
 
-from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
+from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs

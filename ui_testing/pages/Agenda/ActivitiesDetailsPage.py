@@ -1,10 +1,10 @@
 from selenium.webdriver import ActionChains, Keys
 from helpers.Helpers import HelpersMbs
-from locators.MyAgendaPageLocators import MyAgendaPageLocators
+from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable, wait_for_element_visibility
-from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
+from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.LoginPage import LoginPage
 
 

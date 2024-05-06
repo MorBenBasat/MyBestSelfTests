@@ -1,10 +1,10 @@
 from helpers.Helpers import HelpersMbs
-from locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
-from locators.MyAgendaPageLocators import MyAgendaPageLocators
+from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
+from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
-from locators.ActivitiesLocators import ActivitiesLocators
+from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 
 
 class ActivitiesPage:
