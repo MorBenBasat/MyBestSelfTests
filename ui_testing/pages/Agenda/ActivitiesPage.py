@@ -16,8 +16,8 @@ class ActivitiesPage:
         self.my_agenda = MyAgendaPage(self.driver)
 
     def navigate_to_activities_page(self):
-        HelpersMbs.delay(1)
         self.helpers.navigation_to_url(self.pageUrl)
+        HelpersMbs.delay(1)
 
     def navigate_to_activities_page_by_drop_list(self):
         HelpersMbs.delay(2)
@@ -55,10 +55,10 @@ class ActivitiesPage:
         return alert_text.text
 
     def verify_field_values_on_card(self):
-        activity_name_on_card = self.driver.find_element(self.driver.ActivitiesLocators.ACTIVITY_NAME_ON_CARD)
-        activity_text_on_card = self.driver.find_element(self.driver.ActivitiesLocators.ACTIVITY_TEXT_ON_CARD)
-        hour_on_card = self.driver.find_element(self.driver.ActivitiesLocators.HOUR_ON_CARD)
-        day_on_card = self.driver.find_element(self.driver.ActivitiesLocators.DAY_ON_CARD)
+        activity_name_on_card = self.driver.find_element(*ActivitiesLocators.CARD_ACTIVITY_NAME)
+        activity_text_on_card = self.driver.find_element(*ActivitiesLocators.CARD_WHY_I_DO_THIS)
+        hour_on_card = self.driver.find_element(*ActivitiesLocators.CARD_TIME)
+        day_on_card = self.driver.find_element(*ActivitiesLocators.CARD_DAY)
 
         activity_name_text = activity_name_on_card.text
         activity_text_text = activity_text_on_card.text

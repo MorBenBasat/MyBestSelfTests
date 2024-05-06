@@ -18,7 +18,6 @@ class ActivitiesDetailsPage:
         self.action_chains = ActionChains(self.driver)
 
     def navigate_to_activities_details_page(self):
-        self.login_page.success_login()
         self.helpers.navigation_to_url(self.pageUrl)
 
     def navigate_to_activities_details_page_by_drop_list(self):

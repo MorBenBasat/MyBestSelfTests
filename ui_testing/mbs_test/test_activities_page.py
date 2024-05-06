@@ -44,6 +44,8 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(ValidActivityDetails)
+        self.activities_page.navigate_to_activities_page()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         valid_activity_details = TestActivityDetailsUsers(ValidActivityDetails.activity_name, ValidActivityDetails.
                                                           activity_text, ValidActivityDetails.hour,
