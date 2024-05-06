@@ -10,7 +10,6 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName, NoFillWhyImDoingThis, \
     NoFillField
-from waits.wait import wait_for_element_presence
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):

@@ -34,11 +34,22 @@ class ActivitiesPage:
                                                               FOLDER_BTN_OPEN_ALL_ACTIVITIES)
         click_on_folder_icon_btn.click()
 
-    def edit_exist_activity(self):
+    def edit_exist_activity(self,text_fill):
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
         edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        edit_the_activity.send_keys("new text")
+        edit_the_activity.clear()
+        HelpersMbs.delay(1)
+        edit_the_activity.send_keys(text_fill)
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         confirm_btn.click()
         HelpersMbs.delay(1)
+
+    def update_alert(self, expected_text, text_fill):
+        self.edit_exist_activity(text_fill)
+        alert_text = wait_for_element_presence(self.driver, *ActivitiesLocators.ACTIVATE_ALERT_CONFIRM)
+        if alert_text.text == expected_text:
+            print('הטקסט המצופה', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', alert_text.text)
+        return alert_text.text
