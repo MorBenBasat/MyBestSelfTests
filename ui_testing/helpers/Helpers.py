@@ -1,7 +1,10 @@
 import time
 
+from locators.MyProfilePageLocators import MyProfilePageLocators
 from waits import wait
 from selenium.webdriver.common.by import By
+
+from waits.wait import wait_for_element_clickable
 
 
 class HelpersMbs:
@@ -45,3 +48,8 @@ class HelpersMbs:
     def is_field_valid(driver, selector: tuple[str, str]):
         field = wait.wait_for_element_visibility(driver, *selector)
         return "ng-invalid" not in field.get_attribute("class") or "ng-dirty" not in field.get_attribute("class")
+
+    def click_on_logo(self):
+        HelpersMbs.delay(1)
+        logo_click = wait_for_element_clickable(self.driver, *MyProfilePageLocators.SYSTEM_LOGO)
+        logo_click.click()

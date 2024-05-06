@@ -3,8 +3,7 @@ from selenium import webdriver
 
 def initialize_driver():
     options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")  # Uncomment this line to run in headless mode
-
+    # options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
     return driver
 
