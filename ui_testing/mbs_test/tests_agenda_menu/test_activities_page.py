@@ -40,21 +40,23 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.assertEqual(actual_text, expected_text)
 
-    def test_verify_field_values_on_card(self):
+    def test_verify_field_values_on_last_card(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
+
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-        valid_activity_details = TestActivityDetailsUsers(ValidActivityDetails.activity_name, ValidActivityDetails.
-                                                          activity_text, ValidActivityDetails.hour,
-                                                          ValidActivityDetails.
-                                                          day)
-
+        # Verify field values on the last card
         activity_name_text, activity_text_text, hour_text, day_text = self.activities_page.verify_field_values_on_card()
-        HelpersMbs.delay(1)
-        # Assert that the field values on the card match the activity details
+
+        valid_activity_details = TestActivityDetailsUsers(ValidActivityDetails.activity_name,
+                                                          ValidActivityDetails.activity_text,
+                                                          ValidActivityDetails.hour,
+                                                          ValidActivityDetails.day)
+
+        # Assert the details
         assert valid_activity_details.activity_name == activity_name_text
         assert valid_activity_details.activity_text == activity_text_text
         assert valid_activity_details.hour == hour_text

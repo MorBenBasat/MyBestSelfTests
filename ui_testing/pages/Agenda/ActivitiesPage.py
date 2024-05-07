@@ -6,6 +6,7 @@ from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 
+
 class ActivitiesPage:
 
     def __init__(self, driver):
@@ -64,5 +65,4 @@ class ActivitiesPage:
         hour_text = hour_on_card.text
         day_text = day_on_card.text
 
-        # Return the text values
         return activity_name_text, activity_text_text, hour_text, day_text
