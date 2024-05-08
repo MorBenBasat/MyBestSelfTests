@@ -66,3 +66,6 @@ class ActivitiesPage:
         day_text = day_on_card.text
 
         return activity_name_text, activity_text_text, hour_text, day_text
+
+    def click_on_add_activity_to_agenda(self):
+       add_to_activity_btn = wait_for_element_clickable(self.driver,*ActivitiesLocators.ADDING_ACTIVITY_TO_AGENDA_BTN)

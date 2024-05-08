@@ -18,4 +18,5 @@ class ActivitiesLocators:
     CARD_TIME = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[1]/p[2]',
     CARD_DAY = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[1]/p[3]'
     ALL_CARDS = By.CLASS_NAME, 'p-card-body'
-
+    ADDING_ACTIVITY_TO_AGENDA_BTN = By.XPATH,'/html/body/app-root/div/div[2]/app-activities/div/div/div[' \
+                                             '1]/p-card/div/div/div[2]/p-footer/button[2]'

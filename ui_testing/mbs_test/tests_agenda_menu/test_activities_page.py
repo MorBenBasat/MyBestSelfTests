@@ -49,13 +49,11 @@ class TestActivitiesPage(unittest.TestCase):
         self.activities_page.navigate_to_activities_page()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         HelpersMbs.delay(2)
-        # Get all cards before creating the new activity
+
         all_cards_before = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
         count_before = len(all_cards_before)
 
-        # Get all cards after creating the new activity
         all_cards_after = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
         count_after = len(all_cards_after)
 
-        # Check if the count increased by 1 after creating the activity
         assert count_after == count_before + 1, "New activity was not added successfully"
