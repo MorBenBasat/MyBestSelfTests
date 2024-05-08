@@ -17,3 +17,5 @@ class ActivitiesLocators:
                                    '1]/p[1]'
     CARD_TIME = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[1]/p[2]',
     CARD_DAY = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[1]/p[3]'
+    ALL_CARDS = By.CLASS_NAME, 'p-card-body'
+

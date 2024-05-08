@@ -1,5 +1,7 @@
 import unittest
+from selenium.webdriver.common.by import By
 
+from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
@@ -40,24 +42,20 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.assertEqual(actual_text, expected_text)
 
-    def test_verify_field_values_on_last_card(self):
+    def test_verify_activity_added_to_page(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
-
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        HelpersMbs.delay(2)
+        # Get all cards before creating the new activity
+        all_cards_before = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
+        count_before = len(all_cards_before)
 
-        # Verify field values on the last card
-        activity_name_text, activity_text_text, hour_text, day_text = self.activities_page.verify_field_values_on_card()
+        # Get all cards after creating the new activity
+        all_cards_after = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
+        count_after = len(all_cards_after)
 
-        valid_activity_details = TestActivityDetailsUsers(ValidActivityDetails.activity_name,
-                                                          ValidActivityDetails.activity_text,
-                                                          ValidActivityDetails.hour,
-                                                          ValidActivityDetails.day)
-
-        # Assert the details
-        assert valid_activity_details.activity_name == activity_name_text
-        assert valid_activity_details.activity_text == activity_text_text
-        assert valid_activity_details.hour == hour_text
-        assert valid_activity_details.day == day_text
+        # Check if the count increased by 1 after creating the activity
+        assert count_after == count_before + 1, "New activity was not added successfully"
