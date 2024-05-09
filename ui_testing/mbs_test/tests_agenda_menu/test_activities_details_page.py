@@ -158,11 +158,11 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
         activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
-        hour = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.HOUR_FIELD)
+        hour_text = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.HOUR_FIELD)
 
         activity_name_text = activity_name.text
         activity_description_text = activity_description.text
-        hour_text = hour.text
+        hour_text = hour_text.text
 
         assert activity_name_text == "", "Activity name field is not clear"
         assert activity_description_text == "", "Activity description field is not clear"

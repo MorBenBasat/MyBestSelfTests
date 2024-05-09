@@ -222,3 +222,12 @@ class ActivitiesDetailsPage:
         green_alert_element = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.GREEN_ALERT)
         green_alert_text = green_alert_element.text
         return green_alert_text
+
+    def verify_hour(self):
+        hour_field = wait_for_element_presence(self.driver,*ActivitiesDetailsLocators.HOUR_TEXT)
+        hour_field_text = hour_field.text
+
+        min_field = wait_for_element_presence(self.driver,*ActivitiesDetailsLocators.MIN_TEXT)
+        min_field_text = min_field.text
+
+        return hour_field_text,min_field_text
