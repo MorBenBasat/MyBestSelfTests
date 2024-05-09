@@ -25,12 +25,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.agenda_page = MyAgendaPage(self.driver)
 
     def test_success_navigation_activities_details_page(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
                          print('Activities Details Page Open!'))
         self.driver.quit()
 
     def test_create_activity(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         HelpersMbs.delay(1)
@@ -40,6 +42,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
@@ -50,6 +53,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_why_i_do_this(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(NoFillWhyImDoingThis)
 
@@ -60,6 +64,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_no_fill_activities_details_fields(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(NoFillField)
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
@@ -137,6 +142,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual(actual_text, expected_text)
 
     def test_verify_mandatory_text_my_activity(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_my_activity_mandatory_text(expected_text)
