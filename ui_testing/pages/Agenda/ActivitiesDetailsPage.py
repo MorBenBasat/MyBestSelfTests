@@ -63,7 +63,8 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
 
-        activity_description_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
+        activity_description_field = wait_for_element_presence(self.driver,
+                                                               *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
         activity_description_field.send_keys(ActivityDetails.activity_text)
 
         time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
@@ -217,17 +218,21 @@ class ActivitiesDetailsPage:
             print('Text is not as expected. Actual text:', my_activity_text.text)
         return my_activity_text.text
 
-    def green_creation_alert(self,ActivityDetails):
+    def green_creation_alert(self, ActivityDetails):
         self.create_activity_details(ActivityDetails)
         green_alert_element = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.GREEN_ALERT)
         green_alert_text = green_alert_element.text
         return green_alert_text
 
     def verify_hour(self):
-        hour_field = wait_for_element_presence(self.driver,*ActivitiesDetailsLocators.HOUR_TEXT)
+        time_field = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.TIME_FIELD)
+        time_field.click()
+        HelpersMbs.delay(2)
+
+        hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.HOUR_TEXT)
         hour_field_text = hour_field.text
 
-        min_field = wait_for_element_presence(self.driver,*ActivitiesDetailsLocators.MIN_TEXT)
+        min_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MIN_TEXT)
         min_field_text = min_field.text
 
-        return hour_field_text,min_field_text
+        return hour_field_text, min_field_text

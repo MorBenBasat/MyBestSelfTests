@@ -101,12 +101,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_choose_day_and_remove(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.select_day_and_remove(ValidActivityDetails)
         assert ActivitiesDetailsLocators.DAY_IN_DAYS_FIELD not in ActivitiesDetailsLocators.DAYS_FIELD
         print("Day successfully removed!")
 
     def test_click_all_day_radio_btn(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         days_field = self.activities_details_page.radio_all_days_click(ValidActivityDetails)
 
@@ -120,12 +122,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         assert len(days_list) == 7, f"Expected 7 days, but found {len(days_list)} days:\n{days_list}"
 
     def test_verify_not_exist_day(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'No results found'
         actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
         self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
 
     def test_verify_mandatory_text_hour_field(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_hour_mandatory_text(expected_text)
@@ -158,17 +162,25 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
         activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
-        hour_text = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.HOUR_FIELD)
+        hour = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
 
         activity_name_text = activity_name.text
         activity_description_text = activity_description.text
-        hour_text = hour_text.text
+        hour_text = hour.text
 
         assert activity_name_text == "", "Activity name field is not clear"
         assert activity_description_text == "", "Activity description field is not clear"
         assert hour_text == "", "Hour field is not clear"
 
+        hour_text, min_text = self.activities_details_page.verify_hour()
+
         current_time = datetime.now().strftime("%H:%M")
-        assert hour_text == current_time, f"Hour field does not display current time. Expected: {current_time}, Actual: {hour_text}"
+        expected_time = f"{current_time[:2]}:{min_text}"
+
+        assert hour_text == current_time[
+                            :2], "hour error"
+        assert min_text == current_time[
+                           3:], "min error"
+        assert expected_time == f"{current_time[:2]}:{min_text}", "time error"
 
         print("clear!")
