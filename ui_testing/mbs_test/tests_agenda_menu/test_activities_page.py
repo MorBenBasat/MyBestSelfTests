@@ -61,3 +61,6 @@ class TestActivitiesPage(unittest.TestCase):
     def test_add_to_activity_btn_verify_btn_name_change(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
+
+        self.activities_page.click_on_add_activity_to_agenda()
+
