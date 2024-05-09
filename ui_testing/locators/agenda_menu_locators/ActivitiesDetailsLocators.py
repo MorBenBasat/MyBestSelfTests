@@ -60,3 +60,5 @@ class ActivitiesDetailsLocators:
     GREEN_ALERT_TEXT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div/div/div[2]'
     GREEN_ALERT = By.XPATH, "/html/body/app-root/div/p-toast/div/p-toastitem/div/div"
     AGENDA_MENU = By.XPATH, "/html/body/app-root/div/div[1]/app-header/p-menubar/div/p-menubarsub/ul/li[2]/div/a"
+    HOUR_FIELD = By.XPATH,"/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input-wrapper[" \
+                          "3]/div/app-input-date-field/div/p-calendar/span/input"

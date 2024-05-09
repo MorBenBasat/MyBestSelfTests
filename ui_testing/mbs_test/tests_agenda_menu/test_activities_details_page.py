@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime
 
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPage import ActivitiesPage
@@ -149,13 +150,25 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         assert ValidActivityDetails.activity_name in green_alert_text
         print(f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה בשם : ")
 
+    from datetime import datetime
+
     def test_verify_clear_fields_navigate_drop_list(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
+
         activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+        activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
+        hour = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.HOUR_FIELD)
 
         activity_name_text = activity_name.text
+        activity_description_text = activity_description.text
+        hour_text = hour.text
 
         assert activity_name_text == "", "Activity name field is not clear"
+        assert activity_description_text == "", "Activity description field is not clear"
+        assert hour_text == "", "Hour field is not clear"
+
+        current_time = datetime.now().strftime("%H:%M")
+        assert hour_text == current_time, f"Hour field does not display current time. Expected: {current_time}, Actual: {hour_text}"
+
         print("clear!")
