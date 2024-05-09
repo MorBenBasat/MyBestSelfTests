@@ -95,6 +95,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.driver.quit()
 
     def test_choose_time_by_arrows(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.select_time_by_arrows()
         print("All arrows has been clicked!")
@@ -126,7 +127,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'No results found'
         actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
-        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+        self.assertEqual(actual_text, expected_text)
 
     def test_verify_mandatory_text_hour_field(self):
         self.login_page.success_login()
@@ -142,12 +143,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual(actual_text, expected_text)
 
     def test_verify_mandatory_days_text(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.activities_details_page.verify_day_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
 
     def test_verify_activity_name_equals_green_alert_text(self):
+        self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         green_alert_text = self.activities_details_page.green_creation_alert(ValidActivityDetails)
 

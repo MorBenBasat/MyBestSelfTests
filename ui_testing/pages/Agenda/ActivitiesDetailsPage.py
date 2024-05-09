@@ -254,3 +254,5 @@ class ActivitiesDetailsPage:
         assert day_field_text == "באיזה ימים זה קורה", "Day field is not showing the default"
 
         return self.verify_hour()
+
+
