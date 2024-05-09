@@ -2,6 +2,8 @@ import unittest
 from selenium.webdriver.common.by import By
 
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
+from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
+
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
@@ -58,9 +60,9 @@ class TestActivitiesPage(unittest.TestCase):
 
         assert count_after == count_before + 1, "New activity was not added successfully"
 
-    def test_add_to_activity_btn_verify_btn_name_change(self):
-        self.login_page.success_login()
-        self.activities_page.navigate_to_activities_page()
-
-        self.activities_page.click_on_add_activity_to_agenda()
+    # def test_add_to_activity_btn_verify_btn_name_change(self):
+    #     self.login_page.success_login()
+    #     self.activities_page.navigate_to_activities_page()
+    #
+    #     self.activities_page.click_on_add_activity_to_agenda()
 

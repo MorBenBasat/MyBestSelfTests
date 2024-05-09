@@ -147,3 +147,11 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         assert ValidActivityDetails.activity_name in green_alert_text
         print(f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה בשם : ")
+
+    def test_verify_clear_fields_navigate_drop_list(self):
+        self.login_page.success_login()
+        self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
+        activity_name = self.driver.find_element(ActivitiesDetailsLocators.MY_ACTIVITY)
+        activity_name_text = activity_name.text
+
+        assert activity_name_text == "", "Activity name field is not clear"
