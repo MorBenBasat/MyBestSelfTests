@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 class ActivitiesDetailsLocators:
     MY_ACTIVITY = By.XPATH, '//*[@id="activityName"]'
-    WHY_I_DO_THIS = By.XPATH, '//*[@id="activityDescription"]'
+    ACTIVITY_DESCRIPTION = By.XPATH, '//*[@id="activityDescription"]'
     TIME_FIELD = By.XPATH, '//*[@id="activityTime"]/span/input'
     HOUR_ARROW_UP = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[1]/button[1]'
     HOUR_ARROW_DOWN = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[1]/button[2]'

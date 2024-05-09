@@ -10,6 +10,7 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName, NoFillWhyImDoingThis, \
     NoFillField
+from waits.wait import wait_for_element_visibility
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -151,7 +152,10 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_clear_fields_navigate_drop_list(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
-        activity_name = self.driver.find_element(ActivitiesDetailsLocators.MY_ACTIVITY)
+        activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+
         activity_name_text = activity_name.text
 
         assert activity_name_text == "", "Activity name field is not clear"
+        print("clear!")

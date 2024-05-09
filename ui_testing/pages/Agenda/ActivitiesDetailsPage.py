@@ -21,11 +21,16 @@ class ActivitiesDetailsPage:
         self.helpers.navigation_to_url(self.pageUrl)
 
     def navigate_to_activities_details_page_by_drop_list(self):
+        agenda_menu = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.AGENDA_MENU)
+        action_chains = ActionChains(self.driver)
+        action_chains.move_to_element(agenda_menu).perform()
+        HelpersMbs.delay(1)
+
         click_add_new_activity_detail = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
                                                                    DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
-
         click_add_new_activity_detail.click()
-        HelpersMbs.delay(2)
+
+        HelpersMbs.delay(1)
 
     def navigate_to_activities_details_page_by_plus_btn(self):
         HelpersMbs.delay(1)
@@ -48,8 +53,9 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(2)
         my_activity_field.send_keys(ActivityDetails.activity_name)
 
-        why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
+        activity_description_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.
+                                                               ACTIVITY_DESCRIPTION)
+        activity_description_field.send_keys(ActivityDetails.activity_text)
 
     def fill_fields_until_day_field(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
@@ -57,8 +63,8 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
 
-        why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
+        activity_description_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
+        activity_description_field.send_keys(ActivityDetails.activity_text)
 
         time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         time_field_open.click()
@@ -69,7 +75,7 @@ class ActivitiesDetailsPage:
         fill_hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         fill_hour_field.send_keys(ActivityDetails.hour)
 
-        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
         random_click.click()
         HelpersMbs.delay(2)
 
@@ -103,8 +109,9 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
 
-        why_i_do_this_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
-        why_i_do_this_field.send_keys(ActivityDetails.activity_text)
+        activity_description_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.
+                                                               ACTIVITY_DESCRIPTION)
+        activity_description_field.send_keys(ActivityDetails.activity_text)
 
         time_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         time_field_open.click()
@@ -115,7 +122,7 @@ class ActivitiesDetailsPage:
         fill_hour_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         fill_hour_field.send_keys(ActivityDetails.hour)
 
-        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.WHY_I_DO_THIS)
+        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
         random_click.click()
         HelpersMbs.delay(1)
 
