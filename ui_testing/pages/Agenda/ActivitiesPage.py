@@ -54,23 +54,21 @@ class ActivitiesPage:
             print('Text is not as expected. Actual text:', alert_text.text)
         return alert_text.text
 
-    def verify_field_values_on_card(self):
-        activity_name_on_card = self.driver.find_element(*ActivitiesLocators.CARD_ACTIVITY_NAME)
-        activity_text_on_card = self.driver.find_element(*ActivitiesLocators.CARD_WHY_I_DO_THIS)
-        hour_on_card = self.driver.find_element(*ActivitiesLocators.CARD_TIME)
-        day_on_card = self.driver.find_element(*ActivitiesLocators.CARD_DAY)
-
-        activity_name_text = activity_name_on_card.text
-        activity_text_text = activity_text_on_card.text
-        hour_text = hour_on_card.text
-        day_text = day_on_card.text
-
-        return activity_name_text, activity_text_text, hour_text, day_text
-
-    # def click_on_add_activity_to_agenda(self,expected_btn_text): add_to_activity_btn = wait_for_element_clickable(
-    # self.driver, *ActivitiesLocators.ADDING_ACTIVITY_TO_AGENDA_BTN) add_to_activity_btn.click()
-    #
-    #     HelpersMbs.delay(2)
-#     #להמשיך!!!
-
-
+#     def verify_field_values_on_card(self):
+#         activity_name_on_card = self.driver.find_element(*ActivitiesLocators.CARD_ACTIVITY_NAME)
+#         activity_text_on_card = self.driver.find_element(*ActivitiesLocators.CARD_WHY_I_DO_THIS)
+#         hour_on_card = self.driver.find_element(*ActivitiesLocators.CARD_TIME)
+#         day_on_card = self.driver.find_element(*ActivitiesLocators.CARD_DAY)
+#
+#         activity_name_text = activity_name_on_card.text
+#         activity_text_text = activity_text_on_card.text
+#         hour_text = hour_on_card.text
+#         day_text = day_on_card.text
+#
+#         return activity_name_text, activity_text_text, hour_text, day_text
+#
+#     # def click_on_add_activity_to_agenda(self,expected_btn_text): add_to_activity_btn = wait_for_element_clickable(
+#     # self.driver, *ActivitiesLocators.ADDING_ACTIVITY_TO_AGENDA_BTN) add_to_activity_btn.click()
+#     #
+#     #     HelpersMbs.delay(2)
+# #     #להמשיך!!!

@@ -11,7 +11,6 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails, NoFillActivityName, NoFillWhyImDoingThis, \
     NoFillField
-from waits.wait import wait_for_element_visibility
 
 
 class TestActivitiesDetailsPage(unittest.TestCase):
@@ -162,8 +161,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         assert ValidActivityDetails.activity_name in green_alert_text
         print(f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה בשם : ")
-
-    from datetime import datetime
 
     def test_verify_clear_fields_navigate_drop_list(self):
         self.login_page.success_login()
