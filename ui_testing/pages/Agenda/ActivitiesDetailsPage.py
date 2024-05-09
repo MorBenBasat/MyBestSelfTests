@@ -225,7 +225,7 @@ class ActivitiesDetailsPage:
         return green_alert_text
 
     def verify_hour(self):
-        time_field = wait_for_element_clickable(self.driver,*ActivitiesDetailsLocators.TIME_FIELD)
+        time_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         time_field.click()
         HelpersMbs.delay(2)
 
@@ -236,3 +236,21 @@ class ActivitiesDetailsPage:
         min_field_text = min_field.text
 
         return hour_field_text, min_field_text
+
+    def verify_clear_fields_navigate_drop_list(self):
+        activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
+        hour_field = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        day_field = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+
+        activity_name_text = activity_name.text
+        activity_description_text = activity_description.text
+        hour_text = hour_field.text
+        day_field_text = day_field.text
+
+        assert activity_name_text == "", "Activity name field is not clear"
+        assert activity_description_text == "", "Activity description field is not clear"
+        assert hour_text == "", "Hour field is not clear"
+        assert day_field_text == "באיזה ימים זה קורה", "Day field is not showing the default"
+
+        return self.verify_hour()

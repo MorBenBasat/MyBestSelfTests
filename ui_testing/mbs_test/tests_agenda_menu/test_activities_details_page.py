@@ -159,28 +159,13 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_clear_fields_navigate_drop_list(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
-
-        activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
-        activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
-        hour = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
-
-        activity_name_text = activity_name.text
-        activity_description_text = activity_description.text
-        hour_text = hour.text
-
-        assert activity_name_text == "", "Activity name field is not clear"
-        assert activity_description_text == "", "Activity description field is not clear"
-        assert hour_text == "", "Hour field is not clear"
-
-        hour_text, min_text = self.activities_details_page.verify_hour()
+        hour_text, min_text = self.activities_details_page.verify_clear_fields_navigate_drop_list()
 
         current_time = datetime.now().strftime("%H:%M")
         expected_time = f"{current_time[:2]}:{min_text}"
 
-        assert hour_text == current_time[
-                            :2], "hour error"
-        assert min_text == current_time[
-                           3:], "min error"
-        assert expected_time == f"{current_time[:2]}:{min_text}", "time error"
+        assert hour_text == current_time[:2], "Hour error"
+        assert min_text == current_time[3:], "Minute error"
+        assert expected_time == f"{current_time[:2]}:{min_text}", "Time error"
 
-        print("clear!")
+        print("Clear!")
