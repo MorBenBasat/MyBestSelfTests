@@ -74,3 +74,24 @@ class ActivitiesDetailsLocators:
     SATURDAY_BTN = By.XPATH, "/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input" \
                              "-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div" \
                              "/div[2]/ul/p-multiselectitem[7]/li/div/div"
+    SUNDAY_TEXT = By.XPATH,"/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input" \
+                           "-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[" \
+                           "2]/ul/p-multiselectitem[1]/li/span"
+    MONDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                           '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[' \
+                           '2]/ul/p-multiselectitem[2]/li/span'
+    TUESDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                            '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                            '/div[2]/ul/p-multiselectitem[3]/li/span'
+    WEDNESDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                              '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                              '/div[2]/ul/p-multiselectitem[4]/li/span'
+    THURSDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                             '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                             '/div[2]/ul/p-multiselectitem[5]/li/span'
+    FRIDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                           '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div/div[' \
+                           '2]/ul/p-multiselectitem[6]/li/span'
+    SATURDAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                             '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
+                             '/div[2]/ul/p-multiselectitem[7]/li/span'
