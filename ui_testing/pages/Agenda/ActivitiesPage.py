@@ -8,18 +8,6 @@ from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators 
 from selenium.webdriver.common.by import By
 
 
-def get_day_button_locator(day):
-    day_locators = {
-        "ראשון": ActivitiesDetailsLocators.SUNDAY_TEXT,
-        "שני": ActivitiesDetailsLocators.MONDAY_TEXT,
-        "שלישי": ActivitiesDetailsLocators.TUESDAY_TEXT,
-        "רביעי": ActivitiesDetailsLocators.WEDNESDAY_TEXT,
-        "חמישי": ActivitiesDetailsLocators.THURSDAY_TEXT,
-        "שישי": ActivitiesDetailsLocators.FRIDAY_TEXT,
-        "שבת": ActivitiesDetailsLocators.SATURDAY_TEXT
-
-    }
-    return day_locators.get(day)
 
 
 class ActivitiesPage:
@@ -68,13 +56,4 @@ class ActivitiesPage:
         else:
             print('Text is not as expected. Actual text:', alert_text.text)
         return alert_text.text
-
-    def select_day_radio_button(self, day):
-        day_button_locator = get_day_button_locator(day)
-        if day_button_locator:
-            day_button = wait_for_element_clickable(self.driver, *day_button_locator)
-            day_button.click()
-            print(f"Clicked on {day}")
-        else:
-            print(f"No locator found for {day}. Please provide a valid day.")
 

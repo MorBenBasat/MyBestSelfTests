@@ -8,6 +8,19 @@ from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDe
 from pages.LoginPage import LoginPage
 
 
+def get_day_button_locator(day):
+    day_locators = {
+        "ראשון": ActivitiesDetailsLocators.SUNDAY_TEXT,
+        "שני": ActivitiesDetailsLocators.MONDAY_TEXT,
+        "שלישי": ActivitiesDetailsLocators.TUESDAY_TEXT,
+        "רביעי": ActivitiesDetailsLocators.WEDNESDAY_TEXT,
+        "חמישי": ActivitiesDetailsLocators.THURSDAY_TEXT,
+        "שישי": ActivitiesDetailsLocators.FRIDAY_TEXT,
+        "שבת": ActivitiesDetailsLocators.SATURDAY_TEXT
+    }
+    return day_locators.get(day)
+
+
 class ActivitiesDetailsPage:
     def __init__(self, driver):
         self.driver = driver
@@ -255,4 +268,15 @@ class ActivitiesDetailsPage:
 
         return self.verify_hour()
 
-
+    def select_day_radio_button(self, day):
+        day_button_locator = get_day_button_locator(day)
+        days_field = wait_for_element_clickable(*ActivitiesDetailsLocators.DAYS_FIELD)
+        days_field.click()
+        if day_button_locator:
+            day_button = wait_for_element_clickable(self.driver, *day_button_locator)
+            HelpersMbs.delay(1)
+            day_button.click()
+            HelpersMbs.delay(1)
+            print(f"Clicked on {day}")
+        else:
+            print(f"No locator found for {day}. Please provide a valid day.")
