@@ -4,7 +4,22 @@ from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocat
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
-from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
+from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators  # Import the appropriate locator file
+from selenium.webdriver.common.by import By
+
+
+def get_day_button_locator(day):
+    day_locators = {
+        "ראשון": ActivitiesDetailsLocators.SUNDAY_TEXT,
+        "שני": ActivitiesDetailsLocators.MONDAY_TEXT,
+        "שלישי": ActivitiesDetailsLocators.TUESDAY_TEXT,
+        "רביעי": ActivitiesDetailsLocators.WEDNESDAY_TEXT,
+        "חמישי": ActivitiesDetailsLocators.THURSDAY_TEXT,
+        "שישי": ActivitiesDetailsLocators.FRIDAY_TEXT,
+        "שבת": ActivitiesDetailsLocators.SATURDAY_TEXT
+
+    }
+    return day_locators.get(day)
 
 
 class ActivitiesPage:
@@ -54,21 +69,12 @@ class ActivitiesPage:
             print('Text is not as expected. Actual text:', alert_text.text)
         return alert_text.text
 
-#     def verify_field_values_on_card(self):
-#         activity_name_on_card = self.driver.find_element(*ActivitiesLocators.CARD_ACTIVITY_NAME)
-#         activity_text_on_card = self.driver.find_element(*ActivitiesLocators.CARD_WHY_I_DO_THIS)
-#         hour_on_card = self.driver.find_element(*ActivitiesLocators.CARD_TIME)
-#         day_on_card = self.driver.find_element(*ActivitiesLocators.CARD_DAY)
-#
-#         activity_name_text = activity_name_on_card.text
-#         activity_text_text = activity_text_on_card.text
-#         hour_text = hour_on_card.text
-#         day_text = day_on_card.text
-#
-#         return activity_name_text, activity_text_text, hour_text, day_text
-#
-#     # def click_on_add_activity_to_agenda(self,expected_btn_text): add_to_activity_btn = wait_for_element_clickable(
-#     # self.driver, *ActivitiesLocators.ADDING_ACTIVITY_TO_AGENDA_BTN) add_to_activity_btn.click()
-#     #
-#     #     HelpersMbs.delay(2)
-# #     #להמשיך!!!
+    def select_day_radio_button(self, day):
+        day_button_locator = get_day_button_locator(day)
+        if day_button_locator:
+            day_button = wait_for_element_clickable(self.driver, *day_button_locator)
+            day_button.click()
+            print(f"Clicked on {day}")
+        else:
+            print(f"No locator found for {day}. Please provide a valid day.")
+
