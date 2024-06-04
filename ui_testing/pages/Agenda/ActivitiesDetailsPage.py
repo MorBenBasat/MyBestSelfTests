@@ -270,7 +270,7 @@ class ActivitiesDetailsPage:
 
     def select_day_radio_button(self, day):
         day_button_locator = get_day_button_locator(day)
-        days_field = wait_for_element_clickable(*ActivitiesDetailsLocators.DAYS_FIELD)
+        days_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
         days_field.click()
         if day_button_locator:
             day_button = wait_for_element_clickable(self.driver, *day_button_locator)

@@ -30,4 +30,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.disconnect_system.click_on_disconnect_btn()
         self.disconnect_system.verify_username_is_clear()
 
+    def tearDown(self):
+        self.driver.quit()
+
 

@@ -187,4 +187,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.fill_fields_until_day_field(NoFillField)
-        self.activities_details_page.select_day_radio_button("ראשון")
+        self.activities_details_page.select_day_radio_button("שלישי")
+
