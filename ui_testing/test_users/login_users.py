@@ -1,4 +1,4 @@
-from test_users.register_users import  ValidRegistrationUser
+from test_users.register_users import ValidRegistrationUser
 
 
 class TestLoginUsers:

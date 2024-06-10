@@ -8,8 +8,6 @@ from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators 
 from selenium.webdriver.common.by import By
 
 
-
-
 class ActivitiesPage:
 
     def __init__(self, driver):
@@ -56,4 +54,3 @@ class ActivitiesPage:
         else:
             print('Text is not as expected. Actual text:', alert_text.text)
         return alert_text.text
-
