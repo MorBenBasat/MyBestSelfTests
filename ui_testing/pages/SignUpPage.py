@@ -32,8 +32,8 @@ class SignUpPage:
         user_name = wait_for_element_visibility(self.driver, *SignUpLocators.REGISTER_USERNAME)
         user_name.send_keys(UserRegistration.username)
 
-        gender_selection_male = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
-        gender_selection_female = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+        gender_selection_male = wait_for_element_clickable(self.driver, *SignUpLocators.GENDER_RADIO_MALE)
+        gender_selection_female = wait_for_element_clickable(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
 
         if UserRegistration.gender == 'זכר':
             gender_selection_male.click()

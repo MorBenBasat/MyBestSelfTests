@@ -1,3 +1,7 @@
+import random
+import string
+
+
 class TestRegisterUsers:
     def __init__(self, firstname, lastname, email, username, gender, password, confirm_password):
         self.firstname = firstname
@@ -9,31 +13,37 @@ class TestRegisterUsers:
         self.confirm_password = confirm_password
 
 
-ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "sasax1221vdvs", "זכר",
-                                          "123456test", "123456test")
-InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "test", "זכר", "123436test", "123456")
-NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "", "123456")
-DifferentPasswordAndConfirm = TestRegisterUsers("first", "last", "test@gmail.com", "test123", "זכר", "123123test",
-                                                "123456test")
-FemaleRadioSelection = TestRegisterUsers("female", "female", "validemail@gmail.com", "testusername123", "נקבה",
+def random_username(length=8):
+    letters = string.ascii_letters + string.digits
+    return ''.join(random.choice(letters) for _ in range(length))
+
+
+# Example usage:
+ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", random_username(),
+                                          "נקבה", "123456test", "123456test")
+InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", random_username(), "זכר",
+                                            "123436test", "123456")
+NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", random_username(), "זכר", "",
+                                           "123456")
+DifferentPasswordAndConfirm = TestRegisterUsers("first", "last", "test@gmail.com", random_username(), "זכר",
+                                                "123123test", "123456test")
+FemaleRadioSelection = TestRegisterUsers("female", "female", "validemail@gmail.com", random_username(), "נקבה",
                                          "123456test", "123456test")
 
-NoFirstNameRegistration = TestRegisterUsers("", "last", "test@gmail.com", "test123", "זכר", "123123test",
-                                            "123456test")
-
-NoLastNameRegistration = TestRegisterUsers("first", "", "test@gmail.com", "test123", "זכר", "123123test",
-                                           "123456test")
-
-NoEmailRegistration = TestRegisterUsers("first", "last", "", "test123", "זכר", "123123test",
+NoFirstNameRegistration = TestRegisterUsers("", "last", "test@gmail.com", random_username(), "זכר",
+                                            "123123test", "123456test")
+NoLastNameRegistration = TestRegisterUsers("first", "", "test@gmail.com", random_username(), "זכר",
+                                           "123123test", "123456test")
+NoEmailRegistration = TestRegisterUsers("first", "last", "", random_username(), "זכר", "123123test",
                                         "123456test")
-NoFillRegistrationFields = TestRegisterUsers("", "", "", "", "", "", "")
-InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testusername12", "זכר",
-                                          "123456test", "123456test")
-InvalidLengthPassword = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testusername12", "זכר",
-                                          "InvalidPasswordLength123", "InvalidPasswordLength123")
-FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "femaleSelection1233", "נקבה",
-                                          "123456test", "123456test")
-MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "maleSelection1233", "זכר",
+NoFillRegistrationFields = TestRegisterUsers("", "", "", random_username(), "", "", "")
+InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(),
+                                          "זכר", "123456test", "123456test")
+InvalidLengthPassword = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(),
+                                          "זכר", "InvalidPasswordLength123", "InvalidPasswordLength123")
+FemaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(),
+                                          "נקבה", "123456test", "123456test")
+MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(), "זכר",
                                         "123456test", "123456test")
-ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", "1411hMMg45o", "זכר",
-                                           "123456test", "123456test")
+ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", random_username(),
+                                           "זכר", "123456test", "123456test")

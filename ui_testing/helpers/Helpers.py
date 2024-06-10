@@ -3,6 +3,8 @@ import time
 from locators.MyProfilePageLocators import MyProfilePageLocators
 from waits import wait
 from selenium.webdriver.common.by import By
+import random
+import string
 
 from waits.wait import wait_for_element_clickable
 
@@ -53,3 +55,6 @@ class HelpersMbs:
         HelpersMbs.delay(1)
         logo_click = wait_for_element_clickable(self.driver, *MyProfilePageLocators.SYSTEM_LOGO)
         logo_click.click()
+
+    # Example usage:
+
