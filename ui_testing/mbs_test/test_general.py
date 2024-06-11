@@ -1,6 +1,5 @@
 import unittest
 
-from helpers.DisconnectSystem import DisconnectSystem
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
 from pages.LoginPage import LoginPage
@@ -21,4 +20,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, print("My profile open on logo click "))
 
     def tearDown(self):
-        pass
+        self.driver.quit()
+
+    if __name__ == '__main__':
+        unittest.main()

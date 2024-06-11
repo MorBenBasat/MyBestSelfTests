@@ -64,8 +64,8 @@ class SignUpPage:
 
         HelpersMbs.delay(1)
 
-        female_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
-        male_button = wait_for_element_visibility(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+        female_button = wait_for_element_presence(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
+        male_button = wait_for_element_presence(self.driver, *SignUpLocators.GENDER_RADIO_FEMALE)
 
         if female_button.is_selected():
             print("The female radio button is selected.")
@@ -138,3 +138,5 @@ class SignUpPage:
         else:
             print("Unexpected message:", already_exist.text)
             return None
+
+

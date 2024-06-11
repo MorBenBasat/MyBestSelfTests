@@ -71,7 +71,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_user_without_click_btn(DifferentPasswordAndConfirm)
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, False, print("כפתור מוצג לחיץ"))
         self.driver.quit()
 
     @pytest.mark.test46

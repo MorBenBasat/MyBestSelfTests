@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 import random
 import string
 
-from waits.wait import wait_for_element_clickable
+from waits.wait import wait_for_element_clickable, wait_for_element_visibility
 
 
 class HelpersMbs:
@@ -18,8 +18,8 @@ class HelpersMbs:
         HelpersMbs.delay(2)
 
     def alerts_display(self):
-        alert = wait.wait_for_element_visibility(self.driver, By.XPATH,
-                                                 '/html/body/app-root/div/p-toast/div/p-toastitem/div/div')
+        alert = wait_for_element_visibility(self.driver, By.XPATH,
+                                            '/html/body/app-root/div/p-toast/div/p-toastitem/div/div')
         if alert.is_displayed():
             verify_msg = alert.text
             return verify_msg
@@ -57,4 +57,3 @@ class HelpersMbs:
         logo_click.click()
 
     # Example usage:
-

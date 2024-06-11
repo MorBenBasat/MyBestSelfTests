@@ -21,7 +21,7 @@ def random_username(length=8):
 # Example usage:
 ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", random_username(),
                                           "נקבה", "123456test", "123456test")
-InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", random_username(), "זכר",
+InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidemail", "asd1231", "זכר",
                                             "123436test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", random_username(), "זכר", "",
                                            "123456")
@@ -36,8 +36,8 @@ NoLastNameRegistration = TestRegisterUsers("first", "", "test@gmail.com", random
                                            "123123test", "123456test")
 NoEmailRegistration = TestRegisterUsers("first", "last", "", random_username(), "זכר", "123123test",
                                         "123456test")
-NoFillRegistrationFields = TestRegisterUsers("", "", "", random_username(), "", "", "")
-InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(),
+NoFillRegistrationFields = TestRegisterUsers("", "", "", "", "", "", "")
+InvalidLengthUserName = TestRegisterUsers("test123", "258963", "validemail@gmail.com", "testtesttest",
                                           "זכר", "123456test", "123456test")
 InvalidLengthPassword = TestRegisterUsers("test123", "258963", "validemail@gmail.com", random_username(),
                                           "זכר", "InvalidPasswordLength123", "InvalidPasswordLength123")
