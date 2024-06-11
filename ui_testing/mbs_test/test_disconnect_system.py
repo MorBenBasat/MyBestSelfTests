@@ -16,19 +16,22 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_click_disconnect_btn(self):
         self.login_page.success_login()
         self.disconnect_system.click_on_disconnect_btn()
-        self.assertEqual(PagesUrlMbs.logout, self.driver.current_url,
-                         print("login page open after click on disconnect btn"))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.logout, "Login page should open after clicking on disconnect button")
 
     def test_click_on_logo(self):
         self.login_page.success_login()
         self.disconnect_system.click_on_logo()
-        self.assertEqual(PagesUrlMbs.login, self.driver.current_url,
-                         print("login page open after click on logo"))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "My profile page should open after clicking on logo")
 
     def test_verify_fields_cleared(self):
         self.login_page.success_login()
         self.disconnect_system.click_on_disconnect_btn()
-        self.disconnect_system.verify_username_is_clear()
+        username_value = self.disconnect_system.verify_username_is_clear()
+        self.assertEqual(username_value, "", "Username field should be clear after disconnect")
 
     def tearDown(self):
         self.driver.quit()
+
+
+if __name__ == '__main__':
+    unittest.main()

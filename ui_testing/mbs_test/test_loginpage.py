@@ -21,7 +21,6 @@ class TestLoginPage(unittest.TestCase):
     def test_successful_login(self):
         self.login_page.success_login()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
-        print(self.helpers.alerts_display())
         self.driver.quit()
 
     @pytest.mark.test30
