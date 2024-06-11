@@ -34,19 +34,20 @@ class ActivitiesPage:
                                                               FOLDER_BTN_OPEN_ALL_ACTIVITIES)
         click_on_folder_icon_btn.click()
 
-    def edit_exist_activity(self, text_fill):
+    def edit_exist_activity(self):
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
         edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         edit_the_activity.clear()
         HelpersMbs.delay(1)
-        edit_the_activity.send_keys(text_fill)
+
+        edit_the_activity.send_keys(HelpersMbs.random_string())
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         confirm_btn.click()
         HelpersMbs.delay(1)
 
-    def update_alert(self, expected_text, text_fill):
-        self.edit_exist_activity(text_fill)
+    def update_alert(self, expected_text):
+        self.edit_exist_activity()
         alert_text = wait_for_element_presence(self.driver, *ActivitiesLocators.ACTIVATE_ALERT_CONFIRM)
 
         if alert_text.text == expected_text:

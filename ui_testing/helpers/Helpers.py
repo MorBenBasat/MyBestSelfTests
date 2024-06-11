@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 import random
 import string
 
-from waits.wait import wait_for_element_clickable, wait_for_element_visibility
+from waits.wait import wait_for_element_clickable, wait_for_element_visibility, wait_for_element_presence
 
 
 class HelpersMbs:
@@ -56,6 +56,15 @@ class HelpersMbs:
         logo_click = wait_for_element_clickable(self.driver, *MyProfilePageLocators.SYSTEM_LOGO)
         logo_click.click()
 
-    def random_username(self=8):
+    def random_string(self=8):
         letters = string.ascii_letters + string.digits
         return ''.join(random.choice(letters) for _ in range(self))
+
+    def update_alert_text(self):
+        alert = wait_for_element_presence(self.driver, By.XPATH,
+                                          '/html/body/app-root/div/p-toast/div/p-toastitem/div/div')
+        if alert.is_displayed():
+            verify_msg = alert.text
+            return verify_msg
+        else:
+            return None
