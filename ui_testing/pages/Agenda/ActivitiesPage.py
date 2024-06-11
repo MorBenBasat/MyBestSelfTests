@@ -38,7 +38,7 @@ class ActivitiesPage:
     def edit_exist_activity(self, text_fill):
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
-        edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         edit_the_activity.clear()
         HelpersMbs.delay(1)
         edit_the_activity.send_keys(text_fill)
@@ -49,6 +49,7 @@ class ActivitiesPage:
     def update_alert(self, expected_text, text_fill):
         self.edit_exist_activity(text_fill)
         alert_text = wait_for_element_presence(self.driver, *ActivitiesLocators.ACTIVATE_ALERT_CONFIRM)
+
         if alert_text.text == expected_text:
             print('הטקסט המצופה', expected_text)
         else:

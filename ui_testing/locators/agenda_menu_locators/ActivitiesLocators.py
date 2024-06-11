@@ -10,7 +10,7 @@ class ActivitiesLocators:
     ADDING_NEW_ACTIVITY = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[2]/p-card/div/div/div[' \
                                     '2]/p-footer/button[2]'
 
-    ACTIVATE_ALERT_CONFIRM = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
+    ACTIVATE_ALERT_CONFIRM = By.XPATH, '/p-toastitem/div/div'
     CARD_ACTIVITY_NAME = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[' \
                                    '1]/h1'
     CARD_WHY_I_DO_THIS = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[1]/p-card/div/div/div[' \

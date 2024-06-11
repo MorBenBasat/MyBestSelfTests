@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 
 class ActivitiesDetailsLocators:
     # FIELDS LOCATORS
-    MY_ACTIVITY = By.XPATH, '//*[@id="activityName"]'
+    MY_ACTIVITY_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                                  '-wrapper[1]/div/app-input-text-field/div/input'
     ACTIVITY_DESCRIPTION = By.XPATH, '//*[@id="activityDescription"]'
     TIME_FIELD = By.XPATH, '//*[@id="activityTime"]/span/input'
     DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \

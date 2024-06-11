@@ -1,9 +1,5 @@
 import unittest
-from selenium.webdriver.common.by import By
-
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
-from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
-
 from pages.Agenda.ActivitiesPage import ActivitiesPage
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
@@ -46,18 +42,23 @@ class TestActivitiesPage(unittest.TestCase):
 
     def test_verify_activity_added_to_page(self):
         self.login_page.success_login()
+        self.activities_page.navigate_to_activities_page()
+
+        all_cards_before = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)  #
+        count_before = len(all_cards_before)
+
         self.activities_details_page.navigate_to_activities_details_page()
+
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        HelpersMbs.delay(2)
 
-        all_cards_before = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
-        count_before = len(all_cards_before)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # יורד עד סוף הדף
+        HelpersMbs.delay(2)
 
         all_cards_after = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)
         count_after = len(all_cards_after)
 
+        print(count_before, count_after)
         assert count_after == count_before + 1, "New activity was not added successfully"
 
     # def test_add_to_activity_btn_verify_btn_name_change(self):
@@ -65,4 +66,3 @@ class TestActivitiesPage(unittest.TestCase):
     #     self.activities_page.navigate_to_activities_page()
     #
     #     self.activities_page.click_on_add_activity_to_agenda()
-

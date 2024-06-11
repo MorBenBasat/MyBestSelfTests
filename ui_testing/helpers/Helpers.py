@@ -56,4 +56,7 @@ class HelpersMbs:
         logo_click = wait_for_element_clickable(self.driver, *MyProfilePageLocators.SYSTEM_LOGO)
         logo_click.click()
 
-    # Example usage:
+    def random_username(self=8):
+        letters = string.ascii_letters + string.digits
+        return ''.join(random.choice(letters) for _ in range(self))
+
