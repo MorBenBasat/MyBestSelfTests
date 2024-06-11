@@ -32,5 +32,3 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
-

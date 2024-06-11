@@ -43,5 +43,5 @@ MaleGenderSelection = TestRegisterUsers("test123", "258963", "validemail@gmail.c
                                         ,
                                         "123456test", "123456test")
 ValidRegisterUserExist = TestRegisterUsers("first name", "lastname", "validemail@gmail.com", HelpersMbs.random_username(
-                                            ),
+),
                                            "זכר", "123456test", "123456test")

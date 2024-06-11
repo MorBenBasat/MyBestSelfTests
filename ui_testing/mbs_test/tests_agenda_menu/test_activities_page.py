@@ -7,7 +7,7 @@ from pages.Agenda.ActivitiesDetailsPage import ActivitiesDetailsPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
-from test_users.activities_details_users import TestActivityDetailsUsers, ValidActivityDetails
+from test_users.activities_details_users import ValidActivityDetails
 
 
 class TestActivitiesPage(unittest.TestCase):
@@ -23,7 +23,7 @@ class TestActivitiesPage(unittest.TestCase):
     def test_success_navigation_activities_page(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print('Activities page opens propelry'))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print('Activities page opens properly'))
 
     def test_open_activities_by_drop_list(self):
         self.login_page.success_login()
@@ -52,7 +52,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
 
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # יורד עד סוף הדף
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         HelpersMbs.delay(2)
 
         all_cards_after = self.driver.find_elements(*ActivitiesLocators.ALL_CARDS)

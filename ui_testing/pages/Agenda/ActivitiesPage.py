@@ -5,7 +5,6 @@ from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators  # Import the appropriate locator file
-from selenium.webdriver.common.by import By
 
 
 class ActivitiesPage:

@@ -25,7 +25,6 @@ class TestRecoverPage(unittest.TestCase):
     def test_success_sending_email(self):
         self.recover_password.navigation_to_recover_password_page()
         self.recover_password.send_email(ValidEmail)
-        # need to add asserttion
 
     def test_verify_mandatory_email_field(self):
         self.recover_password.navigation_to_recover_password_page()
@@ -55,4 +54,3 @@ class TestRecoverPage(unittest.TestCase):
     def test_click_login_btn(self):
         self.recover_password.click_login_btn()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.login, print("נפתח דף כניסה למערכת"))
-

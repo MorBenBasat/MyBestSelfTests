@@ -59,4 +59,3 @@ class HelpersMbs:
     def random_username(self=8):
         letters = string.ascii_letters + string.digits
         return ''.join(random.choice(letters) for _ in range(self))
-
