@@ -1,3 +1,5 @@
+import time
+
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -46,12 +48,4 @@ class ActivitiesPage:
         confirm_btn.click()
         HelpersMbs.delay(1)
 
-    def update_alert(self, expected_text):
-        self.edit_exist_activity()
-        alert_text = wait_for_element_presence(self.driver, *ActivitiesLocators.ACTIVATE_ALERT_CONFIRM)
 
-        if alert_text.text == expected_text:
-            print('הטקסט המצופה', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', alert_text.text)
-        return alert_text.text

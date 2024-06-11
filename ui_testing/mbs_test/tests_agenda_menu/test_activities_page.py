@@ -38,7 +38,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
         expected_text = f"עדכון פריט סדר יום\nפריט סדר יום: {HelpersMbs.random_string()} התעדכן בהצלחה"
-        self.activities_page.update_alert(expected_text)
+        self.activities_page.edit_exist_activity()
 
         actual_text = HelpersMbs(self.driver).update_alert_text()
 

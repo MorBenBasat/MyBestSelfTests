@@ -1,6 +1,7 @@
 import time
 
 from locators.MyProfilePageLocators import MyProfilePageLocators
+from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from waits import wait
 from selenium.webdriver.common.by import By
 import random
@@ -61,10 +62,7 @@ class HelpersMbs:
         return ''.join(random.choice(letters) for _ in range(self))
 
     def update_alert_text(self):
-        alert = wait_for_element_presence(self.driver, By.XPATH,
-                                          '/html/body/app-root/div/p-toast/div/p-toastitem/div/div')
-        if alert.is_displayed():
-            verify_msg = alert.text
-            return verify_msg
-        else:
-            return None
+        green_alert = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.UPDATE_ALERT)
+        update_alert_text = green_alert.text
+        return update_alert_text
+
