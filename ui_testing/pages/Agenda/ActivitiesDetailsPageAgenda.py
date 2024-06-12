@@ -117,10 +117,6 @@ class ActivitiesDetailsPage:
         min_arrow_down.click()
         HelpersMbs.delay(1)
 
-        hour_arrow_up_click = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.HOUR_ARROW_UP)
-        hour_arrow_up_click.click()
-        HelpersMbs.delay(1)
-
     def fill_all_activities_details_without_btn_click(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         my_activity_field.click()
@@ -171,11 +167,11 @@ class ActivitiesDetailsPage:
 
     def radio_all_days_click(self, ActivityDetails):
         self.fill_fields_until_time_field(ActivityDetails)
-        click_open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
-        click_open_days_field.click()
+        open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        open_days_field.click()
         HelpersMbs.delay(1)
-        click_all_days_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.PICK_ALL_DAYS_RADIO_BTN)
-        click_all_days_btn.click()
+        all_days_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.PICK_ALL_DAYS_RADIO_BTN)
+        all_days_btn.click()
         return wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
 
     def write_unexist_day_in_day_search(self, expected_message):
@@ -288,3 +284,5 @@ class ActivitiesDetailsPage:
     def get_time_value(self):
         time_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         return time_field.get_attribute("value")
+
+

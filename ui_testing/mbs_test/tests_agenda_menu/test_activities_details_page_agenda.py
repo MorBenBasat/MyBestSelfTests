@@ -202,3 +202,5 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.fill_fields_until_day_field(NoFillField)
         self.activities_details_page.select_day_radio_button("שלישי")
 
+    def test_delete_day(self):
+        pass
