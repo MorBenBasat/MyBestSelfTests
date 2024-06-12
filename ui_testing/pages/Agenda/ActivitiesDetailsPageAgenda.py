@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains, Keys
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -140,7 +142,6 @@ class ActivitiesDetailsPage:
         random_click.click()
         HelpersMbs.delay(1)
 
-        # Fill days field only if day is not None
         if ActivityDetails.day is not None:
             days_field_open = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
             days_field_open.click()
@@ -176,20 +177,20 @@ class ActivitiesDetailsPage:
 
     def write_unexist_day_in_day_search(self, expected_message):
         HelpersMbs.delay(2)
-        click_open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
-        click_open_days_field.click()
+        open_days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        open_days_field.click()
         HelpersMbs.delay(1)
-        write_day_in_search_field = wait_for_element_visibility(self.driver,
-                                                                *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
-        write_day_in_search_field.send_keys("not exist")
+        write_day_search_field = wait_for_element_visibility(self.driver,
+                                                             *ActivitiesDetailsLocators.DAYS_SEARCH_FIELD)
+        write_day_search_field.send_keys("not exist")
         HelpersMbs.delay(1)
-        alert_message_not_exist = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.NO_FOUND_DAY_ALERT)
+        text_no_exist_day = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.NO_FOUND_DAY_ALERT)
         HelpersMbs.delay(1)
-        if alert_message_not_exist.text == expected_message:
+        if text_no_exist_day.text == expected_message:
             print('text is as expected', expected_message)
         else:
-            print('Text is not as expected.Actual text:', alert_message_not_exist)
-        return alert_message_not_exist.text
+            print('Text is not as expected.Actual text:', text_no_exist_day)
+        return text_no_exist_day.text
 
     def verify_my_activity_mandatory_text(self, expected_text):
         HelpersMbs.delay(1)
@@ -285,4 +286,15 @@ class ActivitiesDetailsPage:
         time_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         return time_field.get_attribute("value")
 
+    def add_and_delete_day(self, ActivityDetails):
+        self.fill_fields_until_day_field(ActivityDetails)
+        time_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        time_field.click()
+        time.sleep(1)
 
+        day_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
+        day_selection.click()
+        time.sleep(1)
+
+        delete_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DELETE_DAY_BTN)
+        delete_day.click()

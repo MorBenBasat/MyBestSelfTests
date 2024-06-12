@@ -7,8 +7,9 @@ class ActivitiesDetailsLocators:
                                   '-wrapper[1]/div/app-input-text-field/div/input'
     ACTIVITY_DESCRIPTION = By.XPATH, '//*[@id="activityDescription"]'
     TIME_FIELD = By.XPATH, '//*[@id="activityTime"]/span/input'
-    DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
-                           '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[2]/div'
+    DAYS_FIELD = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form' \
+                           '/app-input-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[2]/div'
+
     # ARROW FIELD LOCATORS
     HOUR_ARROW_UP = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[1]/button[1]'
     HOUR_ARROW_DOWN = By.XPATH, '//*[@id="activityTime"]/span/div/div/div[1]/button[2]'
@@ -105,3 +106,6 @@ class ActivitiesDetailsLocators:
                               '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/p-overlay/div/div/div' \
                               '/div[2]/ul/p-multiselectitem[7]/li/span'
     UPDATE_ALERT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
+
+    DELETE_DAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
+                               '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[2]/div/div'
