@@ -58,7 +58,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         click_confirm_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         click_confirm_btn.click()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
     def fill_fields_until_time_field(self, ActivityDetails):
         my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
@@ -115,6 +115,10 @@ class ActivitiesDetailsPage:
 
         min_arrow_down = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.MIN_ARROW_DOWN)
         min_arrow_down.click()
+        HelpersMbs.delay(1)
+
+        hour_arrow_up_click = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.HOUR_ARROW_UP)
+        hour_arrow_up_click.click()
         HelpersMbs.delay(1)
 
     def fill_all_activities_details_without_btn_click(self, ActivityDetails):
@@ -280,3 +284,7 @@ class ActivitiesDetailsPage:
             print(f"Clicked on {day}")
         else:
             print(f"No locator found for {day}. Please provide a valid day.")
+
+    def get_time_value(self):
+        time_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
+        return time_field.get_attribute("value")

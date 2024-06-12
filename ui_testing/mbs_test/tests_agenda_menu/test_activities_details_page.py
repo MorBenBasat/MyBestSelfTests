@@ -37,7 +37,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         HelpersMbs.delay(1)
         print(self.helpers.alerts_display())
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'activities page shown')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'Activities page shown')
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
@@ -46,7 +46,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.activities_details_page.create_activity_details(NoFillActivityName)
+        self.activities_details_page.fill_all_activities_details_without_btn_click(NoFillActivityName)
         self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ ללא מילוי שם משימה"))
 
         self.driver.quit()
@@ -54,11 +54,12 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_no_fill_why_i_do_this(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.create_activity_details(NoFillWhyImDoingThis)
+        self.activities_details_page.fill_all_activities_details_without_btn_click(NoFillWhyImDoingThis)
 
-        confirm_btn_able = HelpersMbs.is_enabled(self.driver, ActivitiesDetailsLocators.ACTIVITIES_DETAILS_CONFIRM_BTN)
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
+                                                     ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.assertEqual(confirm_btn_able, True, print("כפתור מוצג לחיץ לאחר אי מילוי מדוע אני עושה את זה"))
+        self.assertEqual(confirm_btn_disable, False, print("כפתור מוצג לחיץ לאחר אי מילוי מדוע אני עושה את זה"))
 
         self.driver.quit()
 
@@ -101,8 +102,20 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_choose_time_by_arrows(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
+
+        # Capture the initial time value
+        initial_time = self.activities_details_page.get_time_value()
+
+        # Perform the time adjustments
         self.activities_details_page.select_time_by_arrows()
-        print("All arrows has been clicked!")
+
+        # Capture the final time value
+        final_time = self.activities_details_page.get_time_value()
+
+        print(final_time,initial_time)
+        # Assert that the initial and final time values are different
+        self.assertNotEqual(initial_time, final_time, "The time should have changed after using the arrows")
+
         self.driver.quit()
 
     def test_choose_day_and_remove(self):
