@@ -295,9 +295,8 @@ class ActivitiesDetailsPage:
         day_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
         day_selection.click()
         time.sleep(1)
-        delete_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DELETE_DAY_BTN)
-        delete_day.click()
+
+        day_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
+        day_selection.click()
 
         return days_field
-
-

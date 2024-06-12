@@ -112,7 +112,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         # Capture the final time value
         final_time = self.activities_details_page.get_time_value()
 
-        print(final_time,initial_time)
+        print(final_time, initial_time)
         # Assert that the initial and final time values are different
         self.assertNotEqual(initial_time, final_time, "The time should have changed after using the arrows")
 
@@ -205,4 +205,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_delete_day(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        self.activities_details_page.add_and_delete_day(NoFillField)
+        days_field = self.activities_details_page.add_and_delete_day(NoFillField)
+
+        days_text = days_field.text
+        print('days selected ' + '[' + days_text + ']')
+
+        days_list = days_text.split('\n')
+        print(f"days_length: {len(days_list)} #this is not day this is placeholder")
+
+        HelpersMbs.delay(1)
+        assert "באיזה ימים זה קורה" in days_text
+        self.driver.quit()
