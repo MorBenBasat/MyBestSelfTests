@@ -68,4 +68,7 @@ class LoginPage:
             print('Text is not as expected. Actual text:', selector.text)
         return selector.text
 
-
+    def success_login_alert(self):
+        alert = wait_for_element_presence(self.driver, *LoginPageLocators.SUCCESS_LOGIN_ALERT)
+        alert_text = alert.text
+        return alert_text
