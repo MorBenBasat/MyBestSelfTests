@@ -203,4 +203,6 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.select_day_radio_button("שלישי")
 
     def test_delete_day(self):
-        pass
+        self.login_page.success_login()
+        self.activities_details_page.navigate_to_activities_details_page()
+        self.activities_details_page.add_and_delete_day(NoFillField)

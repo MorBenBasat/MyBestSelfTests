@@ -173,7 +173,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
         all_days_btn = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.PICK_ALL_DAYS_RADIO_BTN)
         all_days_btn.click()
-        return wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        return open_days_field
 
     def write_unexist_day_in_day_search(self, expected_message):
         HelpersMbs.delay(2)
@@ -288,13 +288,16 @@ class ActivitiesDetailsPage:
 
     def add_and_delete_day(self, ActivityDetails):
         self.fill_fields_until_day_field(ActivityDetails)
-        time_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
-        time_field.click()
-        time.sleep(1)
 
+        days_field = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
+        days_field.click()
+        time.sleep(1)
         day_selection = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.SUNDAY_BTN)
         day_selection.click()
         time.sleep(1)
-
         delete_day = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.DELETE_DAY_BTN)
         delete_day.click()
+
+        return days_field
+
+

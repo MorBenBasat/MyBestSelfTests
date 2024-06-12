@@ -108,4 +108,5 @@ class ActivitiesDetailsLocators:
     UPDATE_ALERT = By.XPATH, '/html/body/app-root/div/p-toast/div/p-toastitem/div/div'
 
     DELETE_DAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities-details/div/app-form/form/app-input' \
-                               '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[2]/div/div'
+                               '-wrapper[4]/div/app-input-combobox-field/div/p-multiselect/div/div[' \
+                               '2]/div/div/timescircleicon/svg'
