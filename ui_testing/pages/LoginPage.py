@@ -30,7 +30,6 @@ class LoginPage:
         self.driver.maximize_window()
         self.navigate_to_login_page()
         self.login(SuccessLoginUser)
-        HelpersMbs.delay(2)
 
     def fill_without_click_btn(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
