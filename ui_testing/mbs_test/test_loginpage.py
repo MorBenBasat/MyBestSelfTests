@@ -133,7 +133,7 @@ class TestLoginPage(unittest.TestCase):
 
     def test_verify_success_alert_text(self):
         self.login_page.success_login()
-        expected_text = "abc "
+        expected_text = f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}'
         actual_text = self.login_page.success_login_alert(expected_text)
 
         self.assertEqual(actual_text, expected_text)

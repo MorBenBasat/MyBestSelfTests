@@ -33,7 +33,7 @@ class LoginPage:
 
     def fill_without_click_btn(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
-        login_username_input_.send_keys(UserLogin.login)
+        login_username_input_.send_keys(UserLogin.username)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserLogin.password)
 
