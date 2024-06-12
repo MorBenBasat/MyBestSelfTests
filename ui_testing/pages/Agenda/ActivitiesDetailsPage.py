@@ -61,7 +61,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(2)
 
     def fill_fields_until_time_field(self, ActivityDetails):
-        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         my_activity_field.click
         HelpersMbs.delay(2)
         my_activity_field.send_keys(ActivityDetails.activity_name)
@@ -71,7 +71,7 @@ class ActivitiesDetailsPage:
         activity_description_field.send_keys(ActivityDetails.activity_text)
 
     def fill_fields_until_day_field(self, ActivityDetails):
-        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         my_activity_field.click
         HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
@@ -118,7 +118,7 @@ class ActivitiesDetailsPage:
         HelpersMbs.delay(1)
 
     def fill_all_activities_details_without_btn_click(self, ActivityDetails):
-        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        my_activity_field = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         my_activity_field.click()
         HelpersMbs.delay(1)
         my_activity_field.send_keys(ActivityDetails.activity_name)
@@ -209,7 +209,7 @@ class ActivitiesDetailsPage:
         for _ in range(5):
             time_field_open.send_keys(Keys.BACK_SPACE)
         HelpersMbs.delay(1)
-        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        random_click = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         random_click.click()
         my_activity_hour_text = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.
                                                           MY_ACTIVITY_MANDATORY_TEXT)
@@ -251,7 +251,7 @@ class ActivitiesDetailsPage:
         return hour_field_text, min_field_text
 
     def verify_clear_fields_navigate_drop_list(self):
-        activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY)
+        activity_name = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
         activity_description = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
         hour_field = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.TIME_FIELD)
         day_field = wait_for_element_visibility(self.driver, *ActivitiesDetailsLocators.DAYS_FIELD)
