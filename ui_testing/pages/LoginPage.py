@@ -18,7 +18,7 @@ class LoginPage:
 
     def login(self, UserLogin):
         login_username_input_ = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
-        login_username_input_.send_keys(UserLogin.login)
+        login_username_input_.send_keys(UserLogin.username)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserLogin.password)
         login_btn = wait_for_element_clickable(self.driver, *LoginPageLocators.LOGIN_BTN)
@@ -68,7 +68,13 @@ class LoginPage:
             print('Text is not as expected. Actual text:', selector.text)
         return selector.text
 
-    def success_login_alert(self):
+    def success_login_alert(self, expected_text):
         alert = wait_for_element_presence(self.driver, *LoginPageLocators.SUCCESS_LOGIN_ALERT)
-        alert_text = alert.text
-        return alert_text
+        HelpersMbs.delay(1)
+
+        if alert.text == expected_text:
+            print('text is as expected:', expected_text)
+        else:
+            print('Text is not as expected. Actual text:', alert.text)
+        return alert.text
+

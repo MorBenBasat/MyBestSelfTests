@@ -2,8 +2,8 @@ from test_users.register_users import ValidRegistrationUser
 
 
 class TestLoginUsers:
-    def __init__(self, login, password):
-        self.login = login
+    def __init__(self, username, password):
+        self.username = username
         self.password = password
 
 

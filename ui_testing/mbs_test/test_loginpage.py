@@ -130,3 +130,10 @@ class TestLoginPage(unittest.TestCase):
         expected_text = 'כניסה למערכת'
         actual_text = self.login_page.verify_title_login_name(expected_text)
         self.assertEqual(actual_text, expected_text, 'כותרת מציגה כניסה למערכת')
+
+    def test_verify_success_alert_text(self):
+        self.login_page.success_login()
+        actual_text = self.login_page.success_login_alert()
+        expected_text = "abc "
+
+        self.assertEqual(actual_text, expected_text)
