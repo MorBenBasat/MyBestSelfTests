@@ -41,9 +41,9 @@ class ActivitiesDetailsPage:
         action_chains.move_to_element(agenda_menu).perform()
         HelpersMbs.delay(1)
 
-        click_add_new_activity_detail = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
-                                                                   DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
-        click_add_new_activity_detail.click()
+        add_new_activity_detail = wait_for_element_clickable(self.driver, *ActivitiesDetailsLocators.
+                                                             DROP_LIST_NEW_ACTIVITIES_DETAILS_BTN)
+        add_new_activity_detail.click()
 
         HelpersMbs.delay(1)
 

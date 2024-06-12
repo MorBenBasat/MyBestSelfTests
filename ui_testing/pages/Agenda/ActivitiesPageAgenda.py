@@ -3,10 +3,11 @@ import time
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
+from pages.Agenda.ActivitiesDetailsPageAgenda import fil
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
 from waits.wait import wait_for_element_presence, wait_for_element_clickable
-from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators  # Import the appropriate locator file
+from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 
 
 class ActivitiesPage:
@@ -48,4 +49,5 @@ class ActivitiesPage:
         confirm_btn.click()
         HelpersMbs.delay(1)
 
-
+    def verify_activity_creation(self, ActivityDetails):
+        self.driver.create_activity_details(ActivityDetails)
