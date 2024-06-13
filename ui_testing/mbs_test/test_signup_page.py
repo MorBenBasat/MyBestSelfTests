@@ -1,7 +1,8 @@
 import unittest
 import pytest
 
-from helpers.AlertsAndStrings import CompareTextFail, DisableBtn, AfterRegisterLoginSystem, AbleBtn
+from helpers.AlertsAndStrings import CompareTextFail, DisableBtn, AfterRegisterLoginSystem, AbleBtn, UserCreate, \
+    UserExist, SuccessLogin, SignUpPageOpen, UserCreateText
 from locators.SignUpLocators import SignUpLocators
 from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
@@ -25,17 +26,17 @@ class TestSignUp(unittest.TestCase):
     def test_success_navigation_sign_up_page(self):
         self.signup_page.navigate_to_signup_page()
         HelpersMbs.delay(2)
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print("Sign Up Page Open"))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print(SignUpPageOpen.my_string))
         self.driver.quit()
 
     def test_create_registration(self):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_register(ValidRegistrationUser)
         alert = self.helpers.alerts_display()
-        expected_alert_message = f'הרשמה למערכת\nברוך הבא {ValidRegistrationUser.firstname} אנו שמחים שבחרת להצטרך אלינו'
+        expected_alert_message = UserCreateText.alert
 
         HelpersMbs.delay(1)
-        self.assertEqual(alert, expected_alert_message, print('user created successfully'))
+        self.assertEqual(alert, expected_alert_message, print(UserCreate.my_string))
 
     @pytest.mark.test37
     def test_success_registration_and_login(self):
@@ -48,7 +49,7 @@ class TestSignUp(unittest.TestCase):
             alert,
             AfterRegisterLoginSystem.alert)
         print(alert)
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, )
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile,SuccessLogin.my_string)
         self.driver.quit()
 
     @pytest.mark.test38
@@ -128,7 +129,7 @@ class TestSignUp(unittest.TestCase):
     def test_create_with_same_username(self):
         self.signup_page.navigate_to_signup_page()
         result_message = self.signup_page.create_with_same_field(ValidRegisterUserExist)
-        expected_message = 'User already exists.'
+        expected_message = UserExist.alert
         self.assertEqual(result_message, expected_message, CompareTextFail.my_string)
         HelpersMbs.delay(2)
 
