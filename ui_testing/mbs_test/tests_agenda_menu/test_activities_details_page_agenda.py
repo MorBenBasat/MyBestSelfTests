@@ -1,5 +1,7 @@
 import unittest
 from datetime import datetime
+
+from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, DayRemoved
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
 from initialize_driver import initialize_driver
@@ -122,7 +124,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.select_day_and_remove(ValidActivityDetails)
         assert ActivitiesDetailsLocators.DAY_IN_DAYS_FIELD not in ActivitiesDetailsLocators.DAYS_FIELD
-        print("Day successfully removed!")
+        print(DayRemoved.alert)
         self.driver.quit()
 
     def test_click_all_day_radio_btn(self):
@@ -143,7 +145,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_not_exist_day(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        expected_text = 'No results found'
+        expected_text = NoResultText.my_string
         actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
         self.assertEqual(actual_text, expected_text)
         self.driver.quit()
@@ -151,7 +153,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_mandatory_text_hour_field(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        expected_text = 'נא מלא שדה זה לפני שליחה'
+        expected_text = MandatoryFieldText.my_string
         actual_text = self.activities_details_page.verify_hour_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
         self.driver.quit()
@@ -159,14 +161,14 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_mandatory_text_my_activity(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        expected_text = 'נא מלא שדה זה לפני שליחה'
+        expected_text = MandatoryFieldText.my_string
         actual_text = self.activities_details_page.verify_my_activity_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
 
     def test_verify_mandatory_days_text(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        expected_text = 'נא מלא שדה זה לפני שליחה'
+        expected_text = MandatoryFieldText.alert
         actual_text = self.activities_details_page.verify_day_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
         self.driver.quit()
@@ -177,7 +179,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         green_alert_text = self.activities_details_page.green_creation_alert(ValidActivityDetails)
 
         assert ValidActivityDetails.activity_name in green_alert_text
-        print(f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה בשם : ")
+        print(NewActivityCreate.my_string)
         self.driver.quit()
 
     def test_verify_clear_fields_navigate_drop_list(self):
@@ -192,7 +194,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         assert min_text == current_time[3:], "Minute error"
         assert expected_time == f"{current_time[:2]}:{min_text}", "Time error"
 
-        print("Fields clear coming from drop list")
+        print(DropListClearField.my_string)
         self.driver.quit()
 
     def test_verify_day_selected(self):
