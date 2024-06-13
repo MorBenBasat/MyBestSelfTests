@@ -10,7 +10,7 @@ class AlertsString:
 DisableBtn = AlertsString(None, "כפתור מוצג לא לחיץ")
 AbleBtn = AlertsString(None, "כפתור מוצג לחיץ")
 SuccessLogin = AlertsString(None, "כניסה למערכת בוצעה בהצלחה")
-LoginTitleVerify= AlertsString(None, "כותרת מציגה כניסה למערכת")
+LoginTitleVerify = AlertsString(None, "כותרת מציגה כניסה למערכת")
 MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 
 ActivityPageAgendaDropList = AlertsString(None, "Activities Page Agenda Open By Drop List")
@@ -25,10 +25,12 @@ DetailsPageAgendaOpenPlusIcon = AlertsString(None, "Activities Details Page Open
 DetailsPageAgendaOpenDropList = AlertsString(None, "Activities Details Page Open By Drop List!")
 DetailsPageAgendaOpen = AlertsString(None, "Activities page shown")
 TimeDontChange = AlertsString(None, "The time should have changed after using the arrows")
-DaysText = AlertsString(None,"Days Count")
+DaysText = AlertsString(None, "Days Count")
+LogoOpenMyProfile  = AlertsString(None,"My profile open on logo click")
 #############################################################################################
 
 MandatoryFieldText = AlertsString("נא מלא שדה זה לפני שליחה", None)
 NoResultText = AlertsString("No results found", None)
-LoginLengthErrorText = AlertsString("המינימום תווים בשדה זה הוא 6",None)
-LoginTitleText = AlertsString("כניסה למערכת",None)
+LoginLengthErrorText = AlertsString("המינימום תווים בשדה זה הוא 6", None)
+LoginTitleText = AlertsString("כניסה למערכת", None)
+SuccessLoginText = AlertsString("f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}'", None)

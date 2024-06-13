@@ -2,7 +2,7 @@ import unittest
 import pytest
 
 from helpers.AlertsAndStrings import DisableBtn, AbleBtn, SuccessLogin, LoginTitleText, MandatoryText, \
-    LoginLengthErrorText
+    LoginLengthErrorText, MandatoryFieldText, SuccessLoginText
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
@@ -71,7 +71,7 @@ class TestLoginPage(unittest.TestCase):
     @pytest.mark.test98
     def test_verify_mandatory_login_page_text(self):
         self.login_page.navigate_to_login_page()
-        expected_text = 'נא מלא שדה זה לפני שליחה'
+        expected_text = MandatoryFieldText.alert
         actual_text = self.login_page.verify_login_page_mandatory_text(expected_text)
         self.assertEqual(actual_text, expected_text)
 
@@ -135,7 +135,7 @@ class TestLoginPage(unittest.TestCase):
 
     def test_verify_success_alert_text(self):
         self.login_page.success_login()
-        expected_text = f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}'
+        expected_text = SuccessLoginText.alert
         actual_text = self.login_page.success_login_alert(expected_text)
 
         self.assertEqual(actual_text, expected_text)

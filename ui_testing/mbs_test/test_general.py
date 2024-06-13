@@ -1,5 +1,6 @@
 import unittest
 
+from helpers.AlertsAndStrings import LogoOpenMyProfile
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
 from pages.LoginPage import LoginPage
@@ -17,7 +18,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         self.login_page.success_login()
         self.helpers.click_on_logo()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, print("My profile open on logo click "))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, print(LogoOpenMyProfile.my_string))
 
     def tearDown(self):
         self.driver.quit()
