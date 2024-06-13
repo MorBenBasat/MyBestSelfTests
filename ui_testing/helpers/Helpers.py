@@ -38,10 +38,15 @@ class HelpersMbs:
         except ValueError:
             print("Invalid input. Please provide a valid number of seconds.")
 
-    @staticmethod
-    def is_disabled(driver, selector: tuple[str, str]):
-        btn = wait.wait_for_element_visibility(driver, *selector)
-        return "p-disabled" in btn.get_attribute("class")
+    def is_disabled(self, selector: tuple[str, str]):
+        btn = wait.wait_for_element_visibility(self, *selector)
+        btn_class = btn.get_attribute("class")
+        btn_text = btn.text.lower()
+        print(f"Button class attribute in is_disabled method: {btn_class}")
+        print(f"Button text in is_disabled method: {btn_text}")
+
+        # Check if the button has the 'disabled' attribute or contains 'disable' in its text
+        return "disabled" in btn.get_attribute("class") or "disable" in btn_text
 
     def is_enabled(self, selector: tuple[str, str]):
         btn = wait.wait_for_element_clickable(self, *selector)

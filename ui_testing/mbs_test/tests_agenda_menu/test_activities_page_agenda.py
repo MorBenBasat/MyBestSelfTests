@@ -1,5 +1,6 @@
 import unittest
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
+from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
 from initialize_driver import initialize_driver
 from pages.Agenda.ActivitiesDetailsPageAgenda import ActivitiesDetailsPage
@@ -62,3 +63,21 @@ class TestActivitiesPage(unittest.TestCase):
         print(count_before, count_after)
         assert count_after == count_before + 1, "New activity was not added successfully"
 
+    def test_today_btn_disable_default(self):
+        self.login_page.success_login()
+        self.agenda_page.navigate_to_agenda_page()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        HelpersMbs.delay(1)
+
+        # Fetch the button element
+        btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
+        btn_class = btn.get_attribute("class")
+        print(f"Button class attribute: {btn_class}")
+
+        # Check if the button is disabled
+        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, MyAgendaPageLocators.TODAY_BTN)
+        print(f"Is button disabled: {confirm_btn_disable}")
+
+        # Assert that the button is disabled
+        self.assertEqual(confirm_btn_disable, True, "כפתור מוצג לא לחיץ ללא מילוי שם משימה")
+        self.driver.quit()
