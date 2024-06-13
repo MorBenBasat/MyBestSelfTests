@@ -61,14 +61,10 @@ class LoginPage:
         return selector.text
 
     def verify_title_login_name(self, expected_text):
-        selector = wait_for_element_presence(self.driver, *LoginPageLocators.LOGO_LOGIN_NAME)
+        logo = wait_for_element_presence(self.driver, *LoginPageLocators.TITLE_LOGIN_NAME)
         HelpersMbs.delay(1)
-
-        if selector.text == expected_text:
-            print('text is as expected:', expected_text)
-        else:
-            print('', selector.text)
-        return selector.text
+        selector_text = logo.text
+        return HelpersMbs.compare_text(selector_text, expected_text)
 
     def success_login_alert(self, expected_text):
         alert = wait_for_element_presence(self.driver, *LoginPageLocators.SUCCESS_LOGIN_ALERT)
