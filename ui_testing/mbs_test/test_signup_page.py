@@ -10,7 +10,8 @@ from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from pages.LoginPage import LoginPage
 from test_users.register_users import ValidRegistrationUser, NoPasswordRegistration, \
-    DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoFillRegistrationFields \
+    DifferentPasswordAndConfirm, NoFirstNameRegistration, NoLastNameRegistration, NoFillRegistrationFields\
+    \
     , InvalidLengthUserName, InvalidLengthPassword, ValidRegisterUserExist
 
 
