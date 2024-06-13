@@ -53,8 +53,6 @@ class TestRecoverPage(unittest.TestCase):
         HelpersMbs.delay(2)
         self.driver.quit()
 
-
-
     def test_click_register_btn(self):
         self.recover_password.click_register_btn()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print('נפתח דף הרשמה למערכת'))
