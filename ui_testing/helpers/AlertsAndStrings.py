@@ -6,4 +6,8 @@ class Alerts:
         self.alert = alert
 
 
-SuccessLoginUser = Alerts("258963mor")
+DisableBtn = Alerts("כפתור מוצג לא לחיץ")
+AbleBtn = Alerts("כפתור מוצג לחיץ")
+SuccessLogin = Alerts("כניסה למערכת בוצעה בהצלחה")
+LoginTitleText = Alerts("כותרת מציגה כניסה למערכת")
+MandatoryText = Alerts("'טקסט דרישת מילוי מופיע'")

@@ -1,6 +1,7 @@
 import unittest
 import pytest
 
+from helpers.AlertsAndStrings import disable_btn
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators import RecoverPasswordPageLocators
@@ -49,7 +50,7 @@ class TestRecoverPage(unittest.TestCase):
         self.recover_password.navigation_to_recover_password_page()
         email_btn_disable = HelpersMbs.is_disabled(self.driver, RecoverPasswordPageLocators.CONFIRM_BTN)
         self.recover_password.fill_email_without_click_btn(InvalidEmailType)
-        self.assertEqual(email_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(email_btn_disable, True, print(disable_btn))
         HelpersMbs.delay(2)
         self.driver.quit()
 

@@ -1,6 +1,7 @@
 import unittest
 import pytest
 
+from helpers.AlertsAndStrings import DisableBtn, AbleBtn, SuccessLogin, LoginTitleText, MandatoryText
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
@@ -20,7 +21,7 @@ class TestLoginPage(unittest.TestCase):
     @pytest.mark.test29
     def test_successful_login(self):
         self.login_page.success_login()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile,print("כניסה בוצעה בהצלחה"))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, print(SuccessLogin))
         self.driver.quit()
 
     @pytest.mark.test30
@@ -28,7 +29,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(InvalidLogin)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(AbleBtn))
         HelpersMbs.delay(2)
         self.driver.quit()
 
@@ -37,7 +38,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(ValidNameInvalidPassword)
-        self.assertEqual(login_btn_disable, True,print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
         self.driver.quit()
 
     @pytest.mark.test32
@@ -46,7 +47,7 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(InValidNameValidPassword)
         HelpersMbs.delay(1)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
         self.driver.quit()
 
     @pytest.mark.test33
@@ -54,7 +55,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         self.login_page.fill_without_click_btn(NoFillUserName)
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
         self.driver.quit()
 
     @pytest.mark.test34
@@ -63,7 +64,7 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(NoFillPassword)
         HelpersMbs.delay(1)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
         self.driver.quit()
 
     @pytest.mark.test98
@@ -80,14 +81,14 @@ class TestLoginPage(unittest.TestCase):
 
         if not is_username_field_valid or not is_password_field_valid:
             login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
-            self.assertEqual(login_btn_disable, True, 'כפתור מוצג לא לחיץ')
+            self.assertEqual(login_btn_disable, True, DisableBtn)
 
     @pytest.mark.test119
     def test_btn_is_field_valid(self):
         self.login_page.navigate_to_login_page()
         self.login_page.fill_without_click_btn(SuccessLoginUser)
         login_btn_enabled = not HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
-        self.assertEqual(login_btn_enabled, True, print('כפתור מוצג לחיץ'))
+        self.assertEqual(login_btn_enabled, True, print(DisableBtn))
 
         self.driver.quit()
 
@@ -96,7 +97,7 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(UserNameInvalidLength)
         HelpersMbs.delay(2)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
 
         self.driver.quit()
 
@@ -105,7 +106,7 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(PasswordInvalidLength)
         HelpersMbs.delay(1)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
 
         self.driver.quit()
 
@@ -114,7 +115,7 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(FillInvalidLengthFields)
         HelpersMbs.delay(1)
-        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn))
 
         self.driver.quit()
 
@@ -123,13 +124,13 @@ class TestLoginPage(unittest.TestCase):
         expected_text = 'המינימום תווים בשדה זה הוא 6'
         self.login_page.fill_without_click_btn(UserTestForLengthAlert)
         actual_text = self.login_page.verify_login_page_length_alert(expected_text)
-        self.assertEqual(expected_text, actual_text, 'טקסט דרישת מילוי מופיע')
+        self.assertEqual(expected_text, actual_text, MandatoryText)
 
     def test_title_login_name(self):
         self.login_page.navigate_to_login_page()
         expected_text = 'כניסה למערכת'
         actual_text = self.login_page.verify_title_login_name(expected_text)
-        self.assertEqual(actual_text, expected_text, 'כותרת מציגה כניסה למערכת')
+        self.assertEqual(actual_text, expected_text, LoginTitleText)
 
     def test_verify_success_alert_text(self):
         self.login_page.success_login()
