@@ -16,14 +16,14 @@ class RecoverPasswordPage:
         click_forgot_password = wait_for_element_clickable(self.driver,
                                                            *RecoverPasswordPageLocators.FORGOT_PASSWORD_BTN)
         click_forgot_password.click()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
-    def send_email(self, EmailRecoverPassword):
+    def fill_send_email(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
 
         click_to_send = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.CONFIRM_BTN)
         click_to_send.click()
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
     def fill_email_without_click_btn(self, EmailRecoverPassword):
         fill_email = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.EMAIL_FIELD)
