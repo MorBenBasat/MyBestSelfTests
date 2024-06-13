@@ -1,3 +1,5 @@
+import time
+
 from locators.LoginPageLocators import LoginPageLocators
 from pages.Pages_url import PagesUrlMbs
 from test_users.login_users import SuccessLoginUser
@@ -36,6 +38,7 @@ class LoginPage:
         login_username_input_.send_keys(UserLogin.username)
         login_password_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_PASSWORD)
         login_password_input.send_keys(UserLogin.password)
+        time.sleep(1)
 
     def verify_login_page_mandatory_text(self, expected_text):
         selector = wait_for_element_presence(self.driver, *LoginPageLocators.USERNAME_FIELD_MANDATORY_TEXT)
@@ -64,7 +67,7 @@ class LoginPage:
         if selector.text == expected_text:
             print('text is as expected:', expected_text)
         else:
-            print('Text is not as expected. Actual text:', selector.text)
+            print('', selector.text)
         return selector.text
 
     def success_login_alert(self, expected_text):

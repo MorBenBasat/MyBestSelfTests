@@ -66,3 +66,9 @@ class HelpersMbs:
         update_alert_text = green_alert.text
         return update_alert_text
 
+    def check_text_and_print(self, expected_text):
+        if self == expected_text:
+            print('Text is as expected:', expected_text)
+        else:
+            print('Text is not as expected:', self)
+        return self
