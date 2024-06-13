@@ -19,10 +19,12 @@ AgendaPagePageOpen = AlertsString(None, "Activities page opens properly")
 CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
 NewActivityCreate = AlertsString(None, f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה חדשה: ")
 
-NoResultText = AlertsString("No results found")
+NoResultText = AlertsString("No results found",None)
 DayRemoved = AlertsString(None, "Day successfully removed!")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
-ActivitiesDetailsPageAgenda = AlertsString(None, "Activities Details Page Open ByPlus Icon")
+DetailsPageAgendaOpenPlusIcon = AlertsString(None, "Activities Details Page Open By Plus Icon")
+DetailsPageAgendaOpenDropList = AlertsString(None, "Activities Details Page Open By Drop List!")
+
 #############################################################################################
 
 MandatoryFieldText = AlertsString("נא מלא שדה זה לפני שליחה", None)

@@ -1,7 +1,8 @@
 import unittest
 from datetime import datetime
 
-from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, DayRemoved
+from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, \
+    DayRemoved, DetailsPageAgendaOpenDropList
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
 from initialize_driver import initialize_driver
@@ -80,8 +81,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.agenda_page.open_agenda_drop_list()
         self.activities_details_page.navigate_to_activities_details_page_by_drop_list()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
-                         print('Activities Details Page Open By '
-                               'Drop List!'))
+                         print(DetailsPageAgendaOpenDropList.my_string))
 
         self.driver.quit()
 
@@ -145,7 +145,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
     def test_verify_not_exist_day(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-        expected_text = NoResultText.my_string
+        expected_text = NoResultText.alert
         actual_text = self.activities_details_page.write_unexist_day_in_day_search(expected_text)
         self.assertEqual(actual_text, expected_text)
         self.driver.quit()
