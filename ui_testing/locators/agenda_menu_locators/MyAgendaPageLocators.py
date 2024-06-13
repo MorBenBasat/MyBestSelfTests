@@ -11,3 +11,7 @@ class MyAgendaPageLocators:
     # לוקטרים לכניסה לדפי אקטיביטיז ופרטים
     PLUS_BTN_OPEN_ACTIVITY_DETAILS = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/p-button[1]/button'
     FOLDER_BTN_OPEN_ALL_ACTIVITIES = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/p-button[2]/button'
+
+    TODAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/button'
+    YESTERDAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/div/button[1]'
+    TOMORROW_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/div/button[2]'
