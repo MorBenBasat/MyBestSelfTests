@@ -15,7 +15,7 @@ class TestRegisterUsers:
 # Example usage:
 ValidRegistrationUser = TestRegisterUsers("first name", "lastname", "validemail@gmail.com",
                                           HelpersMbs.random_string(),
-                                          "נקבה", "123456test", "123456test")
+                                          "זכר", "123456test", "123456test")
 InvalidRegistrationUser = TestRegisterUsers("first", "last", "Invalidate", "asd1231", "זכר",
                                             "123436test", "123456")
 NoPasswordRegistration = TestRegisterUsers("first", "last", "test@gmail.com", HelpersMbs.random_string(), "זכר", "",

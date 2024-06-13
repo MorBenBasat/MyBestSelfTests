@@ -1,6 +1,7 @@
 import unittest
 import pytest
 
+from helpers.AlertsAndStrings import CompareTextFail, DisableBtn, AfterRegisterLoginSystem, AbleBtn
 from locators.SignUpLocators import SignUpLocators
 from pages.Pages_url import PagesUrlMbs
 from pages.SignUpPage import SignUpPage
@@ -42,12 +43,12 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.create_and_login(ValidRegistrationUser)
         alert = self.helpers.alerts_display()
 
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.assertEqual(
             alert,
-            f'כניסה למערכת\nברוך הבא {ValidRegistrationUser.username}')
+            AfterRegisterLoginSystem.alert)
         print(alert)
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, "כניסה בוצעה בהצלחה")
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, )
         self.driver.quit()
 
     @pytest.mark.test38
@@ -55,7 +56,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoPasswordRegistration)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test39
@@ -63,7 +64,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoFillRegistrationFields)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test40
@@ -71,7 +72,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_user_without_click_btn(DifferentPasswordAndConfirm)
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
-        self.assertEqual(register_btn_disable, False, print("כפתור מוצג לחיץ"))
+        self.assertEqual(register_btn_disable, False, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test46
@@ -79,7 +80,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoFirstNameRegistration)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test47
@@ -87,7 +88,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoLastNameRegistration)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
 
         self.driver.quit()
 
@@ -96,7 +97,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(NoLastNameRegistration)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
 
         self.driver.quit()
 
@@ -105,7 +106,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(InvalidLengthUserName)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test95
@@ -113,7 +114,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
         self.signup_page.create_user_without_click_btn(InvalidLengthPassword)
-        self.assertEqual(register_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(register_btn_disable, True, print(DisableBtn.my_string))
         self.driver.quit()
 
     @pytest.mark.test96
@@ -128,7 +129,7 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         result_message = self.signup_page.create_with_same_field(ValidRegisterUserExist)
         expected_message = 'User already exists.'
-        self.assertEqual(result_message, expected_message, "Expected message does not match actual message.")
+        self.assertEqual(result_message, expected_message, CompareTextFail.my_string)
         HelpersMbs.delay(2)
 
     @pytest.mark.test116
@@ -136,5 +137,5 @@ class TestSignUp(unittest.TestCase):
         self.signup_page.navigate_to_signup_page()
         self.signup_page.create_user_without_click_btn(ValidRegistrationUser)
         register_btn_disable = HelpersMbs.is_disabled(self.driver, SignUpLocators.REGISTER_CREATE_BTN)
-        self.assertEqual(register_btn_disable, False, print("כפתור מוצג לחיץ"))
+        self.assertEqual(register_btn_disable, False, print(AbleBtn.my_string))
         self.driver.quit()

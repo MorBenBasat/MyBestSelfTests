@@ -1,4 +1,6 @@
 from test_users.activities_details_users import ValidActivityDetails
+from test_users.login_users import SuccessLoginUser
+from test_users.register_users import ValidRegistrationUser
 
 
 class AlertsString:
@@ -26,11 +28,14 @@ DetailsPageAgendaOpenDropList = AlertsString(None, "Activities Details Page Open
 DetailsPageAgendaOpen = AlertsString(None, "Activities page shown")
 TimeDontChange = AlertsString(None, "The time should have changed after using the arrows")
 DaysText = AlertsString(None, "Days Count")
-LogoOpenMyProfile  = AlertsString(None,"My profile open on logo click")
+LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
+CompareTextFail = AlertsString(None, "Expected message does not match actual message")
+UserCreate = AlertsString(None,"כניסה בוצעה בהצלחה")
 #############################################################################################
 
 MandatoryFieldText = AlertsString("נא מלא שדה זה לפני שליחה", None)
 NoResultText = AlertsString("No results found", None)
 LoginLengthErrorText = AlertsString("המינימום תווים בשדה זה הוא 6", None)
 LoginTitleText = AlertsString("כניסה למערכת", None)
-SuccessLoginText = AlertsString("f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}'", None)
+SuccessLoginText = AlertsString(f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}', None)
+AfterRegisterLoginSystem = AlertsString(f'כניסה למערכת\nברוך הבא {ValidRegistrationUser.username}', None)
