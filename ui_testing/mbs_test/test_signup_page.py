@@ -49,7 +49,7 @@ class TestSignUp(unittest.TestCase):
             alert,
             AfterRegisterLoginSystem.alert)
         print(alert)
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile,SuccessLogin.my_string)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.my_profile, SuccessLogin.my_string)
         self.driver.quit()
 
     @pytest.mark.test38
