@@ -1,7 +1,8 @@
 import unittest
 import pytest
 
-from helpers.AlertsAndStrings import DisableBtn, AbleBtn, SuccessLogin, LoginTitleText, MandatoryText
+from helpers.AlertsAndStrings import DisableBtn, AbleBtn, SuccessLogin, LoginTitleText, MandatoryText, \
+    LoginLengthErrorText
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators.LoginPageLocators import LoginPageLocators
@@ -115,20 +116,20 @@ class TestLoginPage(unittest.TestCase):
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(FillInvalidLengthFields)
         HelpersMbs.delay(1)
-        self.assertEqual(login_btn_disable, True, print(DisableBtn.alert))
+        self.assertEqual(login_btn_disable, True, print(DisableBtn.my_string))
 
         self.driver.quit()
 
     def test_is_display_invalid_length_alert(self):
         self.login_page.navigate_to_login_page()
-        expected_text = 'המינימום תווים בשדה זה הוא 6'
+        expected_text = LoginLengthErrorText.alert
         self.login_page.fill_without_click_btn(UserTestForLengthAlert)
         actual_text = self.login_page.verify_login_page_length_alert(expected_text)
         self.assertEqual(expected_text, actual_text, MandatoryText.alert)
 
     def test_title_login_name(self):
         self.login_page.navigate_to_login_page()
-        expected_text = 'כניסה למערכת'
+        expected_text = LoginTitleText.alert
         actual_text = self.login_page.verify_title_login_name(expected_text)
         self.assertEqual(actual_text, expected_text, LoginTitleText)
 

@@ -2,7 +2,8 @@ import unittest
 from datetime import datetime
 
 from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, \
-    DayRemoved, DetailsPageAgendaOpenDropList
+    DayRemoved, DetailsPageAgendaOpenDropList, DisableBtn, AbleBtn, DetailsPageAgendaOpen, DaysText
+
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
 from initialize_driver import initialize_driver
@@ -29,7 +30,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.activities_details,
-                         print('Activities Details Page Open!'))
+                         print(DetailsPageAgendaOpen.my_string))
         self.driver.quit()
 
     def test_create_activity(self):
@@ -39,7 +40,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         HelpersMbs.delay(1)
         print(self.helpers.alerts_display())
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, 'Activities page shown')
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities,DetailsPageAgendaOpen.my_string)
         self.driver.quit()
 
     def test_no_fill_my_activity(self):
@@ -49,7 +50,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
         self.activities_details_page.fill_all_activities_details_without_btn_click(NoFillActivityName)
-        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ ללא מילוי שם משימה"))
+        self.assertEqual(confirm_btn_disable, True, print(DisableBtn.my_string))
 
         self.driver.quit()
 
@@ -61,7 +62,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.assertEqual(confirm_btn_disable, False, print("כפתור מוצג לחיץ לאחר אי מילוי מדוע אני עושה את זה"))
+        self.assertEqual(confirm_btn_disable, False, print(AbleBtn.my_string))
 
         self.driver.quit()
 
@@ -72,7 +73,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, ActivitiesDetailsLocators.
                                                      ACTIVITIES_DETAILS_CONFIRM_BTN)
 
-        self.assertEqual(confirm_btn_disable, True, print("כפתור מוצג לא לחיץ"))
+        self.assertEqual(confirm_btn_disable, True, print(DisableBtn.my_string))
 
         self.driver.quit()
 
@@ -89,8 +90,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page_by_plus_btn()
         HelpersMbs.delay(1)
-        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By '
-                                                                              'Plus Icon'))
+        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print(DetailsPageAgendaOpenDropList.my_string))
         self.driver.quit()
 
     def test_verify_match_creating_activity_details(self):
@@ -133,7 +133,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         days_field = self.activities_details_page.radio_all_days_click(ValidActivityDetails)
 
         days_text = days_field.text
-        print('days_text: ' + days_text)
+        print(DaysText.my_string + days_text)
 
         days_list = days_text.split('\n')
         print(f"days_list:  {len(days_list)}, success ")
