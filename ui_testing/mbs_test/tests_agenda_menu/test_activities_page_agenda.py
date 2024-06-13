@@ -67,8 +67,6 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        HelpersMbs.delay(1)
-
         # Fetch the button element
         btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
         btn_class = btn.get_attribute("class")
@@ -79,5 +77,5 @@ class TestActivitiesPage(unittest.TestCase):
         print(f"Is button disabled: {confirm_btn_disable}")
 
         # Assert that the button is disabled
-        self.assertEqual(confirm_btn_disable, True, "כפתור מוצג לא לחיץ ללא מילוי שם משימה")
+        self.assertEqual(confirm_btn_disable, True, "כפתור מוצג לא לחיץ בכניסה לדף ")
         self.driver.quit()

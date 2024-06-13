@@ -28,7 +28,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
         self.login_page.fill_without_click_btn(InvalidLogin)
-        self.assertEqual(login_btn_disable, True, 'כפתור מוצג לא לחיץ')
+        self.assertNotEqual(login_btn_disable, False, print('כפתור מוצג לחיץ'))
         HelpersMbs.delay(2)
         self.driver.quit()
 
@@ -54,7 +54,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         self.login_page.fill_without_click_btn(NoFillUserName)
         login_btn_disable = HelpersMbs.is_disabled(self.driver, LoginPageLocators.LOGIN_BTN)
-        self.assertEqual(login_btn_disable, True, 'כפתור מוצג לא לחיץ')
+        self.assertEqual(login_btn_disable, True, print('כפתור מוצג לא לחיץ'))
         self.driver.quit()
 
     @pytest.mark.test34
