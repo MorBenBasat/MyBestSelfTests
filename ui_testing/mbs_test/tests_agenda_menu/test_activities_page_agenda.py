@@ -62,7 +62,7 @@ class TestActivitiesPage(unittest.TestCase):
         count_after = len(all_cards_after)
 
         print(count_before, count_after)
-        assert count_after == count_before + 1,CardDoesntAdded
+        assert count_after == count_before + 1, CardDoesntAdded
 
     def test_today_btn_disable_default(self):
         self.login_page.success_login()
@@ -76,5 +76,5 @@ class TestActivitiesPage(unittest.TestCase):
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, MyAgendaPageLocators.TODAY_BTN)
         print(f"Is button disabled: {confirm_btn_disable}")
 
-        self.assertEqual(confirm_btn_disable, True, DisableBtn )
+        self.assertEqual(confirm_btn_disable, True, DisableBtn)
         self.driver.quit()
