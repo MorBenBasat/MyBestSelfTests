@@ -1,4 +1,6 @@
 import unittest
+
+from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, AgendaPagePageOpen, CardDoesntAdded
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
@@ -24,13 +26,12 @@ class TestActivitiesPage(unittest.TestCase):
     def test_success_navigation_activities_page(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print('Activities page opens properly'))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print(AgendaPagePageOpen))
 
     def test_open_activities_by_drop_list(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page_by_drop_list()
-        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print('Activities Details Page Open By Drop '
-                                                                              'List'))
+        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print(ActivityPageAgendaDropList))
 
     def test_edit_btn_click_and_update(self):
         self.login_page.success_login()
@@ -61,7 +62,7 @@ class TestActivitiesPage(unittest.TestCase):
         count_after = len(all_cards_after)
 
         print(count_before, count_after)
-        assert count_after == count_before + 1, "New activity was not added successfully"
+        assert count_after == count_before + 1,CardDoesntAdded
 
     def test_today_btn_disable_default(self):
         self.login_page.success_login()
@@ -72,10 +73,8 @@ class TestActivitiesPage(unittest.TestCase):
         btn_class = btn.get_attribute("class")
         print(f"Button class attribute: {btn_class}")
 
-        # Check if the button is disabled
         confirm_btn_disable = HelpersMbs.is_disabled(self.driver, MyAgendaPageLocators.TODAY_BTN)
         print(f"Is button disabled: {confirm_btn_disable}")
 
-        # Assert that the button is disabled
-        self.assertEqual(confirm_btn_disable, True, "כפתור מוצג לא לחיץ בכניסה לדף ")
+        self.assertEqual(confirm_btn_disable, True, DisableBtn )
         self.driver.quit()
