@@ -31,7 +31,7 @@ DaysText = AlertsString(None, "Days Count")
 LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
 CompareTextFail = AlertsString(None, "Expected message does not match actual message")
 UserCreate = AlertsString(None, "User Created")
-SignUpPageOpen = AlertsString(None,"Sign Up Page Open")
+SignUpPageOpen = AlertsString(None, "Sign Up Page Open")
 #############################################################################################
 
 MandatoryFieldText = AlertsString("נא מלא שדה זה לפני שליחה", None)
@@ -41,4 +41,5 @@ LoginTitleText = AlertsString("כניסה למערכת", None)
 SuccessLoginText = AlertsString(f'כניסה למערכת\nברוך הבא {SuccessLoginUser.username}', None)
 AfterRegisterLoginSystem = AlertsString(f'כניסה למערכת\nברוך הבא {ValidRegistrationUser.username}', None)
 UserExist = AlertsString("User already exists", None)
-UserCreateText = AlertsString(f'הרשמה למערכת\nברוך הבא {ValidRegistrationUser.firstname} אנו שמחים שבחרת להצטרך אלינו',None)
+UserCreateText = AlertsString(f'הרשמה למערכת\nברוך הבא {ValidRegistrationUser.firstname} אנו שמחים שבחרת להצטר'
+                              f' אלינו', None)
