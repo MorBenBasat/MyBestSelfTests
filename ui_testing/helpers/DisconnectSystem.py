@@ -23,7 +23,6 @@ class DisconnectSystem:
         click_on_logo = wait_for_element_clickable(self.driver, *DisconnectSystemLocators.LOGO)
         click_on_logo.click()
 
-
     def verify_username_is_clear(self):
         username_input = wait_for_element_presence(self.driver, *LoginPageLocators.LOGINPAGE_USERNAME)
         HelpersMbs.delay(1)

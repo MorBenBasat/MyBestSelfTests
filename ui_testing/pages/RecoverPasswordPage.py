@@ -1,5 +1,5 @@
 from helpers.Helpers import HelpersMbs
-from locators.RecoverPasswordPageLocators import PasswordRecoverPageLocators
+from locators.RecoverPasswordPageLocators import RecoverPasswordPageLocators
 from pages.LoginPage import LoginPage
 from waits.wait import wait_for_element_visibility, wait_for_element_clickable
 
@@ -14,34 +14,34 @@ class RecoverPasswordPage:
         self.driver.maximize_window()
         self.login_page.navigate_to_login_page()
         click_forgot_password = wait_for_element_clickable(self.driver,
-                                                           *PasswordRecoverPageLocators.FORGOT_PASSWORD_BTN)
+                                                           *RecoverPasswordPageLocators.FORGOT_PASSWORD_BTN)
         click_forgot_password.click()
         HelpersMbs.delay(2)
 
     def send_email(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
 
-        click_to_send = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.CONFIRM_BTN)
+        click_to_send = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.CONFIRM_BTN)
         click_to_send.click()
         HelpersMbs.delay(2)
 
     def fill_email_without_click_btn(self, EmailRecoverPassword):
-        fill_email = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.EMAIL_FIELD)
+        fill_email = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.EMAIL_FIELD)
         fill_email.send_keys(EmailRecoverPassword.email)
         HelpersMbs.delay(1)
 
     def invalid_email_login(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
-        invalid_email = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.ERROR_ALERT)
+        invalid_email = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.ERROR_ALERT)
         if invalid_email.text == "נא להזין מייל חוקי":
             return "נא להזין מייל חוקי"
         else:
-            print("Unexpected message:", invalid_email.text)
+            print("Error:", invalid_email.text)
             return None
 
     def mandatory_email_text(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
-        mandatory_text = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.MANDATORY_EMAIL_ALERT)
+        mandatory_text = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.MANDATORY_EMAIL_ALERT)
         if mandatory_text.text == "נא מלא שדה זה לפני שליחה":
             return "נא מלא שדה זה לפני שליחה"
         else:
@@ -50,12 +50,12 @@ class RecoverPasswordPage:
 
     def click_register_btn(self):
         self.navigation_to_recover_password_page()
-        register_btn = wait_for_element_clickable(self.driver, *PasswordRecoverPageLocators.REGISTER_BTN)
+        register_btn = wait_for_element_clickable(self.driver, *RecoverPasswordPageLocators.REGISTER_BTN)
         register_btn.click()
         HelpersMbs.delay(1)
 
     def click_login_btn(self):
         self.navigation_to_recover_password_page()
-        login_btn = wait_for_element_clickable(self.driver, *PasswordRecoverPageLocators.LOGIN_BTN)
+        login_btn = wait_for_element_clickable(self.driver, *RecoverPasswordPageLocators.LOGIN_BTN)
         login_btn.click()
         HelpersMbs.delay(1)

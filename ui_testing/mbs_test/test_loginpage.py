@@ -71,7 +71,7 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.navigate_to_login_page()
         expected_text = 'נא מלא שדה זה לפני שליחה'
         actual_text = self.login_page.verify_login_page_mandatory_text(expected_text)
-        self.assertEqual(actual_text, expected_text, print('טקסט דרישת מילוי מופיע'))
+        self.assertEqual(actual_text, expected_text)
 
     def test_btn_is_field_invalid_and_dirty(self):
         self.login_page.navigate_to_login_page()

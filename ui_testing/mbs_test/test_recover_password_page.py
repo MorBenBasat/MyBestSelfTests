@@ -3,6 +3,8 @@ import pytest
 
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
+from locators import RecoverPasswordPageLocators
+from locators.RecoverPasswordPageLocators import RecoverPasswordPageLocators
 from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from pages.RecoverPasswordPage import RecoverPasswordPage
@@ -45,7 +47,13 @@ class TestRecoverPage(unittest.TestCase):
     @pytest.mark.test80
     def test_not_exist_email(self):
         self.recover_password.navigation_to_recover_password_page()
-        self.recover_password.send_email(NoEmail)
+        email_btn_disable = HelpersMbs.is_disabled(self.driver, RecoverPasswordPageLocators.CONFIRM_BTN)
+        self.recover_password.send_email(InvalidEmailType)
+        self.assertEqual(email_btn_disable, True, print('כפתור מוצג לחיץ'))
+        HelpersMbs.delay(2)
+        self.driver.quit()
+
+
 
     def test_click_register_btn(self):
         self.recover_password.click_register_btn()

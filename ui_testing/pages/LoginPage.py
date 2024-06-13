@@ -41,38 +41,26 @@ class LoginPage:
         time.sleep(1)
 
     def verify_login_page_mandatory_text(self, expected_text):
-        selector = wait_for_element_presence(self.driver, *LoginPageLocators.USERNAME_FIELD_MANDATORY_TEXT)
+        mandatory_field_text = wait_for_element_presence(self.driver, *LoginPageLocators.USERNAME_FIELD_MANDATORY_TEXT)
         HelpersMbs.delay(1)
-
-        if selector.text == expected_text:
-            print('Text is as expected:', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', selector.text)
-        return selector.text
+        mandatory_text = mandatory_field_text.text
+        return HelpersMbs.compare_text(mandatory_text, expected_text)
 
     def verify_login_page_length_alert(self, expected_text):
-        selector = wait_for_element_presence(self.driver, *LoginPageLocators.LENGTH_ALERT)
+        alert = wait_for_element_presence(self.driver, *LoginPageLocators.LENGTH_ALERT)
         HelpersMbs.delay(1)
-
-        if selector.text == expected_text:
-            print('Text is as expected:', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', selector.text)
-        return selector.text
+        alert_text = alert.text
+        return HelpersMbs.compare_text(alert_text, expected_text)
 
     def verify_title_login_name(self, expected_text):
         logo = wait_for_element_presence(self.driver, *LoginPageLocators.TITLE_LOGIN_NAME)
-        HelpersMbs.delay(1)
-        selector_text = logo.text
-        return HelpersMbs.compare_text(selector_text, expected_text)
+        logo_text = logo.text
+        return HelpersMbs.compare_text(logo_text, expected_text)
 
     def success_login_alert(self, expected_text):
         alert = wait_for_element_presence(self.driver, *LoginPageLocators.SUCCESS_LOGIN_ALERT)
         HelpersMbs.delay(1)
+        alert_text = alert.text
+        return HelpersMbs.compare_text(alert_text, expected_text)
 
-        if alert.text == expected_text:
-            print('text is as expected:', expected_text)
-        else:
-            print('Text is not as expected. Actual text:', alert.text)
-        return alert.text
 

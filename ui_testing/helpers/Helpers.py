@@ -39,17 +39,17 @@ class HelpersMbs:
             print("Invalid input. Please provide a valid number of seconds.")
 
     @staticmethod
-    def is_disabled(driver, selector: tuple[str, str]):
-        btn = wait.wait_for_element_visibility(driver, *selector)
+    def is_disabled(driver, locator: tuple[str, str]):
+        btn = wait.wait_for_element_visibility(driver, *locator)
         return "p-disabled" in btn.get_attribute("class")
 
-    def is_enabled(self, selector: tuple[str, str]):
-        btn = wait.wait_for_element_clickable(self, *selector)
+    def is_enabled(self, locator: tuple[str, str]):
+        btn = wait.wait_for_element_clickable(self, *locator)
         return btn.is_enabled()
 
     @staticmethod
-    def is_field_valid(driver, selector: tuple[str, str]):
-        field = wait.wait_for_element_visibility(driver, *selector)
+    def is_field_valid(driver, locator: tuple[str, str]):
+        field = wait.wait_for_element_visibility(driver, *locator)
         return "ng-invalid" not in field.get_attribute("class") or "ng-dirty" not in field.get_attribute("class")
 
     def click_on_logo(self):
