@@ -19,19 +19,19 @@ class RecoverPasswordPage:
         HelpersMbs.delay(2)
 
     def send_email(self, EmailRecoverPassword):
-        self.send_email_without_click_btn(EmailRecoverPassword)
+        self.fill_email_without_click_btn(EmailRecoverPassword)
 
         click_to_send = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.CONFIRM_BTN)
         click_to_send.click()
         HelpersMbs.delay(2)
 
-    def send_email_without_click_btn(self, EmailRecoverPassword):
+    def fill_email_without_click_btn(self, EmailRecoverPassword):
         fill_email = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.EMAIL_FIELD)
         fill_email.send_keys(EmailRecoverPassword.email)
         HelpersMbs.delay(1)
 
     def invalid_email_login(self, EmailRecoverPassword):
-        self.send_email_without_click_btn(EmailRecoverPassword)
+        self.fill_email_without_click_btn(EmailRecoverPassword)
         invalid_email = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.ERROR_ALERT)
         if invalid_email.text == "נא להזין מייל חוקי":
             return "נא להזין מייל חוקי"
@@ -40,7 +40,7 @@ class RecoverPasswordPage:
             return None
 
     def mandatory_email_text(self, EmailRecoverPassword):
-        self.send_email_without_click_btn(EmailRecoverPassword)
+        self.fill_email_without_click_btn(EmailRecoverPassword)
         mandatory_text = wait_for_element_visibility(self.driver, *PasswordRecoverPageLocators.MANDATORY_EMAIL_ALERT)
         if mandatory_text.text == "נא מלא שדה זה לפני שליחה":
             return "נא מלא שדה זה לפני שליחה"
