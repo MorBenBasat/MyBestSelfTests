@@ -17,9 +17,10 @@ MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 
 ActivityPageAgendaDropList = AlertsString(None, "Activities Page Agenda Open By Drop List")
 
-AgendaPagePageOpen = AlertsString(None, "Activities page opens properly")
+AgendaPageOpen = AlertsString(None, "Activities page opens properly")
 CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
 NewActivityCreate = AlertsString(None, f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה חדשה: ")
+AgendaPageOpenByDropList = AlertsString(None,"Agenda page open by drop list!")
 
 DayRemoved = AlertsString(None, "Day successfully removed!")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
