@@ -108,3 +108,7 @@ class HelpersMbs:
         today_date_hebrew = f"{day} ב{month_name_hebrew} {year}"
 
         return today_date_hebrew
+
+    @staticmethod
+    def scroll_to_bottom(driver):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
