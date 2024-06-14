@@ -1,8 +1,10 @@
 import unittest
 
-from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ExpectedDate, ActualDate
+from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ExpectedDate, ActualDate, \
+    DisableBtn, TodayBtnDisable, VerifyTodayDisable
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
+from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.LoginPage import LoginPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
@@ -40,4 +42,19 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.driver.quit()
 
+    def test_today_btn_disable_default(self):
+        self.login_page.success_login()
+        self.agenda_page.navigate_to_agenda_page()
 
+        # Scroll to bottom
+        HelpersMbs.scroll_to_bottom(self.driver)
+
+        # Print the button class for debugging
+        today_btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
+        today_btn.get_attribute("class")
+
+        confirm_btn_disable = HelpersMbs.is_button_disabled(self.driver, *MyAgendaPageLocators.TODAY_BTN)
+        print(f"{VerifyTodayDisable.my_string} {confirm_btn_disable}")
+
+        self.assertEqual(confirm_btn_disable, True, TodayBtnDisable.my_string)
+        self.driver.quit()

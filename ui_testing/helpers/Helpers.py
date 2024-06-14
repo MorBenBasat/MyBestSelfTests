@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 
+from selenium.common import TimeoutException
 from locators.MyProfilePageLocators import MyProfilePageLocators
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from waits import wait
@@ -113,3 +114,11 @@ class HelpersMbs:
     def scroll_to_bottom(driver):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
+
+    def is_button_disabled(self, by, locator, timeout=10):
+        try:
+            # Wait for the button to be present using custom wait function
+            button = wait_for_element_presence(self, by, locator, timeout)
+            return button.get_attribute('disabled') is not None
+        except TimeoutException:
+            return False

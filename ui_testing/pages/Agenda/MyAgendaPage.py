@@ -3,7 +3,7 @@ from selenium.webdriver import ActionChains
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_clickable, wait_for_element_presence
+from waits.wait import wait_for_element_clickable, wait_for_element_presence, wait_for_element_visibility
 
 
 class MyAgendaPage:
@@ -14,7 +14,6 @@ class MyAgendaPage:
 
     def navigate_to_agenda_page(self):
         self.helpers.navigation_to_url(self.pageUrl)
-        HelpersMbs.delay(2)
 
     def open_agenda_drop_list(self):
         HelpersMbs.delay(1)
@@ -35,4 +34,5 @@ class MyAgendaPage:
     def get_title_name_agenda(self):
         title_name = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_TEXT)
         return title_name.text
+
 

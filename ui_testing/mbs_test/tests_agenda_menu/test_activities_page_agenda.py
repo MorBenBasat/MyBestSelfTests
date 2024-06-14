@@ -13,8 +13,7 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails
 from helpers.Helpers import HelpersMbs
-from waits.wait import wait_for_elements, wait_for_element_presence, wait_for_element_visibility
-
+from waits.wait import wait_for_elements
 
 class TestActivitiesPage(unittest.TestCase):
 
@@ -70,17 +69,3 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.driver.quit()
 
-    def test_today_btn_disable_default(self):
-        self.login_page.success_login()
-        self.agenda_page.navigate_to_agenda_page()
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        # Fetch the button element
-        btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
-        btn_class = btn.get_attribute("class")
-        print(f"Button class attribute: {btn_class}")
-
-        confirm_btn_disable = HelpersMbs.is_disabled(self.driver, MyAgendaPageLocators.TODAY_BTN)
-        print(f"Is button disabled: {confirm_btn_disable}")
-
-        self.assertEqual(confirm_btn_disable, True, DisableBtn)
-        self.driver.quit()
