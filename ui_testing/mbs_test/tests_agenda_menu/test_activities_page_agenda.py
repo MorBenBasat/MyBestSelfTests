@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, AgendaPagePageOpen, CardDoesntAdded
+from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, CardDoesntAdded
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
