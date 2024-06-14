@@ -13,7 +13,7 @@ from pages.LoginPage import LoginPage
 from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails
 from helpers.Helpers import HelpersMbs
-from waits.wait import wait_for_elements
+from waits.wait import wait_for_elements, wait_for_element_presence, wait_for_element_visibility
 
 
 class TestActivitiesPage(unittest.TestCase):
@@ -49,17 +49,18 @@ class TestActivitiesPage(unittest.TestCase):
     def test_verify_activity_added_to_page(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
+        HelpersMbs.scroll_to_bottom(self.driver)
 
-        # Use helper method to wait for elements
-        all_cards_before = wait_for_elements(self.driver, ActivitiesLocators.ALL_CARDS)
+        all_cards_before = wait_for_elements(self.driver, ActivitiesLocators.AMOUNT_OF_ACTIVITIES)
         count_before = len(all_cards_before)
+        HelpersMbs.delay(1)
 
         self.activities_details_page.navigate_to_activities_details_page()
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
 
         HelpersMbs.scroll_to_bottom(self.driver)
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
 
         all_cards_after = wait_for_elements(self.driver, ActivitiesLocators.ALL_CARDS)
         count_after = len(all_cards_after)
