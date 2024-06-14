@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 
-from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList
+from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ExpectedDate, ActualDate
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
 from pages.LoginPage import LoginPage
@@ -33,15 +33,11 @@ class TestActivitiesPage(unittest.TestCase):
         self.agenda_page.navigate_to_agenda_page()
 
         today_date = HelpersMbs.get_today_date_in_hebrew()
+        print(ExpectedDate.my_string)
 
-        print(f"Expected date: {today_date}")
-
-        # Fetch the actual day text from the page
         actual_text = self.agenda_page.get_default_day()
+        print(f"{ActualDate.my_string} {actual_text}")
 
-        # Print actual day text for debugging
-        print(f"Actual day text: {actual_text}")
-
-        self.assertEqual(actual_text, today_date, )
+        self.assertEqual(actual_text, today_date, DaysDontMatch.my_string)
 
         self.driver.quit()

@@ -1,6 +1,10 @@
+from helpers.Helpers import HelpersMbs
+from pages.Agenda.MyAgendaPage import MyAgendaPage
 from test_users.activities_details_users import ValidActivityDetails
 from test_users.login_users import SuccessLoginUser
 from test_users.register_users import ValidRegistrationUser
+
+today_date = HelpersMbs.get_today_date_in_hebrew()
 
 
 class AlertsString:
@@ -22,6 +26,7 @@ CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
 NewActivityCreate = AlertsString(None, f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה חדשה: ")
 AgendaPageOpenByDropList = AlertsString(None,"Agenda page open by drop list!")
 
+DaysDontMatch = AlertsString(None,"The displayed day does not match today's date")
 DayRemoved = AlertsString(None, "Day successfully removed!")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
 DetailsPageAgendaOpenPlusIcon = AlertsString(None, "Activities Details Page Open By Plus Icon")
@@ -33,6 +38,9 @@ LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
 CompareTextFail = AlertsString(None, "Expected message does not match actual message")
 UserCreate = AlertsString(None, "User Created")
 SignUpPageOpen = AlertsString(None, "Sign Up Page Open")
+ExpectedDate = AlertsString(None,f"Expected date: {today_date}")
+ActualDate = AlertsString(None,"Actual day text:")
+
 #############################################################################################
 
 MandatoryFieldText = AlertsString("נא מלא שדה זה לפני שליחה", None)
