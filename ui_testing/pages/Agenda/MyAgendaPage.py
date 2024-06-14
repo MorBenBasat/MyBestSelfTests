@@ -29,5 +29,5 @@ class MyAgendaPage:
         click_plus_icon.click()
 
     def get_default_day(self):
-        day_text_element = wait_for_element_presence(self.driver, MyAgendaPageLocators.DAY_TEXT)
+        day_text_element = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_TEXT)
         return day_text_element.text

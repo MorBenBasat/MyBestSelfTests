@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from locators.MyProfilePageLocators import MyProfilePageLocators
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
@@ -73,5 +74,37 @@ class HelpersMbs:
             print('Text is not as expected:', self)
         return self
 
+    @staticmethod
+    def get_today_date_in_hebrew():
+        month_mapping = {
+            "January": "ינואר",
+            "February": "פברואר",
+            "March": "מרץ",
+            "April": "אפריל",
+            "May": "מאי",
+            "June": "יוני",
+            "July": "יולי",
+            "August": "אוגוסט",
+            "September": "ספטמבר",
+            "October": "אוקטובר",
+            "November": "נובמבר",
+            "December": "דצמבר"
+        }
 
+        # Get today's date
+        today = datetime.now()
 
+        # Format the day and year
+        day = today.strftime('%d')
+        year = today.strftime('%Y')
+
+        # Get the month name in English
+        month_name_english = today.strftime('%B')
+
+        # Map the month name to Hebrew
+        month_name_hebrew = month_mapping.get(month_name_english, month_name_english)
+
+        # Construct the date string in the desired format
+        today_date_hebrew = f"{day} ב{month_name_hebrew} {year}"
+
+        return today_date_hebrew
