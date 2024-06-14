@@ -33,9 +33,9 @@ class TestRecoverPage(unittest.TestCase):
         self.recover_password.navigation_to_recover_password_page()
         result_text = self.recover_password.mandatory_email_text(NoEmail)
         expected_text = MandatoryFieldText.alert
-        self.assertEqual(result_text, expected_text)
+        self.assertEqual(result_text, expected_text, print(MandatoryFieldText.alert))
 
-    def test_verify_email_in_gmail(self):
+    def test_verify_email_valid(self):
         pass
 
     @pytest.mark.test79

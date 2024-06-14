@@ -1,3 +1,4 @@
+from helpers.AlertsAndStrings import MandatoryFieldText
 from helpers.Helpers import HelpersMbs
 from locators.RecoverPasswordPageLocators import RecoverPasswordPageLocators
 from pages.LoginPage import LoginPage
@@ -33,8 +34,8 @@ class RecoverPasswordPage:
     def invalid_email_login(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
         invalid_email = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.ERROR_ALERT)
-        if invalid_email.text == "נא להזין מייל חוקי":
-            return "נא להזין מייל חוקי"
+        if invalid_email.text == MandatoryFieldText.alert:
+            return MandatoryFieldText.alert
         else:
             print("Error:", invalid_email.text)
             return None
@@ -42,8 +43,8 @@ class RecoverPasswordPage:
     def mandatory_email_text(self, EmailRecoverPassword):
         self.fill_email_without_click_btn(EmailRecoverPassword)
         mandatory_text = wait_for_element_visibility(self.driver, *RecoverPasswordPageLocators.MANDATORY_EMAIL_ALERT)
-        if mandatory_text.text == "נא מלא שדה זה לפני שליחה":
-            return "נא מלא שדה זה לפני שליחה"
+        if mandatory_text.text == MandatoryFieldText.alert:
+            return MandatoryFieldText.alert
         else:
             print("Unexpected message:", mandatory_text.text)
             return None

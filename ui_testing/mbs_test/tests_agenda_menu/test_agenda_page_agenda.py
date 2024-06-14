@@ -1,5 +1,4 @@
 import unittest
-from datetime import datetime
 
 from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ExpectedDate, ActualDate
 from helpers.Helpers import HelpersMbs
@@ -7,7 +6,6 @@ from initialize_driver import initialize_driver
 from pages.LoginPage import LoginPage
 from pages.Agenda.MyAgendaPage import MyAgendaPage
 from pages.Pages_url import PagesUrlMbs
-import locale
 
 
 class TestActivitiesPage(unittest.TestCase):
@@ -30,7 +28,7 @@ class TestActivitiesPage(unittest.TestCase):
 
     def test_verify_default_day_today(self):
         self.login_page.success_login()
-        self.agenda_page.navigatce_to_agenda_page()
+        self.agenda_page.navigate_to_agenda_page()
 
         today_date = HelpersMbs.get_today_date_in_hebrew()
         print(ExpectedDate.my_string)
