@@ -48,7 +48,7 @@ LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
 CompareTextFail = AlertsString(None, "Expected message does not match actual message")
 ExpectedDate = AlertsString(None, f"Expected date: {today_date}")
 ActualDate = AlertsString(None, "Actual day text:")
-Test = AlertsString("Test",None)
+Testd = AlertsString("Test",None)
 
 #############################################################################################
 
