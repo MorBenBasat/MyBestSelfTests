@@ -24,6 +24,7 @@ SignUpPageOpen = AlertsString(None, "נפתח דף הרשמה למערכת")
 #Activity Strings
 CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
 ActivitiesOpen = AlertsString(None, "Activities page shown")
+ActivityPageDropList = AlertsString(None, "Activities Page Open By Drop List")
 
 
 
@@ -31,7 +32,6 @@ DisableBtn = AlertsString(None, "כפתור מוצג לא לחיץ")
 AbleBtn = AlertsString(None, "כפתור מוצג לחיץ")
 MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 
-ActivityPageAgendaDropList = AlertsString(None, "Activities Page Open By Drop List")
 
 AgendaPageOpen = AlertsString(None, "Agenda page opens properly")
 NewActivityCreate = AlertsString(None, f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה חדשה: ")
@@ -48,6 +48,7 @@ LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
 CompareTextFail = AlertsString(None, "Expected message does not match actual message")
 ExpectedDate = AlertsString(None, f"Expected date: {today_date}")
 ActualDate = AlertsString(None, "Actual day text:")
+Test = AlertsString("Test",None)
 
 #############################################################################################
 
@@ -61,3 +62,5 @@ UserExist = AlertsString("User already exists", None)
 UserCreateText = AlertsString(f'הרשמה למערכת\nברוך הבא {ValidRegistrationUser.firstname} אנו שמחים שבחרת להצטר'
                               f' אלינו', None)
 ValidMailMandatoryMessage = AlertsString("נא להזין מייל חוקי", None)
+#Activity Page Alerts
+UpdateUserAlert = AlertsString( f"עדכון פריט סדר יום\nפריט סדר יום: {HelpersMbs.random_string()} התעדכן בהצלחה",None)

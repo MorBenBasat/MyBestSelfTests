@@ -10,3 +10,4 @@ ValidActivityDetails = TestActivityDetailsUsers("activity name", "activity text"
 NoFillActivityName = TestActivityDetailsUsers("", "activity text", "04:20", 'ראשון')
 NoFillWhyImDoingThis = TestActivityDetailsUsers("my mission", "", "4:20", "ראשון")
 NoFillField = TestActivityDetailsUsers("", "", "", None)
+RandomStringActivityText = TestActivityDetailsUsers(None, "test", None, None)

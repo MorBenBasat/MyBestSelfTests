@@ -1,5 +1,6 @@
 import time
 
+from helpers.AlertsAndStrings import Test
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -39,11 +40,11 @@ class ActivitiesPage:
     def edit_exist_activity(self):
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
-        edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.MY_ACTIVITY_FIELD)
+        edit_the_activity = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.ACTIVITY_DESCRIPTION)
         edit_the_activity.clear()
         HelpersMbs.delay(1)
 
-        edit_the_activity.send_keys(HelpersMbs.random_string())
+        edit_the_activity.send_keys(Test.my_string)
         confirm_btn = wait_for_element_presence(self.driver, *ActivitiesDetailsLocators.CONFIRM_BTN)
         confirm_btn.click()
         HelpersMbs.delay(1)

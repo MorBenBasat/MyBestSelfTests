@@ -1,6 +1,7 @@
 import unittest
 
-from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, CardDoesntAdded, ActivitiesOpen
+from helpers.AlertsAndStrings import DisableBtn, CardDoesntAdded, ActivitiesOpen, \
+    ActivityPageDropList, UpdateUserAlert
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
@@ -31,12 +32,12 @@ class TestActivitiesPage(unittest.TestCase):
     def test_open_activities_by_drop_list(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page_by_drop_list()
-        self.assertNotEqual(self.driver.current_url, PagesUrlMbs.login, print(ActivityPageAgendaDropList))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print(ActivityPageDropList.my_string))
 
     def test_edit_btn_click_and_update(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
-        expected_text = f"עדכון פריט סדר יום\nפריט סדר יום: {HelpersMbs.random_string()} התעדכן בהצלחה"
+        expected_text = UpdateUserAlert.alert
         self.activities_page.edit_exist_activity()
 
         actual_text = HelpersMbs(self.driver).update_alert_text()
