@@ -62,7 +62,7 @@ class TestActivitiesPage(unittest.TestCase):
         HelpersMbs.scroll_to_bottom(self.driver)
         HelpersMbs.delay(1)
 
-        all_cards_after = wait_for_elements(self.driver, ActivitiesLocators.ALL_CARDS)
+        all_cards_after = wait_for_elements(self.driver, ActivitiesLocators.AMOUNT_OF_ACTIVITIES)
         count_after = len(all_cards_after)
 
         print(count_before, count_after)

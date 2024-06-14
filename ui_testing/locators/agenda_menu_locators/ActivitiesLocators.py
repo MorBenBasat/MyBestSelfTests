@@ -12,9 +12,8 @@ class ActivitiesLocators:
 
     ACTIVATE_ALERT_CONFIRM = By.XPATH, '/p-toastitem/div/div'
 
-    ALL_CARDS = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div'
     ADDING_ACTIVITY_TO_AGENDA_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-activities/div/div/div[' \
                                               '1]/p-card/div/div/div[2]/p-footer/button[2]'
 
-    AMOUNT_OF_ACTIVITIES = By.CLASS_NAME,'ng-star-inserted'
+    AMOUNT_OF_ACTIVITIES = By.CLASS_NAME,'p-card-body'
 
