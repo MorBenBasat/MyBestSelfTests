@@ -37,7 +37,7 @@ class TestRecoverPage(unittest.TestCase):
 
     def test_verify_email_valid(self):
         pass
-
+        #pass
     @pytest.mark.test79
     def test_not_valid_email(self):
         self.recover_password.navigation_to_recover_password_page()
