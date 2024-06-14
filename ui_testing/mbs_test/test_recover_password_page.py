@@ -1,7 +1,7 @@
 import unittest
 import pytest
 
-from helpers.AlertsAndStrings import disable_btn
+from helpers.AlertsAndStrings import DisableBtn, MandatoryFieldText
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators import RecoverPasswordPageLocators
@@ -32,8 +32,8 @@ class TestRecoverPage(unittest.TestCase):
     def test_verify_mandatory_email_field(self):
         self.recover_password.navigation_to_recover_password_page()
         result_text = self.recover_password.mandatory_email_text(NoEmail)
-        expected_text = 'נא מלא שדה זה לפני שליחה'
-        self.assertEqual(result_text, expected_text, print(result_text))
+        expected_text = MandatoryFieldText.alert
+        self.assertEqual(result_text, expected_text)
 
     def test_verify_email_in_gmail(self):
         pass
@@ -41,16 +41,16 @@ class TestRecoverPage(unittest.TestCase):
     @pytest.mark.test79
     def test_not_valid_email(self):
         self.recover_password.navigation_to_recover_password_page()
-        result_message = self.recover_password.invalid_email_login(InvalidEmailType)
+        error_message = self.recover_password.invalid_email_login(InvalidEmailType)
         expected_message = 'נא להזין מייל חוקי'
-        self.assertEqual(result_message, expected_message, print(result_message))
+        self.assertEqual(error_message, expected_message)
 
     @pytest.mark.test80
     def test_not_exist_email(self):
         self.recover_password.navigation_to_recover_password_page()
         email_btn_disable = HelpersMbs.is_disabled(self.driver, RecoverPasswordPageLocators.CONFIRM_BTN)
         self.recover_password.fill_email_without_click_btn(InvalidEmailType)
-        self.assertEqual(email_btn_disable, True, print(disable_btn))
+        self.assertEqual(email_btn_disable, True, print(DisableBtn.my_string))
         HelpersMbs.delay(2)
         self.driver.quit()
 
