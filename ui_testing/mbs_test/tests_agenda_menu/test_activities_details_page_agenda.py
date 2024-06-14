@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime
 
 from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, \
-    DayRemoved, DetailsPageAgendaOpenDropList, DisableBtn, AbleBtn, DetailsPageAgendaOpen, DaysText
+    DayRemoved, DetailsPageAgendaOpenDropList, DisableBtn, AbleBtn, DetailsPageAgendaOpen, DaysText, ActivitiesOpen
 
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
@@ -40,7 +40,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         HelpersMbs.delay(1)
         print(self.helpers.alerts_display())
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities,DetailsPageAgendaOpen.my_string)
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities,ActivitiesOpen.my_string)
         self.driver.quit()
 
     def test_no_fill_my_activity(self):

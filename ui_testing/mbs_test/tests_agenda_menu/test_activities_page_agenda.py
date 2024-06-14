@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, CardDoesntAdded
+from helpers.AlertsAndStrings import DisableBtn, ActivityPageAgendaDropList, CardDoesntAdded, ActivitiesOpen
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
@@ -26,7 +26,7 @@ class TestActivitiesPage(unittest.TestCase):
     def test_success_navigation_activities_page(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print(AgendaPagePageOpen))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print(ActivitiesOpen.my_stringw))
 
     def test_open_activities_by_drop_list(self):
         self.login_page.success_login()

@@ -19,7 +19,7 @@ class TestActivitiesPage(unittest.TestCase):
     def test_open_page(self):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.activities, print(AgendaPageOpen.my_string))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.agenda, print(AgendaPageOpen.my_string))
 
     def test_open_page_by_drop_list(self):
         self.login_page.success_login()

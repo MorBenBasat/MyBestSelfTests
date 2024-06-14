@@ -1,7 +1,7 @@
 import unittest
 import pytest
 
-from helpers.AlertsAndStrings import DisableBtn, MandatoryFieldText
+from helpers.AlertsAndStrings import DisableBtn, MandatoryFieldText, ValidMailMandatoryMessage, SignUpPageOpen
 from initialize_driver import initialize_driver
 from helpers.Helpers import HelpersMbs
 from locators import RecoverPasswordPageLocators
@@ -37,12 +37,12 @@ class TestRecoverPage(unittest.TestCase):
 
     def test_verify_email_valid(self):
         pass
-        #pass
+
     @pytest.mark.test79
     def test_not_valid_email(self):
         self.recover_password.navigation_to_recover_password_page()
         error_message = self.recover_password.invalid_email_login(InvalidEmailType)
-        expected_message = 'נא להזין מייל חוקי'
+        expected_message = ValidMailMandatoryMessage.alert
         self.assertEqual(error_message, expected_message)
 
     @pytest.mark.test80
@@ -51,12 +51,12 @@ class TestRecoverPage(unittest.TestCase):
         email_btn_disable = HelpersMbs.is_disabled(self.driver, RecoverPasswordPageLocators.CONFIRM_BTN)
         self.recover_password.fill_email_without_click_btn(InvalidEmailType)
         self.assertEqual(email_btn_disable, True, print(DisableBtn.my_string))
-        HelpersMbs.delay(2)
+        HelpersMbs.delay(1)
         self.driver.quit()
 
     def test_click_register_btn(self):
         self.recover_password.click_register_btn()
-        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print('נפתח דף הרשמה למערכת'))
+        self.assertEqual(self.driver.current_url, PagesUrlMbs.register, print(SignUpPageOpen.my_string))
 
     def test_click_login_btn(self):
         self.recover_password.click_login_btn()

@@ -8,38 +8,46 @@ today_date = HelpersMbs.get_today_date_in_hebrew()
 
 
 class AlertsString:
-    def __init__(self, alert, my_string):
+    def __init__(self, alert: object, my_string: object) -> object:
         self.alert = alert
         self.my_string = my_string
 
 
-DisableBtn = AlertsString(None, "כפתור מוצג לא לחיץ")
-AbleBtn = AlertsString(None, "כפתור מוצג לחיץ")
+# LoginStrings
 SuccessLogin = AlertsString(None, "כניסה למערכת בוצעה בהצלחה")
 LoginTitleVerify = AlertsString(None, "כותרת מציגה כניסה למערכת")
+
+#Register Strings
+UserCreate = AlertsString(None, "User Created")
+SignUpPageOpen = AlertsString(None, "נפתח דף הרשמה למערכת")
+
+#Activity Strings
+CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
+ActivitiesOpen = AlertsString(None, "Activities page shown")
+
+
+
+DisableBtn = AlertsString(None, "כפתור מוצג לא לחיץ")
+AbleBtn = AlertsString(None, "כפתור מוצג לחיץ")
 MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 
-ActivityPageAgendaDropList = AlertsString(None, "Activities Page Agenda Open By Drop List")
+ActivityPageAgendaDropList = AlertsString(None, "Activities Page Open By Drop List")
 
-AgendaPageOpen = AlertsString(None, "Activities page opens properly")
-CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
+AgendaPageOpen = AlertsString(None, "Agenda page opens properly")
 NewActivityCreate = AlertsString(None, f" מופיעה בהערת יצירה {ValidActivityDetails.activity_name}משימה חדשה: ")
-AgendaPageOpenByDropList = AlertsString(None,"Agenda page open by drop list!")
+AgendaPageOpenByDropList = AlertsString(None, "Agenda page open by drop list!")
 
-DaysDontMatch = AlertsString(None,"The displayed day does not match today's date")
+DaysDontMatch = AlertsString(None, "The displayed day does not match today's date")
 DayRemoved = AlertsString(None, "Day successfully removed!")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
 DetailsPageAgendaOpenPlusIcon = AlertsString(None, "Activities Details Page Open By Plus Icon")
 DetailsPageAgendaOpenDropList = AlertsString(None, "Activities Details Page Open By Drop List!")
-DetailsPageAgendaOpen = AlertsString(None, "Activities page shown")
 TimeDontChange = AlertsString(None, "The time should have changed after using the arrows")
 DaysText = AlertsString(None, "Days Count")
 LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
 CompareTextFail = AlertsString(None, "Expected message does not match actual message")
-UserCreate = AlertsString(None, "User Created")
-SignUpPageOpen = AlertsString(None, "Sign Up Page Open")
-ExpectedDate = AlertsString(None,f"Expected date: {today_date}")
-ActualDate = AlertsString(None,"Actual day text:")
+ExpectedDate = AlertsString(None, f"Expected date: {today_date}")
+ActualDate = AlertsString(None, "Actual day text:")
 
 #############################################################################################
 
@@ -52,3 +60,4 @@ AfterRegisterLoginSystem = AlertsString(f'כניסה למערכת\nברוך הב
 UserExist = AlertsString("User already exists", None)
 UserCreateText = AlertsString(f'הרשמה למערכת\nברוך הבא {ValidRegistrationUser.firstname} אנו שמחים שבחרת להצטר'
                               f' אלינו', None)
+ValidMailMandatoryMessage = AlertsString("נא להזין מייל חוקי", None)
