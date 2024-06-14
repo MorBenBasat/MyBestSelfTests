@@ -15,3 +15,4 @@ class MyAgendaPageLocators:
     TODAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/button'
     YESTERDAY_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/div/button[1]'
     TOMORROW_BTN = By.XPATH, '/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[3]/div/button[2]'
+    DAY_TEXT = By.XPATH,'/html/body/app-root/div/div[2]/app-agenda/div/full-calendar/div[1]/div[1]/h2'

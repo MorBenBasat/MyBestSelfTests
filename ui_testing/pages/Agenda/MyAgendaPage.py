@@ -27,3 +27,7 @@ class MyAgendaPage:
     def open_activity_page_by_plus_icon(self):
         click_plus_icon = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.PLUS_BTN_OPEN_ACTIVITY_DETAILS)
         click_plus_icon.click()
+
+    def get_default_day(self):
+        day_text_element = wait_for_element_presence(self.driver, MyAgendaPageLocators.DAY_TEXT)
+        return day_text_element.text
