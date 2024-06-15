@@ -36,7 +36,7 @@ class MyAgendaPage:
         return title_name.text
 
     def verify_yesterday_btn(self):
-        self.driver.HelpersMbs.scroll_to_bottom()
+        HelpersMbs.scroll_to_bottom_or_up(self.driver, "DOWN")
         HelpersMbs.delay(1)
 
         yesterday_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.YESTERDAY_BTN)

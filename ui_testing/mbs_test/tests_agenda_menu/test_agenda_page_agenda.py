@@ -3,7 +3,7 @@ import unittest
 import waits.wait
 from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ActualDate, \
  \
- TodayBtnDisable, VerifyTodayDisable, ExpectedDate
+    TodayBtnDisable, VerifyTodayDisable, ExpectedDate, YesterdayBtnInvalidText
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -29,7 +29,6 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.open_agenda_drop_list()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.agenda, print(AgendaPageOpenByDropList.my_string))
-
 
     def test_today_btn_disable_default(self):
         self.login_page.success_login()
@@ -65,6 +64,6 @@ class TestActivitiesPage(unittest.TestCase):
 
         actual_date, expected_date = self.agenda_page.verify_yesterday_btn()
 
-        print(f"Actual Date: {actual_date}, Expected Date: {expected_date}")
+        print(f"{ActualDate.my_string} {actual_date}, {ExpectedDate.my_string}: {expected_date}")
 
-        self.assertEqual(actual_date, expected_date, "The displayed date does not match yesterday's date.")
+        self.assertEqual(actual_date, expected_date, YesterdayBtnInvalidText.my_string)

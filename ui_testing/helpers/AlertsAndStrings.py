@@ -33,7 +33,7 @@ VerifyTodayDisable = AlertsString(None, "כפתור היום מופיע לא ל�
 AgendaPageOpen = AlertsString(None, "Agenda page opens properly")
 AgendaPageOpenByDropList = AlertsString(None, "Agenda page open by drop list!")
 DaysDontMatch = AlertsString(None, "The displayed day does not match today's date")
-
+YesterdayBtnInvalidText = AlertsString(None,"The displayed date does not match yesterday's date.")
 # Activity Details Strings
 DaysText = AlertsString(None, "Days Count : ")
 DetailsPageAgendaOpenPlusIcon = AlertsString(None, "Activities Details Page Open By Plus Icon")

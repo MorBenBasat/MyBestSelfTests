@@ -47,7 +47,7 @@ class TestActivitiesPage(unittest.TestCase):
     def test_verify_activity_added_to_page(self):
         self.login_page.success_login()
         self.activities_page.navigate_to_activities_page()
-        HelpersMbs.scroll_to_bottom(self.driver)
+        HelpersMbs.scroll_to_bottom_or_up(self.driver,"DOWN")
 
         all_cards_before = wait_for_elements(self.driver, ActivitiesLocators.AMOUNT_OF_ACTIVITIES)
         count_before = len(all_cards_before)
@@ -57,7 +57,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.activities_details_page.create_activity_details(ValidActivityDetails)
         self.activities_page.navigate_to_activities_page()
 
-        HelpersMbs.scroll_to_bottom(self.driver)
+        HelpersMbs.scroll_to_bottom_or_up(self.driver,"DOWN")
         HelpersMbs.delay(1)
 
         all_cards_after = wait_for_elements(self.driver, ActivitiesLocators.AMOUNT_OF_ACTIVITIES)
