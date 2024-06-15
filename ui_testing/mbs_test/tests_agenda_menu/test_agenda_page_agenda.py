@@ -46,10 +46,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
 
-        # Scroll to bottom
         HelpersMbs.scroll_to_bottom(self.driver)
-
-        # Print the button class for debugging
         today_btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
         today_btn.get_attribute("class")
 

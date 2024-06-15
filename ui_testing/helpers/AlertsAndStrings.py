@@ -26,6 +26,11 @@ CardDoesntAdded = AlertsString(None, "New activity was not added successfully")
 ActivitiesOpen = AlertsString(None, "Activities page shown")
 ActivityPageDropList = AlertsString(None, "Activities Page Open By Drop List")
 
+#Agenda Strings
+TodayBtnDisable = AlertsString(None,"כפתור היום צריך להופיע לא לחיץ")
+VerifyTodayDisable = AlertsString(None,"כפתור היום מופיע לא לחיץ : ")
+
+
 
 
 DisableBtn = AlertsString(None, "כפתור מוצג לא לחיץ")
