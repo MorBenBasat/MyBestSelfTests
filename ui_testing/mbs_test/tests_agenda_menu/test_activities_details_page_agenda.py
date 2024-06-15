@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime
 
 from helpers.AlertsAndStrings import MandatoryFieldText, NoResultText, NewActivityCreate, DropListClearField, \
-    DayRemoved, DetailsPageAgendaOpenDropList, DisableBtn, AbleBtn, DetailsPageAgendaOpen, DaysText, ActivitiesOpen
+    DayRemoved, DetailsPageAgendaOpenDropList, DisableBtn, AbleBtn, DaysText, ActivitiesOpen, TimeDontChange
 
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
@@ -100,7 +100,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         self.driver.quit()
 
-    def test_choose_time_by_arrows(self):
+    def test_choose_time_by_arrows_one_hour_up(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
 
@@ -115,7 +115,7 @@ class TestActivitiesDetailsPage(unittest.TestCase):
 
         print(final_time, initial_time)
         # Assert that the initial and final time values are different
-        self.assertNotEqual(initial_time, final_time, "The time should have changed after using the arrows")
+        self.assertNotEqual(initial_time, final_time, TimeDontChange.my_string)
 
         self.driver.quit()
 
