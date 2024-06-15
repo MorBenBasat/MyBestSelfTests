@@ -3,7 +3,6 @@ from datetime import datetime
 
 from selenium.common import TimeoutException
 
-from helpers.AlertsAndStrings import TextExpected, TextNotExpected
 from locators.MyProfilePageLocators import MyProfilePageLocators
 from locators.agenda_menu_locators.ActivitiesDetailsLocators import ActivitiesDetailsLocators
 from waits import wait
@@ -72,9 +71,9 @@ class HelpersMbs:
 
     def compare_text(self, expected_text):
         if self == expected_text:
-            print(TextExpected.my_string, expected_text)
+            print("The expected text:", expected_text)
         else:
-            print(TextNotExpected.my_string, self)
+            print("Unexpected text : ", self)
         return self
 
     @staticmethod

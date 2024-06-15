@@ -1,5 +1,4 @@
 from helpers.Helpers import HelpersMbs
-from pages.Agenda.MyAgendaPage import MyAgendaPage
 from test_users.activities_details_users import ValidActivityDetails
 from test_users.login_users import SuccessLoginUser
 from test_users.register_users import ValidRegistrationUser
@@ -12,6 +11,8 @@ class AlertsString:
         self.alert = alert
         self.my_string = my_string
 
+
+TextExpected = AlertsString(None, "Text is as expected:")
 
 # LoginStrings
 SuccessLogin = AlertsString(None, "כניסה למערכת בוצעה בהצלחה")
@@ -49,8 +50,6 @@ MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
 ExpectedDate = AlertsString(None, f"Expected date: {today_date}")
 ActualDate = AlertsString(None, "Actual day text:")
-TextExpected = AlertsString(None, "Text is as expected:")
-TextNotExpected = AlertsString(None, "Text is not as expected:")
 
 # My Profile Strings
 LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
