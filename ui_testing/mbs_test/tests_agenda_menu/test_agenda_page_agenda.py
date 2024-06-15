@@ -58,7 +58,13 @@ class TestActivitiesPage(unittest.TestCase):
         self.assertEqual(actual_text, today_date, DaysDontMatch.my_string)
 
         self.driver.quit()
-    def test_yesterday_btn(self):
+
+    def test_verify_yesterday_btn(self):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
-        self.agenda_page.click_yesterday_btn()
+
+        actual_date, expected_date = self.agenda_page.verify_yesterday_btn()
+
+        print(f"Actual Date: {actual_date}, Expected Date: {expected_date}")
+
+        self.assertEqual(actual_date, expected_date, "The displayed date does not match yesterday's date.")

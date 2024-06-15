@@ -36,12 +36,13 @@ class MyAgendaPage:
         return title_name.text
 
     def verify_yesterday_btn(self):
+        self.driver.HelpersMbs.scroll_to_bottom()
+        HelpersMbs.delay(1)
+
         yesterday_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.YESTERDAY_BTN)
         yesterday_btn.click
         HelpersMbs.delay(1)
 
-        self.driver.HelpersMbs.scroll_to_bottom()
-        HelpersMbs.delay(1)
         date_field = wait_for_element_visibility(self.driver, *MyAgendaPageLocators.DAY_LABEL)
         date_field_text = date_field.text
 

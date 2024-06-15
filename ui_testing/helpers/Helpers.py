@@ -112,9 +112,13 @@ class HelpersMbs:
         return today_date_hebrew
 
     @staticmethod
-    def scroll_to_bottom(driver):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(1)
+    def scroll_to_bottom_or_up(driver, which_way):
+        if which_way == "DOWN":
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        elif which_way == "UP":
+            driver.execute_script("window.scrollTo(0, 0);")
+        else:
+            raise ValueError("Invalid value for 'which_way'. Use 'DOWN' or 'UP'.")
 
     def is_button_disabled(self, by, locator, timeout=10):
         try:
