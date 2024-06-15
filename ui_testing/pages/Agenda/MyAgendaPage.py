@@ -40,10 +40,13 @@ class MyAgendaPage:
         HelpersMbs.delay(1)
 
         yesterday_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.YESTERDAY_BTN)
-        yesterday_btn.click
+        yesterday_btn.click()
         HelpersMbs.delay(1)
 
-        date_field = wait_for_element_visibility(self.driver, *MyAgendaPageLocators.DAY_LABEL)
+        HelpersMbs.scroll_to_bottom_or_up(self.driver, "UP")
+        HelpersMbs.delay(1)
+
+        date_field = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_LABEL)
         date_field_text = date_field.text
 
         expected_yesterday_date = HelpersMbs.get_yesterday_date_in_hebrew(self)
