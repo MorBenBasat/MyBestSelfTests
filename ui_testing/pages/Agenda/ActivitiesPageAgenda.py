@@ -37,7 +37,7 @@ class ActivitiesPage:
         click_on_folder_icon_btn.click()
 
     def edit_exist_activity(self):
-        #
+        ##
         edit_btn = wait_for_element_clickable(self.driver, *ActivitiesLocators.EDIT_ACTIVITY_BTN)
         edit_btn.click()
 
