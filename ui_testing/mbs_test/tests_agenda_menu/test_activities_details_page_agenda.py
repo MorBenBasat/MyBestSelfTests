@@ -97,24 +97,18 @@ class TestActivitiesDetailsPage(unittest.TestCase):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
         HelpersMbs.delay(1)
-
         self.driver.quit()
 
     def test_choose_time_by_arrows_one_hour_up(self):
         self.login_page.success_login()
         self.activities_details_page.navigate_to_activities_details_page()
-
-        # Capture the initial time value
         initial_time = self.activities_details_page.get_time_value()
 
-        # Perform the time adjustments
         self.activities_details_page.select_time_by_arrows()
 
-        # Capture the final time value
         final_time = self.activities_details_page.get_time_value()
 
         print(final_time, initial_time)
-        # Assert that the initial and final time values are different
         self.assertNotEqual(initial_time, final_time, TimeDontChange.my_string)
 
         self.driver.quit()

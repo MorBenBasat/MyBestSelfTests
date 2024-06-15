@@ -1,10 +1,9 @@
 import time
 import unittest
 
-from helpers.AlertsAndStrings import DisableBtn, CardDoesntAdded, ActivitiesOpen, \
+from helpers.AlertsAndStrings import CardDoesntAdded, ActivitiesOpen, \
     ActivityPageDropList, UpdateUserAlert
 from locators.agenda_menu_locators.ActivitiesLocators import ActivitiesLocators
-from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Agenda.ActivitiesPageAgenda import ActivitiesPage
 from initialize_driver import initialize_driver
 from pages.Agenda.ActivitiesDetailsPageAgenda import ActivitiesDetailsPage
@@ -14,6 +13,7 @@ from pages.Pages_url import PagesUrlMbs
 from test_users.activities_details_users import ValidActivityDetails
 from helpers.Helpers import HelpersMbs
 from waits.wait import wait_for_elements
+
 
 class TestActivitiesPage(unittest.TestCase):
 
@@ -42,7 +42,6 @@ class TestActivitiesPage(unittest.TestCase):
         expected_text = UpdateUserAlert.alert
 
         actual_text = HelpersMbs(self.driver).update_alert_text()
-        time.sleep(5)
         self.assertEqual(actual_text, expected_text)
 
     def test_verify_activity_added_to_page(self):
@@ -68,4 +67,3 @@ class TestActivitiesPage(unittest.TestCase):
         assert count_after == count_before + 1, CardDoesntAdded.my_string
 
         self.driver.quit()
-
