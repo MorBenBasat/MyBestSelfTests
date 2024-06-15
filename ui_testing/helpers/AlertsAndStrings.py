@@ -49,6 +49,8 @@ MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
 ExpectedDate = AlertsString(None, f"Expected date: {today_date}")
 ActualDate = AlertsString(None, "Actual day text:")
+TextExpected = AlertsString(None, "Text is as expected:")
+TextNotExpected = AlertsString(None, "Text is not as expected:")
 
 # My Profile Strings
 LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")

@@ -3,7 +3,7 @@ from selenium.webdriver import ActionChains
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_clickable, wait_for_element_presence, wait_for_element_visibility
+from waits.wait import wait_for_element_clickable, wait_for_element_presence
 
 
 class MyAgendaPage:
@@ -28,11 +28,14 @@ class MyAgendaPage:
         plus_icon.click()
 
     def get_default_day(self):
-        day_text_field= wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_TEXT)
+        day_text_field = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_TEXT)
         return day_text_field.text
 
     def get_title_name_agenda(self):
         title_name = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_TEXT)
         return title_name.text
 
-
+    def verify_yesterday_btn(self):
+        yesterday_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.YESTERDAY_BTN)
+        yesterday_btn.click
+        HelpersMbs.get_today_date_in_hebrew()
