@@ -3,7 +3,7 @@ from selenium.webdriver import ActionChains
 from helpers.Helpers import HelpersMbs
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
 from pages.Pages_url import PagesUrlMbs
-from waits.wait import wait_for_element_clickable, wait_for_element_presence
+from waits.wait import wait_for_element_clickable, wait_for_element_presence, wait_for_element_visibility
 
 
 class MyAgendaPage:
@@ -38,4 +38,13 @@ class MyAgendaPage:
     def verify_yesterday_btn(self):
         yesterday_btn = wait_for_element_clickable(self.driver, *MyAgendaPageLocators.YESTERDAY_BTN)
         yesterday_btn.click
-        HelpersMbs.get_today_date_in_hebrew()
+        HelpersMbs.delay(1)
+
+        self.driver.HelpersMbs.scroll_to_bottom()
+        HelpersMbs.delay(1)
+        date_field = wait_for_element_visibility(self.driver, *MyAgendaPageLocators.DAY_LABEL)
+        date_field_text = date_field.text
+
+        expected_yesterday_date = HelpersMbs.get_yesterday_date_in_hebrew(self)
+
+        return date_field_text, expected_yesterday_date

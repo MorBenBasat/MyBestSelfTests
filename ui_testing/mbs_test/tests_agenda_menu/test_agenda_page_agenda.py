@@ -1,5 +1,6 @@
 import unittest
 
+import waits.wait
 from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ActualDate, \
  \
  TodayBtnDisable, VerifyTodayDisable, ExpectedDate
@@ -29,19 +30,6 @@ class TestActivitiesPage(unittest.TestCase):
         self.agenda_page.open_agenda_drop_list()
         self.assertEqual(self.driver.current_url, PagesUrlMbs.agenda, print(AgendaPageOpenByDropList.my_string))
 
-    def test_verify_default_day_today(self):
-        self.login_page.success_login()
-        self.agenda_page.navigate_to_agenda_page()
-
-        today_date = HelpersMbs.get_today_date_in_hebrew()
-        print(ExpectedDate.my_string)
-
-        actual_text = self.agenda_page.get_default_day()
-        print(f"{ActualDate.my_string} {actual_text}")
-
-        self.assertEqual(actual_text, today_date, DaysDontMatch.my_string)
-
-        self.driver.quit()
 
     def test_today_btn_disable_default(self):
         self.login_page.success_login()
@@ -56,3 +44,21 @@ class TestActivitiesPage(unittest.TestCase):
 
         self.assertEqual(confirm_btn_disable, True, TodayBtnDisable.my_string)
         self.driver.quit()
+
+    def test_verify_default_day_today(self):
+        self.login_page.success_login()
+        self.agenda_page.navigate_to_agenda_page()
+
+        today_date = HelpersMbs.get_today_date_in_hebrew()
+        print(ExpectedDate.my_string)
+
+        actual_text = self.agenda_page.get_default_day()
+        print(f"{ActualDate.my_string} {actual_text}")
+
+        self.assertEqual(actual_text, today_date, DaysDontMatch.my_string)
+
+        self.driver.quit()
+    def test_yesterday_btn(self):
+        self.login_page.success_login()
+        self.agenda_page.navigate_to_agenda_page()
+        self.agenda_page.click_yesterday_btn()

@@ -1,5 +1,5 @@
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from selenium.common import TimeoutException
 
@@ -123,3 +123,38 @@ class HelpersMbs:
             return button.get_attribute('disabled') is not None
         except TimeoutException:
             return False
+
+    @staticmethod
+    def get_yesterday_date_in_hebrew(self):
+        month_mapping = {
+            "January": "ינואר",
+            "February": "פברואר",
+            "March": "מרץ",
+            "April": "אפריל",
+            "May": "מאי",
+            "June": "יוני",
+            "July": "יולי",
+            "August": "אוגוסט",
+            "September": "ספטמבר",
+            "October": "אוקטובר",
+            "November": "נובמבר",
+            "December": "דצמבר"
+        }
+
+        # Get yesterday's date
+        yesterday = datetime.now() - timedelta(1)
+
+        # Format the day and year
+        day = yesterday.strftime('%d')
+        year = yesterday.strftime('%Y')
+
+        # Get the month name in English
+        month_name_english = yesterday.strftime('%B')
+
+        # Map the month name to Hebrew
+        month_name_hebrew = month_mapping.get(month_name_english, month_name_english)
+
+        # Construct the date string in the desired format
+        yesterday_date_hebrew = f"{day} ב{month_name_hebrew} {year}"
+
+        return yesterday_date_hebrew
