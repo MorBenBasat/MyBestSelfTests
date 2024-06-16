@@ -1,9 +1,8 @@
 import unittest
 
-import waits.wait
 from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ActualDate, \
  \
-    TodayBtnDisable, VerifyTodayDisable, ExpectedDate, YesterdayBtnInvalidText
+    TodayBtnDisable, VerifyTodayDisable, YesterdayBtnInvalidText, DateBeforeBtnYesterday
 from helpers.Helpers import HelpersMbs
 from initialize_driver import initialize_driver
 from locators.agenda_menu_locators.MyAgendaPageLocators import MyAgendaPageLocators
@@ -34,7 +33,7 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
 
-        HelpersMbs.scroll_to_bottom(self.driver)
+        HelpersMbs.scroll_to_bottom_or_up(self.driver, "DOWN")
         today_btn = self.driver.find_element(*MyAgendaPageLocators.TODAY_BTN)
         today_btn.get_attribute("class")
 
@@ -62,8 +61,10 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
 
-        actual_date, expected_date = self.agenda_page.verify_yesterday_btn()
+        expected_date,date_before_click_yesterday_btn = self.agenda_page.verify_yesterday_btn()
+        print(f"{DateBeforeBtnYesterday.my_string} {date_before_click_yesterday_btn}")
 
-        print(f"{ActualDate.my_string} {actual_date}, {ExpectedDate.my_string}: {expected_date}")
+        self.assertEqual(date_before_click_yesterday_btn, expected_date, YesterdayBtnInvalidText.my_string)
 
-        self.assertEqual(actual_date, expected_date, YesterdayBtnInvalidText.my_string)
+    def test_verify_tommorow_btn(self):
+        pass
