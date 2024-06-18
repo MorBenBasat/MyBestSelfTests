@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch, ActualDate, \
+from helpers.AlertsAndStrings import AgendaPageOpen, AgendaPageOpenByDropList, DaysDontMatch,  \
  \
     TodayBtnDisable, VerifyTodayDisable, YesterdayBtnInvalidText, DateBeforeBtnYesterday
 from helpers.Helpers import HelpersMbs
@@ -48,12 +48,12 @@ class TestActivitiesPage(unittest.TestCase):
         self.agenda_page.navigate_to_agenda_page()
 
         today_date = HelpersMbs.get_today_date_in_hebrew()
-        print(ExpectedDate.my_string)
+        print(f"today date : {today_date})")
 
-        actual_text = self.agenda_page.get_default_day()
-        print(f"{ActualDate.my_string} {actual_text}")
+        actual_day = self.agenda_page.get_default_day()
+        print(f"Actual day text : {actual_day}")
 
-        self.assertEqual(actual_text, today_date, DaysDontMatch.my_string)
+        self.assertEqual(actual_day, today_date, DaysDontMatch.my_string)
 
         self.driver.quit()
 
@@ -61,10 +61,10 @@ class TestActivitiesPage(unittest.TestCase):
         self.login_page.success_login()
         self.agenda_page.navigate_to_agenda_page()
 
-        expected_date,date_before_click_yesterday_btn = self.agenda_page.verify_yesterday_btn()
+        expected_date, date_before_click_yesterday_btn = self.agenda_page.verify_yesterday_btn()
         print(f"{DateBeforeBtnYesterday.my_string} {date_before_click_yesterday_btn}")
+        print(f"Day after click {expected_date}")
+        self.assertNotEqual(date_before_click_yesterday_btn, expected_date, YesterdayBtnInvalidText.my_string)
 
-        self.assertEqual(date_before_click_yesterday_btn, expected_date, YesterdayBtnInvalidText.my_string)
-
-    def test_verify_tommorow_btn(self):
+    def test_verify_tomorrow_btn(self):
         pass

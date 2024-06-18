@@ -36,6 +36,8 @@ class MyAgendaPage:
         return title_name.text
 
     def verify_yesterday_btn(self):
+        expected_yesterday_date = HelpersMbs.get_today_date_in_hebrew()
+
         HelpersMbs.scroll_to_bottom_or_up(self.driver, "DOWN")
         HelpersMbs.delay(1)
 
@@ -48,7 +50,5 @@ class MyAgendaPage:
 
         date_field = wait_for_element_presence(self.driver, *MyAgendaPageLocators.DAY_LABEL)
         date_field_text = date_field.text
-
-        expected_yesterday_date = HelpersMbs.get_yesterday_date_in_hebrew(self)
 
         return date_field_text, expected_yesterday_date

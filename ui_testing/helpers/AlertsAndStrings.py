@@ -49,7 +49,6 @@ AbleBtn = AlertsString(None, "כפתור מוצג לחיץ")
 MandatoryText = AlertsString(None, "טקסט דרישת מילוי מופיע")
 DropListClearField = AlertsString(None, "שדות נקיים בכניסה לדרופ ליסט")
 DateBeforeBtnYesterday = AlertsString(None, f"Expected date before btn yesterday click")
-ActualDate = AlertsString(None, f"Actual day text : {today_date}")
 
 # My Profile Strings
 LogoOpenMyProfile = AlertsString(None, "My profile open on logo click")
